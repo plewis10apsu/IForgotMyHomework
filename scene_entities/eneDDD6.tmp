@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf8meu1mhq87n"]
+
+[ext_resource type="Script" path="res://scripts/enemy_alien.gd" id="1_levkx"]
+[ext_resource type="Texture2D" uid="uid://e8lc7tpu54j1" path="res://assets/sprites/PH_ufo.png" id="2_ck654"]
+
+[node name="EnemyUFO" type="Area2D"]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_levkx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(2.563e-06, -0.248015)
+scale = Vector2(0.130595, 0.127399)
+polygon = PackedVector2Array(0, -120.7, 50.616, -109.019, 93.4449, -73.9772, 112.913, -31.1483, 229.719, 58.403, -7.78707, 124.593, -229.719, 15.5741, -155.741, -31.1483, -97.3384, -50.616, -62.2966, -97.3384, -15.5741, -120.7)
+
+[node name="PhUfo" type="Sprite2D" parent="."]
+scale = Vector2(0.128418, 0.128418)
+texture = ExtResource("2_ck654")

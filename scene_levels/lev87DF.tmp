@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8syxxta8nbcg"]
+
+[ext_resource type="Script" path="res://scripts/level_0.gd" id="1_u54n3"]
+[ext_resource type="Script" path="res://scripts/default_camera.gd" id="2_4vqq4"]
+[ext_resource type="PackedScene" uid="uid://cncdb80jk87ro" path="res://scene_entities/player.tscn" id="2_ds6se"]
+[ext_resource type="PackedScene" uid="uid://bfga2kvnacrit" path="res://scene_entities/default_camera.tscn" id="2_wcjbd"]
+[ext_resource type="PackedScene" uid="uid://bilsr5eb7sf6c" path="res://scene_entities/simple_turret.tscn" id="3_matrw"]
+[ext_resource type="PackedScene" uid="uid://331ik7u1c7xi" path="res://scene_entities/camera_fence.tscn" id="6_415rq"]
+[ext_resource type="PackedScene" uid="uid://bri7cldadmuvc" path="res://scene_entities/addcolor_polygon.tscn" id="6_i6vwk"]
+
+[node name="Level_0" type="Node2D"]
+script = ExtResource("1_u54n3")
+
+[node name="player" parent="." instance=ExtResource("2_ds6se")]
+position = Vector2(40, 56)
+
+[node name="DefaultCamera" parent="." instance=ExtResource("2_wcjbd")]
+script = ExtResource("2_4vqq4")
+
+[node name="SimpleTurret" parent="." instance=ExtResource("3_matrw")]
+position = Vector2(288, 128)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-8, 0, 8, 0, 8, 136, 64, 136, 176, 176, 256, 176, 256, 128, 512, 128, 512, 72, 744, 72, 744, 128, 896, 128, 896, 176, 1087, 176, 1088, 128, 1152, 128, 1152, 72, 1352, 72, 1352, 184, -8, 184)
+
+[node name="AddcolorPolygon" parent="StaticBody2D/CollisionPolygon2D" instance=ExtResource("6_i6vwk")]
+position = Vector2(59.3325, -321.279)
+color = Color(1, 0, 1, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+
+[node name="CameraFence" parent="." instance=ExtResource("6_415rq")]
+visible = false
+position = Vector2(0, -256)
+scale = Vector2(10.8112, 4.34771)

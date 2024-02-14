@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://srmcpuk6s57h"]
+
+[ext_resource type="AudioStream" uid="uid://cd1mas2iwahix" path="res://assets/music/PH_player_death_music.mp3" id="1_0e7nm"]
+[ext_resource type="Script" path="res://scripts/play_this_music_now.gd" id="2_xea0p"]
+
+[node name="PlayerDeathMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_0e7nm")
+volume_db = -4.0
+script = ExtResource("2_xea0p")

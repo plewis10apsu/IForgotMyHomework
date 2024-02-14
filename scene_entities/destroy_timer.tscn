@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c33wctyyuhmni"]
+
+[ext_resource type="Script" path="res://scene_entities/destroy_timer.gd" id="1_hpgnw"]
+
+[node name="DestroyTimer" type="Node"]
+script = ExtResource("1_hpgnw")

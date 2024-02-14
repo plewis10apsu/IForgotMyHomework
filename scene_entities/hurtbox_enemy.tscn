@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://brl81477303us"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_debaj"]
+
+[node name="Hurtbox" type="Area2D"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_debaj")
+debug_color = Color(1, 0, 0, 0.419608)

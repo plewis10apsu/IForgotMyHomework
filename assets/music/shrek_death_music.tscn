@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://4acb8nalarfe"]
+
+[ext_resource type="AudioStream" uid="uid://d2h5amxtyvx6u" path="res://assets/music/PH_Shrek_Death_Music.mp3" id="1_kvpju"]
+[ext_resource type="Script" path="res://scripts/play_this_music_now.gd" id="2_2abup"]
+
+[node name="ShrekDeathMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_kvpju")
+volume_db = -4.0
+script = ExtResource("2_2abup")
