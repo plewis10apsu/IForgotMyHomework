@@ -14,8 +14,8 @@ func _physics_process(delta):
 	#overlapping = $Area2D.get_overlapping_areas()
 	overlapping = $Area2D.get_overlapping_bodies()
 	for hopefully_player in overlapping:
-		Global.Player.has_machine_gun = true
-		Global.Player.machine_gun_ammo = 100
+		Global.player.has_machine_gun = true
+		Global.player.machine_gun_ammo = 100
 		$Area2D/CollisionShape2D.disabled = true
 		$PowerUpSound.play()
 		visible = false

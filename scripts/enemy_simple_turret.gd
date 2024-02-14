@@ -28,8 +28,8 @@ func _process(delta):
 	if time_until_shoot <= 0:
 		#We're gonna try to shoot now, so reset shoot time.
 		time_until_shoot = shoot_interval
-		distance_from_player = Vector2(position - Global.Player.position).length()
-		if( distance_from_player <= active_radius and Global.Player.is_alive):
+		distance_from_player = Vector2(position - Global.player.position).length()
+		if( distance_from_player <= active_radius and Global.player.is_alive):
 			#Make a bullet
 			$BulletSpawnPoint.add_child(bullet_scene.instantiate())
 			shots+=1

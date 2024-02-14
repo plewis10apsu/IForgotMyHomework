@@ -1,9 +1,7 @@
-extends Node2D
+extends "res://scripts/level_action.gd"
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	Global.level_start(self)
+##WARNING:DON'T OVERRIDE _ready()! There is critical functionality in the parent!
+#func _ready():
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _unique_level_ready_stuff():
+	Global.play_music_name("level_0")

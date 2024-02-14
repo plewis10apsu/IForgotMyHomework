@@ -1,11 +1,7 @@
-extends Node2D
+##TODO: Everything here is just hacky placeholder crap to get the level 0
+##prototype boss working. Nuke this from orbit, and build something real!
 
-## PHBOSS
-## PHBOSS
-## PHBOSS
-## PHBOSS
-## PHBOSS
-## PHBOSS
+extends Node2D
 
 const max_hp = 50
 var hp = max_hp
@@ -20,8 +16,6 @@ var shots = 0
 const max_shots = 25
 var distance_from_player
 const active_radius = 150 #Unit proximity from player required to be active
-var fight_music = load("res://assets/music/shrek_fight_music.tscn")
-var death_music = load("res://assets/music/shrek_death_music.tscn")
 var has_fight_begun = false
 var time_fighting = 0.0
 var overlapping
@@ -39,11 +33,11 @@ func _process(delta):
 	hurt_white = clamp(hurt_white,0,1)
 	$HurtwhiteShape.modulate.a = hurt_white
 	#Begin fight if player is in radius
-	distance_from_player = Vector2(position - Global.Player.position).length()
+	distance_from_player = Vector2(position - Global.player.position).length()
 	if( distance_from_player <= active_radius ):
 		if !has_fight_begun:
-			add_child(fight_music.instantiate())
-			Global.boss_hp_bar.visible=true
+			Global.play_music_name("boss_0")
+			$"../DefaultCamera/BossHP".visible=true
 			has_fight_begun = true
 	if has_fight_begun:
 		time_fighting += delta
@@ -56,10 +50,10 @@ func _process(delta):
 	new_lightness = shoot_interval_progress * 255
 	$EmitterShape.color = Color(shoot_interval_progress,shoot_interval_progress,shoot_interval_progress)
 	#Handle shooting
-	if time_until_shoot <= 0 and Global.Player:
+	if time_until_shoot <= 0 and Global.player:
 		#We're gonna try to shoot now, so reset shoot time.
 		time_until_shoot = shoot_interval
-		if( has_fight_begun and Global.Player.is_alive):
+		if( has_fight_begun and Global.player.is_alive):
 			#Make a bullet
 			$EmitterShape/BulletSpawnPoint.add_child(bullet_scene.instantiate())
 			shots+=1
@@ -70,16 +64,16 @@ func _process(delta):
 			hurty_thing.get_parent().queue_free()
 			hp -= 1
 			hurt_white = 1
-			Global.boss_hp_bar.scale.x = 1.0*hp/max_hp
-			Global.boss_hp_bar.visible=true
+			$"../DefaultCamera/BossHP".scale.x = 1.0*hp/max_hp
 			$pain_sound.play()
 			break
 	#Free/destroy
 	#if(shots>=max_shots and Global.Player.is_alive):
 	if( hp <= 0):
-		add_child(death_music.instantiate())
-		Global.clear_enemy_bullets()
+		#add_child(death_music.instantiate())
+		Global.current_level.clear_enemy_bullets()
 		$PhBlood.visible = true
-		$PhBlood.reparent(Global.CurrentLevel)
+		$PhBlood.reparent(Global.current_level)
 		$"../BossPlatform".queue_free()
+		Global.play_music_name("boss_0_death")
 		queue_free()

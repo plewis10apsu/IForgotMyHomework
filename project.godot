@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2D4600"
-run/main_scene="res://scene_levels/level_0.tscn"
+run/main_scene="res://scene_levels/DUMMY_LEVEL.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://sank.png"
 

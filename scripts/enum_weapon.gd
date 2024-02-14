@@ -1,0 +1,3 @@
+class_name WEAPON
+
+enum {LEMON, MG, MAGNUM, FLAMETHROWER}

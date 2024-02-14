@@ -1,16 +1,21 @@
 extends CharacterBody2D
 
+#Identity and stats
+const MAX_HP = 3
+const JUMP_VELOCITY = -500.0
+const COYOTE_TIMER_MAX = 0.15 #seconds
+const WALK_SPEED = 120.0 #Units per second
+var team = 0
+#State and action
+enum {STATE_MOVE, STATE_KNOCKBACK, STATE_DEAD}
+var state
+var hp = MAX_HP
 var is_alive = true
 var is_facing_right = true
-const max_hp = 3
-var hp = max_hp
-const SPEED = 120.0
-const JUMP_VELOCITY = -500.0
-const coyote_frames_max = 10
-var coyote_frames = coyote_frames_max
+var coyote_timer = COYOTE_TIMER_MAX
 var is_being_knocked_back = true
-var blink_timer = 0 #set this to blink for n frames
-const blink_rate = 3 #how many frames until a blink
+var blink_timer_ms = 0 #set this to n for n miliseconds of blinking I-frames
+const blink_rate = 30 #miliseconds until blinking visibility toggles
 var death_music = load("res://assets/music/player_death_music.tscn")
 var bullet_default = load("res://scene_entities/bullet_player_default.tscn")
 var bullet_mg = load("res://scene_entities/bullet_player_mg.tscn")
@@ -24,8 +29,10 @@ var normal_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var gravity = normal_gravity
 
 func _ready():
-	Global.Player = self
-	#Global.self_destruct(self, 3) #Still not working for some reason.
+	#Set this as the Globally-recognized player
+	if(Global.player):
+		Global.player.queue_free()
+	Global.player = self
 
 func _physics_process(delta):
 	machine_gun_timer -= delta
@@ -45,8 +52,8 @@ func _physics_process(delta):
 		#add_child(load("res://scene_entities/player_death_sprite.tscn").instantiate())#hacky
 		#$CollisionPolygon2D.disabled = true
 		$CollisionPolygon2D/PhSkel.visible = true
-		Global.clear_player_bullets()
-		add_child(death_music.instantiate())
+		Global.current_level.clear_player_bullets()
+		Global.play_music_name("player_death")
 	if is_alive:
 		#Determine gravity
 		if(velocity.y < 0): #When rising
@@ -60,21 +67,21 @@ func _physics_process(delta):
 		#Handle coyote frames
 		if is_on_floor():
 			if !is_being_knocked_back:
-				coyote_frames = coyote_frames_max
+				coyote_timer = COYOTE_TIMER_MAX
 			#Player is considered "on floor" for first frame of knockback if hit
 			#while on the floor. So, to avoid the knockback bool being flipped off
 			#immediately, we simple make it so knockback can't end while rising.
 			if(velocity.y >= 0):
 				is_being_knocked_back = false
 		else: #decrement while in the air
-			coyote_frames -= 1
-			coyote_frames = clamp(coyote_frames, 0, coyote_frames_max)
+			coyote_timer -= delta
+			coyote_timer = clamp(coyote_timer, 0, COYOTE_TIMER_MAX)
 
 		# Handle jump
-		if Input.is_action_just_pressed("jump") and coyote_frames > 0:
+		if Input.is_action_just_pressed("jump") and coyote_timer > 0:
 			#When jump button is pressed, JUMP.
 			velocity.y = JUMP_VELOCITY
-			coyote_frames = 0
+			coyote_timer = 0
 		if Input.is_action_just_released("jump") and velocity.y<0 and !is_on_floor() and !is_being_knocked_back:
 			#When jump button is released, FALL immediately.
 			#Note that velocity.y<0 means we are rising, because UP is negative in Godot.
@@ -86,9 +93,9 @@ func _physics_process(delta):
 		if(!is_being_knocked_back):#No air control if being knocked back.
 			var direction = Input.get_axis("ui_left", "ui_right")
 			if direction:
-				velocity.x = direction * SPEED
+				velocity.x = direction * WALK_SPEED
 			else:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 			#Make children face movement direction
 			if(direction * $CollisionPolygon2D.scale.x < 0):
 				$CollisionPolygon2D.scale.x *= -1
@@ -96,9 +103,9 @@ func _physics_process(delta):
 				is_facing_right = true
 			else:
 				is_facing_right = false
-		blink_timer -= 1
-		blink_timer = clamp(blink_timer, 0, 999999)
-		if(blink_timer%blink_rate == 1):
+		blink_timer_ms -= int(delta*1000)#miniseconds
+		blink_timer_ms = clamp(blink_timer_ms, 0, 999999)
+		if(blink_timer_ms>0 and blink_timer_ms%(2*blink_rate) > blink_rate):
 			$CollisionPolygon2D/PhSank.visible = false
 		else:
 			$CollisionPolygon2D/PhSank.visible = true
@@ -128,14 +135,14 @@ func _physics_process(delta):
 	
 
 func push_hurt(hurty_thing):	
-	if(!blink_timer and is_alive):#I-frames while blinking!
+	if(!blink_timer_ms and is_alive):#I-frames while blinking!
 		hp -= 1
 		position.y -= 1
-		coyote_frames = 0 #prevent jumping to negate knockback
+		coyote_timer = 0 #prevent jumping to negate knockback
 		is_being_knocked_back = true
-		blink_timer = 60
+		blink_timer_ms = 1500
 		
-		var was_hurt_from_right = (hurty_thing.global_position.x - Global.Player.global_position.x) > 0
+		var was_hurt_from_right = (hurty_thing.global_position.x - Global.player.global_position.x) > 0
 		hurty_thing.get_parent().queue_free() #Free/destroy the bullet!
 		
 		if (was_hurt_from_right):

@@ -16,10 +16,10 @@ var time_alive = 0.0
 #avoid having a bullet in level space before runtime.
 func _ready():
 	#Create a normalized Vector2, toward player.
-	VectorTowardPlayer = Vector2(Global.Player.global_position - self.global_position).normalized()
+	VectorTowardPlayer = Vector2(Global.player.global_position - self.global_position).normalized()
 	#Reparent to designated parent in Global, so bullet
 	#doesn't also vanish if turret is destroyed.
-	reparent(Global.enemy_bullet_parent)
+	reparent(Global.current_level.enemy_bullet_parent)
 	#Draw bullet on top layer.
 	z_index = 69
 
