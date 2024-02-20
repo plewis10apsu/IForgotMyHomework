@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://drr41td5128j8"]
-
-[ext_resource type="Texture2D" uid="uid://cjxlqvabip5ds" path="res://assets/sprites/PH_skel.png" id="1_qi8h7"]
-
-[node name="PlayerDeathSprite" type="Sprite2D"]
-position = Vector2(1.90735e-06, 0)
-scale = Vector2(0.0625, 0.0496124)
-texture = ExtResource("1_qi8h7")

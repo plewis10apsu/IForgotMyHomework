@@ -1,0 +1,234 @@
+[gd_scene load_steps=22 format=3 uid="uid://b8syxxta8nbcg"]
+
+[ext_resource type="Script" path="res://level_0/scripts/level_0.gd" id="1_q5xic"]
+[ext_resource type="Texture2D" uid="uid://cpi435x6xjg6w" path="res://level_0/sprites/PH_pointer.jpg" id="2_0blqg"]
+[ext_resource type="Texture2D" uid="uid://bvona8ckxaf0l" path="res://level_0/sprites/PH_you_did_it.jpg" id="3_umt80"]
+[ext_resource type="Script" path="res://level_0/scripts/PhBoss.gd" id="4_53ftl"]
+[ext_resource type="Texture2D" uid="uid://cc7euujk3vooy" path="res://level_0/sprites/PH_boss.jpg" id="5_1axw6"]
+[ext_resource type="AudioStream" uid="uid://ppmr65pvvr0k" path="res://level_0/sfx/PH_shrek_pain2.wav" id="6_t660e"]
+[ext_resource type="Texture2D" uid="uid://cylu8dgxxgo8r" path="res://level_0/sprites/PH_blood.png" id="7_7wh64"]
+[ext_resource type="Script" path="res://level_0/scripts/PhBlood.gd" id="8_yyy07"]
+[ext_resource type="PackedScene" uid="uid://bilsr5eb7sf6c" path="res://general/scenes/enemy_simple_turret.tscn" id="9_lpu1f"]
+[ext_resource type="PackedScene" uid="uid://bri7cldadmuvc" path="res://general/scenes/addcolor_polygon.tscn" id="10_ea0ts"]
+[ext_resource type="PackedScene" uid="uid://cncdb80jk87ro" path="res://general/scenes/player.tscn" id="11_pyw5l"]
+[ext_resource type="PackedScene" uid="uid://cf8meu1mhq87n" path="res://general/scenes/enemy_ufo.tscn" id="12_yyk0f"]
+[ext_resource type="PackedScene" uid="uid://bfga2kvnacrit" path="res://general/scenes/default_camera.tscn" id="13_6a0up"]
+[ext_resource type="Script" path="res://general/scripts/default_camera.gd" id="14_lpton"]
+[ext_resource type="Texture2D" uid="uid://be8wq6fccrtib" path="res://level_0/sprites/PH_bean.png" id="15_5ymy7"]
+[ext_resource type="Texture2D" uid="uid://b5rvr8yqxq30p" path="res://level_0/sprites/PH_steroids.jpg" id="16_7stru"]
+[ext_resource type="Script" path="res://level_0/scripts/PhSteroids.gd" id="17_fampn"]
+[ext_resource type="AudioStream" uid="uid://3gpajsmw77d8" path="res://general/sfx/cc0_647977__cloud-10__8-bit-coin-or-power-up-fx-for-retro-video-games.mp3" id="18_2f5wb"]
+[ext_resource type="PackedScene" uid="uid://ef5qoxjc8ywk" path="res://general/scenes/bullet.tscn" id="19_g75ep"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2kvpv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ew3i5"]
+size = Vector2(1008.07, 569.839)
+
+[node name="Level_0" type="Node2D"]
+scale = Vector2(0.966171, 1)
+script = ExtResource("1_q5xic")
+
+[node name="PhPointerGuy" type="Sprite2D" parent="."]
+position = Vector2(147, -381)
+scale = Vector2(0.529367, 0.23696)
+texture = ExtResource("2_0blqg")
+
+[node name="PhYouDidItBall" type="Sprite2D" parent="."]
+position = Vector2(650.63, 1075)
+scale = Vector2(0.0565375, 0.0526943)
+texture = ExtResource("3_umt80")
+
+[node name="Level0Boss" type="Node2D" parent="."]
+position = Vector2(649.63, 1060)
+script = ExtResource("4_53ftl")
+
+[node name="EmitterShape" type="Polygon2D" parent="Level0Boss"]
+visible = false
+position = Vector2(2.99999, -27)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, 0, 0, -8, -8, 0, 0, 8)
+
+[node name="BulletSpawnPoint" type="Node2D" parent="Level0Boss/EmitterShape"]
+
+[node name="PHBossSprite" type="Sprite2D" parent="Level0Boss"]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("5_1axw6")
+
+[node name="pain_sound" type="AudioStreamPlayer" parent="Level0Boss"]
+stream = ExtResource("6_t660e")
+volume_db = 9.0
+
+[node name="Hitbox" type="Area2D" parent="Level0Boss"]
+scale = Vector2(0.268156, 0.731898)
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level0Boss/Hitbox"]
+position = Vector2(-2.52279, -43.7219)
+scale = Vector2(3.63159, 1.88462)
+shape = SubResource("CircleShape2D_2kvpv")
+
+[node name="HurtwhiteShape" type="Polygon2D" parent="Level0Boss"]
+scale = Vector2(1, 0.997036)
+polygon = PackedVector2Array(-27.5869, 41.1218, -23.4468, 37.11, -24.4819, 27.0802, -21.3768, 19.0565, -21.3768, 13.0386, -19.3068, 9.02673, -19.3068, 4.01184, -23.4468, 2.00598, -27.5869, -8.0238, -24.4819, -18.0536, -26.5519, -20.0594, -21.3768, -23.0684, -18.2718, -22.0654, -13.0967, -24.0714, -12.0617, -29.0863, -9.99164, -28.0833, -9.99164, -34.1011, -13.0967, -35.1041, -17.2368, -35.1041, -17.2368, -39.116, -15.1667, -39.116, -13.0967, -37.11, -9.99164, -38.113, -8.95667, -41.1219, -6.8866, -44.1309, -2.74658, -45.1338, 2.42853, -45.1338, 5.53357, -43.1279, 7.60358, -40.119, 8.63861, -39.116, 13.8137, -42.1249, 15.8837, -38.113, 11.7437, -38.113, 8.63861, -37.11, 9.67358, -30.0892, 15.8837, -26.0773, 28.3038, -26.0773, 26.2338, -21.0625, 31.4089, -12.0356, 32.4439, -3.00891, 27.2689, 6.01782, 33.4789, 25.0743, 30.3739, 29.0862, 33.4789, 33.0981, 36.584, 36.1071, 35.549, 54.1605, -29.6569, 53.1576)
+
+[node name="PhBlood" type="Sprite2D" parent="Level0Boss"]
+visible = false
+z_index = 50
+position = Vector2(5.5331, 44.0002)
+scale = Vector2(0.267, 1)
+texture = ExtResource("7_7wh64")
+offset = Vector2(-2.00024, 94.425)
+script = ExtResource("8_yyy07")
+
+[node name="SimpleTurret" parent="." instance=ExtResource("9_lpu1f")]
+position = Vector2(864, 136)
+
+[node name="SimpleTurret2" parent="." instance=ExtResource("9_lpu1f")]
+position = Vector2(960, 136)
+
+[node name="SimpleTurret3" parent="." instance=ExtResource("9_lpu1f")]
+position = Vector2(1056, 136)
+
+[node name="SimpleTurret4" parent="." instance=ExtResource("9_lpu1f")]
+position = Vector2(1216, 80)
+
+[node name="SimpleTurret5" parent="." instance=ExtResource("9_lpu1f")]
+position = Vector2(1584, 184)
+
+[node name="SimpleTurret6" parent="." instance=ExtResource("9_lpu1f")]
+position = Vector2(2016, 160)
+
+[node name="StartArea" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StartArea"]
+polygon = PackedVector2Array(0, -1152, 0, -312, 256, -312, 256, -368, 384, -368, 384, -312, 536, -264, 576, -264, 576, 232, -64, 232, -64, -1152)
+
+[node name="AddcolorPolygon" parent="StartArea/CollisionPolygon2D" instance=ExtResource("10_ea0ts")]
+color = Color(0.27451, 0.560784, 0.305882, 1)
+
+[node name="Ground0" type="StaticBody2D" parent="."]
+position = Vector2(576, 8)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground0"]
+position = Vector2(8, 0)
+polygon = PackedVector2Array(-8, 0, 8, 0, 8, 136, 64, 136, 176, 176, 256, 176, 256, 128, 512, 128, 512, 72, 744, 72, 744, 128, 896, 128, 896, 176, 1087, 176, 1088, 128, 1152, 128, 1152, 72, 1352, 72, 1352, 184, -8, 184)
+
+[node name="AddcolorPolygon" parent="Ground0/CollisionPolygon2D" instance=ExtResource("10_ea0ts")]
+position = Vector2(59.3325, -321.279)
+color = Color(0.654902, 0.356863, 0.360784, 1)
+
+[node name="Platform0" type="StaticBody2D" parent="."]
+position = Vector2(576, 8)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform0"]
+polygon = PackedVector2Array(1408, 72, 1472, 72, 1472, 80, 1408, 80)
+
+[node name="AddcolorPolygon" parent="Platform0/CollisionPolygon2D" instance=ExtResource("10_ea0ts")]
+color = Color(1, 0, 1, 1)
+
+[node name="BossPlatform" type="StaticBody2D" parent="."]
+position = Vector2(564.082, 968)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BossPlatform"]
+position = Vector2(-1442.81, 5)
+polygon = PackedVector2Array(1408, 72, 1472, 72, 1472, 80, 1408, 80)
+
+[node name="AddcolorPolygon" parent="BossPlatform/CollisionPolygon2D" instance=ExtResource("10_ea0ts")]
+color = Color(1, 0.407843, 0.243137, 1)
+
+[node name="B1Area" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="B1Area"]
+polygon = PackedVector2Array(2176, -192, 2176, 680.713, 2155.93, 680, 2138.34, 681, 2111.43, 681, 2088.66, 687, 2063.82, 696, 2047.26, 710, 2024.49, 756, 2007.93, 777, 1992.4, 815, 2000.68, 859, 2011.03, 909, 2057.61, 1001, 2073.13, 1011, 2082.45, 1001, 2097.97, 1024, 1856, 1024, 1472, 904, 1312, 904, 1312, 864, 1128, 864, 1128, 1040, 1008, 1040, 1008, 1104, 528, 1104, 528, 368, -96, 368, -96, 1288, 2384.67, 1288, 2384.67, -192)
+
+[node name="AddcolorPolygon" parent="B1Area/CollisionPolygon2D" instance=ExtResource("10_ea0ts")]
+color = Color(0.262745, 0.478431, 1, 1)
+
+[node name="Player" parent="." instance=ExtResource("11_pyw5l")]
+position = Vector2(82.8011, -1040)
+
+[node name="EnemyAlien" parent="." instance=ExtResource("12_yyk0f")]
+position = Vector2(467.826, -388)
+scale = Vector2(-0.917858, 0.8)
+
+[node name="EnemyAlien2" parent="." instance=ExtResource("12_yyk0f")]
+position = Vector2(771.085, 117)
+scale = Vector2(-0.917858, 0.8)
+
+[node name="EnemyAlien3" parent="." instance=ExtResource("12_yyk0f")]
+position = Vector2(1402.44, 55)
+scale = Vector2(-0.917858, 0.8)
+
+[node name="EnemyAlien4" parent="." instance=ExtResource("12_yyk0f")]
+position = Vector2(1632.22, 127)
+scale = Vector2(-0.917858, 0.8)
+
+[node name="EnemyAlien5" parent="." instance=ExtResource("12_yyk0f")]
+position = Vector2(2118.67, 64)
+scale = Vector2(-0.917858, 0.8)
+
+[node name="EnemyAlien6" parent="." instance=ExtResource("12_yyk0f")]
+position = Vector2(1961.35, 689)
+scale = Vector2(-0.917858, 0.8)
+
+[node name="EnemyAlien7" parent="." instance=ExtResource("12_yyk0f")]
+position = Vector2(1352.76, 847)
+scale = Vector2(-0.917858, 0.8)
+
+[node name="EnemyAlien8" parent="." instance=ExtResource("12_yyk0f")]
+position = Vector2(1069.17, 850)
+scale = Vector2(-0.917858, 0.8)
+
+[node name="DefaultCamera" parent="." instance=ExtResource("13_6a0up")]
+position = Vector2(107.641, -1320)
+script = ExtResource("14_lpton")
+
+[node name="HUD_HP" type="RichTextLabel" parent="DefaultCamera"]
+offset_left = -164.14
+offset_top = -91.0
+offset_right = 151.86
+offset_bottom = -51.0
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "HP: 9"
+
+[node name="HUD_Ammo" type="RichTextLabel" parent="DefaultCamera"]
+offset_left = -164.14
+offset_top = -76.0
+offset_right = 151.86
+offset_bottom = -36.0
+theme_override_font_sizes/normal_font_size = 12
+text = "AMMO: "
+
+[node name="BossHP" type="Node2D" parent="DefaultCamera"]
+visible = false
+position = Vector2(-112.314, 80)
+
+[node name="Polygon2D" type="Polygon2D" parent="DefaultCamera/BossHP"]
+color = Color(0.572549, 0, 0, 1)
+polygon = PackedVector2Array(223.563, -8, 223.563, 8, 0, 8, 0, -8)
+
+[node name="PhBean" type="Sprite2D" parent="."]
+position = Vector2(2201.47, 912)
+texture = ExtResource("15_5ymy7")
+
+[node name="PhSteroids" type="Sprite2D" parent="."]
+position = Vector2(560.977, 994)
+scale = Vector2(0.056769, 0.0601352)
+texture = ExtResource("16_7stru")
+script = ExtResource("17_fampn")
+
+[node name="Area2D" type="Area2D" parent="PhSteroids"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhSteroids/Area2D"]
+visible = false
+position = Vector2(0.000976563, 0)
+shape = SubResource("RectangleShape2D_ew3i5")
+
+[node name="PowerUpSound" type="AudioStreamPlayer" parent="PhSteroids"]
+stream = ExtResource("18_2f5wb")
+
+[node name="Bullet" parent="." instance=ExtResource("19_g75ep")]

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://skdybdq4qghh"]
-
-[ext_resource type="AudioStream" uid="uid://bc7873v310x7" path="res://assets/music/noattrib_PandaBeats_PixelParty.wav" id="1_cnpas"]
-
-[node name="Level0Music" type="AudioStreamPlayer"]
-stream = ExtResource("1_cnpas")

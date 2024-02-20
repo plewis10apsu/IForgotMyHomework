@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="2D4600"
-run/main_scene="res://scene_levels/DUMMY_LEVEL.tscn"
+run/main_scene="res://menus/Main_Menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://sank.png"
+config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://scripts/global.gd"
+Global="*res://general/scripts/global.gd"
 
 [display]
 
@@ -26,6 +26,14 @@ window/size/viewport_height=180
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[file_customization]
+
+folder_colors={
+"res://general/": "gray",
+"res://level_0/": "purple",
+"res://menus/": "gray"
+}
 
 [input]
 

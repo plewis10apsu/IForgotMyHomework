@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://doy784qg00an6"]
+
+[ext_resource type="Texture2D" uid="uid://bk1x1yqfbrhnd" path="res://general/sprites/PH_sank.png" id="1_k6vb5"]
+
+[node name="PhSank" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(392, -152)
+texture = ExtResource("1_k6vb5")
+hframes = 5
+vframes = 6
