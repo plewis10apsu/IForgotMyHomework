@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://frnmly78pfyh"]
+[gd_scene load_steps=7 format=3 uid="uid://frnmly78pfyh"]
 
 [ext_resource type="Script" path="res://menus/Options_Menu/options_menu.gd" id="1_i1l64"]
+[ext_resource type="Texture2D" uid="uid://ce36o4kfk0u0j" path="res://menus/textures/tilemap-backgrounds_packed.png" id="2_uc8xa"]
+
+[sub_resource type="SystemFont" id="SystemFont_skch8"]
+font_names = PackedStringArray("Impact")
+font_weight = 900
+oversampling = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_sdf2g"]
+font = SubResource("SystemFont_skch8")
+font_size = 25
+font_color = Color(0.180392, 0.690196, 0.509804, 1)
+outline_size = 12
+outline_color = Color(0.164706, 0.164706, 0.164706, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_ja3tw"]
+font_names = PackedStringArray("Impact")
+font_weight = 700
+oversampling = 5.0
+
+[sub_resource type="SystemFont" id="SystemFont_jysgo"]
+font_names = PackedStringArray("Impact")
+oversampling = 5.0
 
 [node name="options_menu" type="Control"]
 layout_mode = 3
@@ -11,21 +33,51 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i1l64")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uc8xa")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 32
 
-[node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="OptionsLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Options"
+label_settings = SubResource("LabelSettings_sdf2g")
+
+[node name="VolumeButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_ja3tw")
 text = "Volume"
 
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_jysgo")
 text = "Back"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VolumeButton" to="." method="_on_volume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_pressed"]
