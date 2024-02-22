@@ -1,2 +1,2 @@
 # Group 3's CSCI 4600 Project
-Let's software engineering!
+A 2D platformer game in the Godot game engine
