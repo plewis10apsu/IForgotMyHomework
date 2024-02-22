@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfga2kvnacrit"]
+
+[ext_resource type="Script" path="res://general/scripts/camera_default.gd" id="1_0um38"]
+
+[node name="DefaultCamera" type="Camera2D"]
+script = ExtResource("1_0um38")
