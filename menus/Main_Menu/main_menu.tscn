@@ -130,6 +130,6 @@ size_flags_vertical = 8
 texture_normal = ExtResource("4_nvumc")
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/OptionsButton" to="." method="_on_help_button_pressed"]
