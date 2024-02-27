@@ -16,8 +16,8 @@ var coyote_timer = COYOTE_TIMER_MAX
 var is_being_knocked_back = true
 var blink_timer_ms = 0 #set this to n for n miliseconds of blinking I-frames
 const blink_rate = 30 #miliseconds until blinking visibility toggles
-var bullet_default = load("res://general/scenes/bullet_player_default.tscn")
-var bullet_mg = load("res://general/scenes/bullet_player_mg.tscn")
+var bullet_default = load("res://level_0/scenes/bullet_player_default.tscn")
+var bullet_mg = load("res://level_0/scenes/bullet_player_mg.tscn")
 const machine_gun_shoot_rate = 1.0/20.0 #seconds between shots
 var machine_gun_timer = machine_gun_shoot_rate
 var has_machine_gun = false
@@ -105,9 +105,9 @@ func _physics_process(delta):
 		blink_timer_ms -= int(delta*1000)#miniseconds
 		blink_timer_ms = clamp(blink_timer_ms, 0, 999999)
 		if(blink_timer_ms>0 and blink_timer_ms%(2*blink_rate) > blink_rate):
-			$CollisionPolygon2D/PhSank.visible = false
+			self.visible = false
 		else:
-			$CollisionPolygon2D/PhSank.visible = true
+			self.visible = true
 		#Handle shoot
 		if Input.is_action_just_pressed("shoot") and !is_being_knocked_back and !has_machine_gun:
 			#Default bullet

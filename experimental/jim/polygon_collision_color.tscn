@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b35v76uafaye1"]
+
+[ext_resource type="Script" path="res://experimental/jim/polygon_collision_color.gd" id="1_s67bo"]
+
+[node name="CollisionPolygon2dColor" type="CollisionPolygon2D"]
+script = ExtResource("1_s67bo")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8nvqppetj82l"]
+
+[ext_resource type="Script" path="res://general/scripts/bullet_default.gd" id="1_i1p3t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eg4nd"]
+size = Vector2(6, 4)
+
+[node name="BulletDefault" type="Area2D"]
+script = ExtResource("1_i1p3t")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(2, 2)
+scale = Vector2(0.5, 0.5)
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-8, -8, 0, -8, 0, 0, -8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eg4nd")
+debug_color = Color(1, 0, 0, 0.419608)

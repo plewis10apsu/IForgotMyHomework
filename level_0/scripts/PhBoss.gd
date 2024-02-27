@@ -10,7 +10,7 @@ const wait_before_shooting = 4 #seconds after fight begins
 var time_until_shoot = 0.0001
 var shoot_interval_progress = 0.0 #Normalized 0~1
 var new_lightness = 0.0 #0~255, based on interval progress
-var bullet_scene = load("res://general/scenes/bullet_enemy_simple.tscn")
+var bullet_scene = load("res://level_0/scenes/bullet_enemy_simple.tscn")
 var new_bullet
 var shots = 0
 const max_shots = 25

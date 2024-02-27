@@ -1,12 +1,14 @@
-extends Sprite2D
+extends CollisionPolygon2D
 
-const blood_speed = 0.06 #Multiplier. 1 = max in 1 sec.
+@export var color: Color
+var color_polygon
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	scale.y=0
+	color_polygon = $Polygon2D
+	color_polygon.polygon = polygon
+	color_polygon.color = color
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if visible and scale.y<0.3:
-		scale.y = clamp(scale.y + (delta * blood_speed), 0, 1)
+	pass

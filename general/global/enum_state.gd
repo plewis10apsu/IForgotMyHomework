@@ -1,0 +1,3 @@
+class_name ACTORSTATE
+
+enum {PLAY, KNOCKBACK, DEAD}

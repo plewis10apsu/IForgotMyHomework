@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bif6wjeml7j5d"]
 
-[ext_resource type="Script" path="res://general/scripts/bullet_player_default.gd" id="1_dk8xd"]
-[ext_resource type="PackedScene" uid="uid://brl81477303us" path="res://general/scenes/hurtbox_enemy.tscn" id="2_awr38"]
+[ext_resource type="Script" path="res://level_0/scripts/bullet_player_default.gd" id="1_dk8xd"]
+[ext_resource type="PackedScene" uid="uid://brl81477303us" path="res://level_0/scenes/hurtbox_enemy.tscn" id="2_awr38"]
 
 [node name="PlayerBullet" type="Node2D"]
 script = ExtResource("1_dk8xd")

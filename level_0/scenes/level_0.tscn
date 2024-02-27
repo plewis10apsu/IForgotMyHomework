@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b8syxxta8nbcg"]
+[gd_scene load_steps=21 format=3 uid="uid://b8syxxta8nbcg"]
 
 [ext_resource type="Script" path="res://level_0/scripts/level_0.gd" id="1_q5xic"]
 [ext_resource type="Texture2D" uid="uid://cpi435x6xjg6w" path="res://level_0/sprites/PH_pointer.jpg" id="2_0blqg"]
@@ -8,12 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://ppmr65pvvr0k" path="res://level_0/sfx/PH_shrek_pain2.wav" id="6_t660e"]
 [ext_resource type="Texture2D" uid="uid://cylu8dgxxgo8r" path="res://level_0/sprites/PH_blood.png" id="7_7wh64"]
 [ext_resource type="Script" path="res://level_0/scripts/PhBlood.gd" id="8_yyy07"]
-[ext_resource type="PackedScene" uid="uid://bilsr5eb7sf6c" path="res://general/scenes/enemy_simple_turret.tscn" id="9_lpu1f"]
-[ext_resource type="PackedScene" uid="uid://bri7cldadmuvc" path="res://general/scenes/addcolor_polygon.tscn" id="10_ea0ts"]
-[ext_resource type="PackedScene" uid="uid://cncdb80jk87ro" path="res://general/scenes/player.tscn" id="11_pyw5l"]
-[ext_resource type="PackedScene" uid="uid://cf8meu1mhq87n" path="res://general/scenes/enemy_ufo.tscn" id="12_yyk0f"]
-[ext_resource type="PackedScene" uid="uid://bfga2kvnacrit" path="res://general/scenes/camera_default.tscn" id="13_6a0up"]
-[ext_resource type="Script" path="res://general/scripts/camera_default.gd" id="14_lpton"]
+[ext_resource type="PackedScene" uid="uid://bilsr5eb7sf6c" path="res://level_0/scenes/enemy_simple_turret.tscn" id="9_lpu1f"]
+[ext_resource type="PackedScene" uid="uid://bri7cldadmuvc" path="res://level_0/scenes/addcolor_polygon.tscn" id="10_ea0ts"]
+[ext_resource type="PackedScene" uid="uid://cncdb80jk87ro" path="res://level_0/scenes/ph_player.tscn" id="11_pyw5l"]
+[ext_resource type="PackedScene" uid="uid://cf8meu1mhq87n" path="res://level_0/scenes/enemy_ufo.tscn" id="12_yyk0f"]
+[ext_resource type="PackedScene" uid="uid://bfga2kvnacrit" path="res://level_0/scenes/camera_default.tscn" id="13_6a0up"]
 [ext_resource type="Texture2D" uid="uid://be8wq6fccrtib" path="res://level_0/sprites/PH_bean.png" id="15_5ymy7"]
 [ext_resource type="Texture2D" uid="uid://b5rvr8yqxq30p" path="res://level_0/sprites/PH_steroids.jpg" id="16_7stru"]
 [ext_resource type="Script" path="res://level_0/scripts/PhSteroids.gd" id="17_fampn"]
@@ -183,7 +182,6 @@ scale = Vector2(-0.917858, 0.8)
 
 [node name="DefaultCamera" parent="." instance=ExtResource("13_6a0up")]
 position = Vector2(107.641, -1320)
-script = ExtResource("14_lpton")
 
 [node name="HUD_HP" type="RichTextLabel" parent="DefaultCamera"]
 offset_left = -164.14

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8nvqppetj82l"]
+
+[ext_resource type="Script" path="res://general/scripts/bullet_default.gd" id="1_i1p3t"]
+
+[node name="BulletDefault" type="Node2D"]
+script = ExtResource("1_i1p3t")

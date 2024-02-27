@@ -20,6 +20,11 @@ func _ready():
 	# will load levels instead of just loading one here in Global._ready()
 	#change_level("res://level_0/scenes/level_0.tscn")
 
+func point_at_player_from(from_node_IN):
+	#Creates normalized V2 pointing from argument's position to the player.
+	#For shooting, remember to pass the emitter node, NOT the actor's top-level "self".
+	return Vector2(player.global_position - from_node_IN.global_position).normalized()
+
 func change_level(level_path):
 	if(current_level):
 		current_level.queue_free()

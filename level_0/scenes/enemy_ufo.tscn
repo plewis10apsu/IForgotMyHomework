@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" path="res://level_0/scripts/enemy_ufo.gd" id="1_levkx"]
 [ext_resource type="Texture2D" uid="uid://e8lc7tpu54j1" path="res://level_0/sprites/PH_ufo.png" id="2_ck654"]
-[ext_resource type="PackedScene" uid="uid://bri7cldadmuvc" path="res://general/scenes/addcolor_polygon.tscn" id="3_jp4at"]
+[ext_resource type="PackedScene" uid="uid://bri7cldadmuvc" path="res://level_0/scenes/addcolor_polygon.tscn" id="3_jp4at"]
 [ext_resource type="AudioStream" uid="uid://dmttog1tvwyy0" path="res://general/sfx/cc0_590037__mrfossy__sfx_massivelyincorrekt_08.mp3" id="4_obnx6"]
 [ext_resource type="AudioStream" uid="uid://pvxppq65nj15" path="res://general/sfx/cc0_560124__steaq__a-teleportation.mp3" id="5_cvawo"]
+
 
 [node name="EnemyUFO" type="Area2D"]
 collision_layer = 32

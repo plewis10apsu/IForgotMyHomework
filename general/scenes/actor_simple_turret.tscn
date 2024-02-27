@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7nmg1aisp8b4"]
+
+[ext_resource type="Script" path="res://general/scripts/actor_simple_turret.gd" id="1_qoa5i"]
+[ext_resource type="PackedScene" uid="uid://c6hlqk4ebdk" path="res://general/scenes/bullet_emitter.tscn" id="2_ihkq7"]
+
+[node name="SimpleTurret" type="Node2D"]
+script = ExtResource("1_qoa5i")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-16, -80)
+color = Color(0.37, 0.37, 0.1332, 1)
+offset = Vector2(16, 80)
+polygon = PackedVector2Array(8, -64, 8, 0, -8, 0, -8, -64)
+
+[node name="EmitterShape" type="Polygon2D" parent="."]
+position = Vector2(0, -64)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, 0, 0, -8, -8, 0, 0, 8)
+
+[node name="BulletEmitter" parent="." instance=ExtResource("2_ihkq7")]
+position = Vector2(0, -64)

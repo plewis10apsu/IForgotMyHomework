@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq6so2p7nes3y"]
+
+[ext_resource type="Script" path="res://general/scripts/bullet_magnum.gd" id="1_jdxq3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eg4nd"]
+size = Vector2(28, 16)
+
+[node name="BulletMagnum" type="Area2D"]
+script = ExtResource("1_jdxq3")
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+position = Vector2(2, 1.7)
+scale = Vector2(0.3, 0.3)
+polygon = PackedVector2Array(23.3333, -32.3333, 40, -22.3333, 46.6667, -5.66667, 40, 11, 23.3333, 21, -46.6667, 21, -46.6667, -32.3333)
+
+[node name="Polygon2D4" type="Polygon2D" parent="Polygon2D3"]
+position = Vector2(0, -0.198)
+scale = Vector2(0.974, 0.955)
+color = Color(0.329412, 0, 0.329412, 1)
+polygon = PackedVector2Array(23.3333, -32.3333, 40, -22.3333, 46.6667, -5.66667, 40, 11, 23.3333, 21, -46.6667, 21, -46.6667, -32.3333)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_eg4nd")
+debug_color = Color(1, 0, 0, 0.419608)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ttryjkr3lif4"]
+
+[ext_resource type="Script" path="res://general/scripts/bullet_flame.gd" id="1_qnrnp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eg4nd"]
+size = Vector2(16, 20)
+
+[node name="BulletFlame" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_qnrnp")
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(0.320526, 2.21609)
+scale = Vector2(0.264373, 0.288955)
+color = Color(1, 0.498039, 0, 1)
+polygon = PackedVector2Array(29.0479, -7.66932, -1.2124, 13.0952, -31.4727, -7.66932, -20.1251, -59.5806, -23.9076, -21.5123, -12.56, -52.6591, -12.56, -21.5123, 2.57014, -69.9629, 2.57014, -24.9731, 10.1352, -56.1199, 17.7003, -31.8946, 17.7003, -59.5806)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(4.76837e-07, -4)
+shape = SubResource("RectangleShape2D_eg4nd")
+debug_color = Color(1, 0, 0, 0.419608)

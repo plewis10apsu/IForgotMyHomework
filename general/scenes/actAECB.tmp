@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://h1euld2qohrv"]
+
+[ext_resource type="Script" path="res://general/scripts/actor_player.gd" id="1_xm6wn"]
+[ext_resource type="Texture2D" uid="uid://n2sqm6j1d5dw" path="res://general/sprites/ph_player.png" id="2_pk73f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8mkx"]
+size = Vector2(34, 15)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xm6wn")
+
+[node name="PhPlayer" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+texture = ExtResource("2_pk73f")
+
+[node name="EnvironmentalCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(3, 19)
+polygon = PackedVector2Array(-14, -21, 9, -21, 25, 8, 14, 13, -17, 14, -26, 9)
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_e8mkx")
+debug_color = Color(1, 0, 0, 0.419608)
