@@ -7,10 +7,7 @@ var music_player = AudioStreamPlayer.new()
 var current_music_name # In case we ever care what's playing.
 var music_dictionary = {
 	# Paths for all music files
-	"level_0" : "res://level_0/music/noattrib_PandaBeats_PixelParty.wav",
-	"boss_0" : "res://level_0/music/PH_NeXsard_NotDeadYet_Shrek_Boss.mp3",
-	"boss_0_death" : "res://level_0/music/PH_Shrek_Death_Music.mp3",
-	"player_death" : "res://general/music/PH_player_death_music.mp3"
+	"pixelparty" : "res://general/music/noattrib_PandaBeats_PixelParty.wav"
 }
 
 # Called when the node enters the scene tree for the first time.

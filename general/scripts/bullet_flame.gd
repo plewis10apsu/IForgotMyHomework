@@ -6,6 +6,7 @@ var aim_vector : Vector2
 var weapon_type
 var time_alive = 0 #in seconds
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") / 2
+var damage_on_touch = 1
 
 func _ready():
 	$".".velocity += aim_vector * SPEED

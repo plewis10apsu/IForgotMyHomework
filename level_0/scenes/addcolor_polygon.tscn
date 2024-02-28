@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bri7cldadmuvc"]
-
-[ext_resource type="Script" path="res://level_0/scripts/addcolor_polygon.gd" id="1_xo3g8"]
-
-
-[node name="AddcolorPolygon" type="Polygon2D"]
-script = ExtResource("1_xo3g8")

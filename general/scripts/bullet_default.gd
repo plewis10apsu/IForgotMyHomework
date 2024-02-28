@@ -5,6 +5,7 @@ var team
 var aim_vector : Vector2
 var weapon_type
 var time_alive = 0 #in seconds
+var damage_on_touch = 1
 
 func explicit_init(shooter_IN, aim_vector_IN:Vector2):
 	team = shooter_IN.team

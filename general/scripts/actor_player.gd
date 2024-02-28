@@ -4,14 +4,14 @@ const MAX_HP = 3
 const JUMP_VELOCITY = -500.0
 const COYOTE_TIMER_MAX = 0.15 #seconds
 const WALK_SPEED = 120.0 #units per second
-const hurt_blink_rate = 30 #miliseconds between hurt visibility toggles
+const HURT_BLINK_RATE = 30 #miliseconds between hurt visibility toggles
 var state = ACTORSTATE.PLAY
 var team = TEAM.PLAYER
-var weapon_type = WEAPON.FLAME
+var weapon_type = WEAPON.DEFAULT
 var hp = MAX_HP
 var is_facing_right = true
 var coyote_timer = COYOTE_TIMER_MAX
-var invincible_timer_ms = 0 #miliseconds of blinking I-frames, >0 means you're invincible
+var invincible_timer_ms = 0 #set to n = invincible and blink for n miliseconds
 var trigger_held_timer_ms = 0 #miliseconds player has been holding the trigger
 var shots_since_trigger_held = 0 #used for math, like in the MG trigger pull logic
 var ammo = 0 #set this whenever you change the weapon type.
@@ -22,8 +22,8 @@ func _ready():
 	if(Global.player):
 		Global.player.queue_free()
 	Global.player = self
-
-func _physics_process(delta):
+	
+func _process(delta):
 	#Check for death
 	if(state != ACTORSTATE.DEAD and hp <= 0):
 		#KILL PLAYER
@@ -33,17 +33,28 @@ func _physics_process(delta):
 		Global.play_music_name("player_death")
 	#Timers
 	invincible_timer_ms = clamp(invincible_timer_ms-int(delta*1000), 0, 1)
-	#Hurt blinking (feel free to ask me about the math for "its_blink_off_time")
-	var its_blink_off_time = bool(invincible_timer_ms%(2*hurt_blink_rate) > hurt_blink_rate)
+	#Hurt blinking (NOTE:(Jim) Feel free to ask me about the math for "its_blink_off_time"!)
+	var its_blink_off_time = bool(invincible_timer_ms%(2*HURT_BLINK_RATE) > HURT_BLINK_RATE)
 	visible = (false if (invincible_timer_ms>0 and its_blink_off_time) else true)
-	#######################
-	##   STATE MACHINE   ##
-	#######################
+	#Logic state machine
 	match state:
 		ACTORSTATE.PLAY:
-		################
-		##    PLAY    ##
-		################
+			#SHOOT
+			if Input.is_action_pressed("shoot"):
+				trigger_held_timer_ms += delta*1000
+				pull_trigger()
+			else:
+				trigger_held_timer_ms = 0
+				shots_since_trigger_held = 0
+		ACTORSTATE.KNOCKBACK:
+			pass
+		ACTORSTATE.DEAD:
+			pass
+
+func _physics_process(delta):
+	#Physics state machine
+	match state:
+		ACTORSTATE.PLAY:
 			#MOVE
 			var direction = Input.get_axis("ui_left", "ui_right")
 			if direction:
@@ -66,13 +77,6 @@ func _physics_process(delta):
 			else:
 				#Neutral movement input. Velocity decays.
 				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
-			#SHOOT
-			if Input.is_action_pressed("shoot"):
-				trigger_held_timer_ms += delta*1000
-				pull_trigger()
-			else:
-				trigger_held_timer_ms = 0
-				shots_since_trigger_held = 0
 			#COYOTE TIMER
 			if is_on_floor():
 				#We're on the ground, so refill the timer.
@@ -100,15 +104,9 @@ func _physics_process(delta):
 			#PHYSICS BLACK BOX
 			move_and_slide()
 		ACTORSTATE.KNOCKBACK:
-		#####################
-		##    KNOCKBACK    ##
-		#####################
 			#PHYSICS BLACK BOX
 			move_and_slide()
 		ACTORSTATE.DEAD:
-		################
-		##    DEAD    ##
-		################
 			pass
 
 func pull_trigger():
@@ -140,3 +138,17 @@ func pull_trigger():
 				var aim_vector = Vector2(1 if is_facing_right else (-1), -0.2).normalized()
 				$BulletEmitter.shoot(self, aim_vector)
 				shots_since_trigger_held += 1
+
+func _on_area_2d_area_entered(area):
+	#TODO:(Jim) Make damage work
+	#TODO:(Jim) Make damage work
+	#TODO:(Jim) Make damage work
+	#print("THAT'S A HIT!")
+	#var other_actor = area
+	#var other_hurts = other_actor.has("damage_on_touch")
+	#var other_is_enemy = other_actor.team != team
+	#if  other_hurts and other_is_enemy:
+		#hp -= 1
+		#invincible_timer_ms = 3000
+	#area.queue_free()
+	pass
