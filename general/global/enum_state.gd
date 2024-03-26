@@ -1,3 +1,3 @@
-class_name ACTORSTATE
+class_name PLAYERSTATE
 
 enum {PLAY, KNOCKBACK, DEAD}

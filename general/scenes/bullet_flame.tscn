@@ -1,9 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ttryjkr3lif4"]
+[gd_scene load_steps=4 format=3 uid="uid://ttryjkr3lif4"]
 
 [ext_resource type="Script" path="res://general/scripts/bullet_flame.gd" id="1_qnrnp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eg4nd"]
 size = Vector2(16, 20)
+
+[sub_resource type="GDScript" id="GDScript_1ylvu"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [node name="BulletFlame" type="CharacterBody2D"]
 collision_layer = 0
@@ -20,3 +34,11 @@ visible = false
 position = Vector2(4.76837e-07, -4)
 shape = SubResource("RectangleShape2D_eg4nd")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0.320526, 2.21609)
+scale = Vector2(0.264373, 0.288955)
+script = SubResource("GDScript_1ylvu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-31.4727, -7.66933, -1.2124, 13.0952, 29.0479, -7.66933, -1.2124, -56.1198)

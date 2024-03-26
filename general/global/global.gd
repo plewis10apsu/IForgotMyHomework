@@ -2,6 +2,7 @@ extends Node
 
 var player #Player will put itself here when it spawns.
 var current_level #Level will put itself here when it spawns.
+var score
 #Music player
 var music_player = AudioStreamPlayer.new()
 var current_music_name # In case we ever care what's playing.
@@ -33,7 +34,7 @@ func change_level(level_path):
 	#current_level = get_tree().current_scene
 	#add_child(current_level)
 
-func play_music_name(music_name):
+func play_music_by_name(music_name):
 	# By making this a stream instead of a path, we can load the music during level loading.
 	var new_stream = load(Global.music_dictionary[music_name])
 	music_player.stream = new_stream

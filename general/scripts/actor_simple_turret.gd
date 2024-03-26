@@ -4,13 +4,15 @@ const shoot_interval = 2 #seconds
 var time_until_shoot = shoot_interval
 var shoot_progress = 0.0 #Normalized 0~1
 var new_lightness = 0.0 #0~255, based on interval progress
-var team = TEAM.ENEMY
-var weapon_type = WEAPON.SLOW
+var actorData : ActorData
 var new_bullet
 var shots = 0
 const max_shots = 10
 var distance_from_player
 const active_radius = 200 #Unit proximity from player required to be active
+
+func _ready():
+	actorData = ActorData.new(3, TEAM.ENEMY, WEAPON.FLAME, 0)
 
 func _process(delta):
 	#Handle shoot timer
