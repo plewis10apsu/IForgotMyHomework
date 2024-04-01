@@ -5,4 +5,6 @@ class_name WEAPON
 ##  actor_player.gd's pull_trigger() should implement the changes  ##
 #####################################################################
 
-enum {DEFAULT, MG, MAGNUM, FLAME, SLOW}
+enum {NONE, DEFAULT, SLOW, MG, MAGNUM, FLAME, BUBBLE}
+
+##NOTE: SLOW is the same as default, but slow so the player can dodge it.

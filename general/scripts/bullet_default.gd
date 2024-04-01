@@ -1,9 +1,10 @@
 extends Node2D
 
 const SPEED : float = 750.0 #units per second
+const MAX_LIFETIME : float = 5.0
 var actorData : ActorData
 var aim_vector : Vector2
-var time_alive : float = 0 #in seconds
+var time_alive : float = 0.0 #in seconds
 
 func explicit_init(shooter_IN, aim_vector_IN:Vector2):
 	actorData = ActorData.new(
@@ -17,7 +18,7 @@ func explicit_init(shooter_IN, aim_vector_IN:Vector2):
 func _process(delta):
 	time_alive += delta
 	position += aim_vector * SPEED * delta
-	if time_alive > 5:
+	if time_alive > MAX_LIFETIME:
 		queue_free()
 
 func hit_something():

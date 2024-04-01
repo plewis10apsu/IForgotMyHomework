@@ -3,10 +3,11 @@ extends Node2D
 var bullet_dictionary = {
 	#Bullet scenes, preloaded and ready to be instantiatated when an actor shoots.
 	WEAPON.DEFAULT : "res://general/scenes/bullet_default.tscn",
+	WEAPON.SLOW : "res://general/scenes/bullet_slow.tscn",
 	WEAPON.MG : "res://general/scenes/bullet_mg.tscn",
 	WEAPON.MAGNUM : "res://general/scenes/bullet_magnum.tscn",
 	WEAPON.FLAME : "res://general/scenes/bullet_flame.tscn",
-	WEAPON.SLOW : "res://general/scenes/bullet_slow.tscn"
+	WEAPON.BUBBLE : "res://general/scenes/bullet_bubble.tscn"
 }
 
 func shoot(shooter_IN, aim_vector_IN:Vector2):

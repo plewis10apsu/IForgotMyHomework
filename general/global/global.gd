@@ -2,7 +2,7 @@ extends Node
 
 var player #Player will put itself here when it spawns.
 var current_level #Level will put itself here when it spawns.
-var score
+var score : int = 0
 #Music player
 var music_player = AudioStreamPlayer.new()
 var current_music_name # In case we ever care what's playing.

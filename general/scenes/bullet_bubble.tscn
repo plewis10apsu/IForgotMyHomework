@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcwn3u01qj1yy"]
+
+[ext_resource type="Script" path="res://general/scripts/bullet_bubble.gd" id="1_rxy58"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eg4nd"]
+size = Vector2(4, 4)
+
+[node name="BulletDefault" type="Node2D"]
+script = ExtResource("1_rxy58")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(2, 2)
+scale = Vector2(0.5, 0.5)
+color = Color(0, 1, 1, 1)
+polygon = PackedVector2Array(-8, -8, -4, -10, 0, -8, 2, -4, 0, 0, -4, 2, -8, 0, -10, -4)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_eg4nd")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Environmental collision" type="StaticBody2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environmental collision"]
+polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)

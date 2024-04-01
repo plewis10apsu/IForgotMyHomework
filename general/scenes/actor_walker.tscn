@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxlwynhh4lfxv"]
+
+[ext_resource type="Script" path="res://general/scripts/actor_walker.gd" id="1_8g53c"]
+[ext_resource type="Texture2D" uid="uid://dide32jki36kb" path="res://general/sprites/ph_baddie.png" id="2_vhdfq"]
+[ext_resource type="PackedScene" uid="uid://c6hlqk4ebdk" path="res://general/scenes/bullet_emitter.tscn" id="3_fm8gx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1hws"]
+size = Vector2(49, 39.5)
+
+[node name="ActorWalker" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_8g53c")
+
+[node name="PhBaddie" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+texture = ExtResource("2_vhdfq")
+
+[node name="EnvironmentalCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(3, 19)
+polygon = PackedVector2Array(-14, -21, 9, -21, 25, 8, 14, 13, -17, 14, -26, 9)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 4.25)
+shape = SubResource("RectangleShape2D_f1hws")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="BulletEmitter" parent="." instance=ExtResource("3_fm8gx")]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

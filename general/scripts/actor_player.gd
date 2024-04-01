@@ -20,7 +20,7 @@ func _ready():
 	if(Global.player):
 		Global.player.queue_free()
 	Global.player = self
-	actorData = ActorData.new(3, TEAM.PLAYER, WEAPON.FLAME, 0)
+	actorData = ActorData.new(3, TEAM.PLAYER, WEAPON.BUBBLE, 0)
 	
 func _process(delta):
 	#Check for death
@@ -114,6 +114,11 @@ func pull_trigger():
 				var aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
 				$BulletEmitter.shoot(self, aim_vector)
 				shots_since_trigger_held += 1
+		WEAPON.SLOW:
+			if shots_since_trigger_held == 0:
+				var aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
+				$BulletEmitter.shoot(self, aim_vector)
+				shots_since_trigger_held += 1
 		WEAPON.MG:
 			const mg_shoot_delay_ms = 75 #ms between shots
 			var total_shots_allowed = ceil(float(trigger_held_timer_ms)/mg_shoot_delay_ms)
@@ -136,10 +141,17 @@ func pull_trigger():
 				var aim_vector = Vector2(1 if is_facing_right else (-1), -0.2).normalized()
 				$BulletEmitter.shoot(self, aim_vector)
 				shots_since_trigger_held += 1
+		WEAPON.BUBBLE:
+			const ft_shoot_delay_ms = 15 #ms between shots
+			var total_shots_allowed = ceil(float(trigger_held_timer_ms)/ft_shoot_delay_ms)
+			if shots_since_trigger_held < total_shots_allowed:
+				var aim_vector = Vector2(1 if is_facing_right else (-1), -0.2).normalized()
+				$BulletEmitter.shoot(self, aim_vector)
+				shots_since_trigger_held += 1
 
 func _on_area_2d_area_entered(area):
 	var other = area.get_parent()
-	print("PLAYER OVERLAPPED AREA: " + str(other))
+	#print("PLAYER OVERLAPPED AREA: " + str(other))
 	var is_friendly = (actorData.team == other.actorData.team)
 	var is_hazardous_actor
 	if(other.actorData != null) and other.actorData.hazard_level>0:
