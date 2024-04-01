@@ -5,12 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eg4nd"]
 size = Vector2(8, 4)
 
-[node name="BulletMG" type="Area2D"]
+[node name="BulletMG" type="Node2D"]
 script = ExtResource("1_2f21b")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_eg4nd")
-debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
 position = Vector2(0, 1.7)
@@ -18,3 +14,9 @@ rotation = 0.785398
 scale = Vector2(0.3, 0.3)
 color = Color(0, 1, 0, 1)
 polygon = PackedVector2Array(-8, -8, 3.06413, -11.078, 0, 0, -11.078, 3.06413)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_eg4nd")
+debug_color = Color(1, 0, 0, 0.419608)

@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eg4nd"]
 size = Vector2(28, 16)
 
-[node name="BulletMagnum" type="Area2D"]
+[node name="BulletMagnum" type="Node2D"]
 script = ExtResource("1_jdxq3")
 
 [node name="Polygon2D3" type="Polygon2D" parent="."]
@@ -19,7 +19,9 @@ scale = Vector2(0.974, 0.955)
 color = Color(0.329412, 0, 0.329412, 1)
 polygon = PackedVector2Array(23.3333, -32.3333, 40, -22.3333, 46.6667, -5.66667, 40, 11, 23.3333, 21, -46.6667, 21, -46.6667, -32.3333)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BulletMagnumHurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletMagnumHurtbox"]
 visible = false
 position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_eg4nd")
