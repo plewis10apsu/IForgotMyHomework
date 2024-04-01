@@ -1,29 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnt4b8ise03l1"]
+[gd_scene load_steps=5 format=3 uid="uid://dnt4b8ise03l1"]
 
 [ext_resource type="Texture2D" uid="uid://ce36o4kfk0u0j" path="res://menus/textures/tilemap-backgrounds_packed.png" id="1_ctvfs"]
-[ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ssqt1"]
+[ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ibt0l"]
 [ext_resource type="Texture2D" uid="uid://b715cgij2umwc" path="res://menus/textures/tile_0027.png" id="3_v1s6b"]
 [ext_resource type="Texture2D" uid="uid://7ny0wsjiga62" path="res://menus/textures/tile_0028.png" id="4_nvumc"]
 
-[sub_resource type="SystemFont" id="SystemFont_e8uy7"]
-font_names = PackedStringArray("Impact")
-oversampling = 2.6
-
-[sub_resource type="SystemFont" id="SystemFont_3sfn3"]
-font_names = PackedStringArray("Impact")
-oversampling = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbx6x"]
-bg_color = Color(0.180392, 0.690196, 0.509804, 1)
-
-[node name="Main_Menu" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ssqt1")
+script = ExtResource("1_ibt0l")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -41,119 +30,79 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+theme_override_constants/separation = 150
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
-theme_override_colors/font_shadow_color = Color(0.243137, 0.243137, 0.243137, 1)
-theme_override_colors/font_outline_color = Color(0.164706, 0.164706, 0.164706, 1)
-theme_override_constants/outline_size = 12
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = SubResource("SystemFont_e8uy7")
-theme_override_font_sizes/font_size = 18
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 85
 text = "An Extreamly Ridiculously Long  Name That Goes On And On Forever For No Apparent Reason At All . . . . "
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_constants/separation = 120
+theme_override_constants/separation = 720
 
-[node name="CreditsButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(115, 115)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-focus_neighbor_right = NodePath("../VBoxContainer/PlayButton")
-focus_next = NodePath("../VBoxContainer/PlayButton")
-focus_previous = NodePath("../OptionsButton")
-texture_normal = ExtResource("3_v1s6b")
+texture_normal = ExtResource("4_nvumc")
+stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 1
-alignment = 2
 
-[node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-clip_contents = true
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(115, 75)
 layout_mode = 2
-size_flags_stretch_ratio = 0.0
-focus_neighbor_top = NodePath("../ExitButton")
-focus_neighbor_bottom = NodePath("../LevelButton")
-focus_next = NodePath("../LevelButton")
-focus_previous = NodePath("../../CreditsButton")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_3sfn3")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxFlat_hbx6x")
+theme_override_font_sizes/font_size = 60
 text = "Play"
 
-[node name="LevelButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-clip_contents = true
+[node name="LevelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(115, 115)
 layout_mode = 2
-size_flags_stretch_ratio = 0.0
-focus_neighbor_top = NodePath("../PlayButton")
-focus_neighbor_bottom = NodePath("../ScoreButton")
-focus_next = NodePath("../ScoreButton")
-focus_previous = NodePath("../PlayButton")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_3sfn3")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxFlat_hbx6x")
+theme_override_font_sizes/font_size = 60
 text = "Level"
 
-[node name="ScoreButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-clip_contents = true
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(115, 115)
 layout_mode = 2
-size_flags_stretch_ratio = 0.0
-focus_neighbor_top = NodePath("../LevelButton")
-focus_neighbor_bottom = NodePath("../ExitButton")
-focus_next = NodePath("../ExitButton")
-focus_previous = NodePath("../LevelButton")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_3sfn3")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxFlat_hbx6x")
+theme_override_font_sizes/font_size = 60
+text = "Options"
+
+[node name="ScoreButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(115, 115)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
 text = "Score"
 
-[node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-clip_contents = true
+[node name="ExitButtion" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(115, 115)
 layout_mode = 2
-size_flags_stretch_ratio = 0.0
-focus_neighbor_top = NodePath("../ScoreButton")
-focus_neighbor_right = NodePath("../../OptionsButton")
-focus_neighbor_bottom = NodePath("../PlayButton")
-focus_next = NodePath("../../OptionsButton")
-focus_previous = NodePath("../ScoreButton")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_3sfn3")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxFlat_hbx6x")
-text = "Exit"
+theme_override_font_sizes/font_size = 60
+text = "Exit
+"
 
-[node name="OptionsButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(115, 115)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 size_flags_vertical = 8
-focus_neighbor_left = NodePath("../VBoxContainer/ExitButton")
-focus_next = NodePath("../CreditsButton")
-focus_previous = NodePath("../VBoxContainer/ExitButton")
-texture_normal = ExtResource("4_nvumc")
+texture_normal = ExtResource("3_v1s6b")
+stretch_mode = 0
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/OptionsButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitButtion" to="." method="_on_exit_buttion_pressed"]
