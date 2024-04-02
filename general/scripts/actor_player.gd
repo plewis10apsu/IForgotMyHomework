@@ -5,8 +5,11 @@ const COYOTE_TIMER_MAX : float = 0.15 #seconds
 const WALK_SPEED : float = 120.0 #units per second
 const HURT_BLINK_RATE_MS : int = 30 #ms until hurt visibility toggles
 const HURT_BLINK_DURATION_MS : int = 1500 #ms player will be invincible after being hurt
+const HOVER_THRUST : float = 1800 #pixels per frame per second
 var actorData : ActorData
+var move_vector : Vector2
 var is_facing_right : bool = true
+var is_on_floor_backup : bool = false
 var state : int = PLAYERSTATE.PLAY
 var coyote_timer : float = COYOTE_TIMER_MAX
 var invincible_timer_ms : int = 0 #set to n = invincible and blink for n miliseconds
@@ -23,6 +26,8 @@ func _ready():
 	actorData = ActorData.new(3, TEAM.PLAYER, WEAPON.BUBBLE, 0)
 	
 func _process(delta):
+	if Input.is_action_just_pressed("cheat"):
+		Global.use_controller = !Global.use_controller
 	#Check for death
 	if(state != PLAYERSTATE.DEAD and actorData.hp <= 0):
 		#KILL PLAYER
@@ -40,7 +45,7 @@ func _process(delta):
 			#SHOOT
 			if Input.is_action_pressed("shoot"):
 				trigger_held_timer_ms += delta*1000
-				pull_trigger()
+				pull_trigger(delta)
 			else:
 				trigger_held_timer_ms = 0
 				shots_since_trigger_held = 0
@@ -50,18 +55,34 @@ func _process(delta):
 			pass
 
 func _physics_process(delta):
+	is_on_floor_backup = is_on_floor()
 	#Physics state machine
 	match state:
 		PLAYERSTATE.PLAY:
 			#MOVE
-			var direction = Input.get_axis("ui_left", "ui_right")
-			if direction:
+			move_vector = Vector2(0,0)
+			if Global.use_controller:
+					move_vector.x -= Input.get_action_strength("controller_left")
+					move_vector.x += Input.get_action_strength("controller_right")
+					move_vector.y -= Input.get_action_strength("controller_up")
+					move_vector.y += Input.get_action_strength("controller_down")
+			else:
+				#We're using keyboard.
+				if Input.is_action_pressed("kb_moveup"):
+					move_vector.y -= 1
+				if Input.is_action_pressed("kb_movedown"):
+					move_vector.y += 1
+				if Input.is_action_pressed("kb_moveleft"):
+					move_vector.x -= 1
+				if Input.is_action_pressed("kb_moveright"):
+					move_vector.x += 1
+			if move_vector.x:
 				#Movement input is non-neutral. Apply it.
-				velocity.x = direction * WALK_SPEED
+				velocity.x = move_vector.x * WALK_SPEED
 				#Facing left or right?
-				if direction > 0:
+				if move_vector.x > 0:
 					is_facing_right = true
-				elif direction < 0:
+				elif move_vector.x < 0:
 					is_facing_right = false
 				else:
 					#Neutral input, so keep facing same direction.
@@ -123,7 +144,7 @@ func _physics_process(delta):
 		PLAYERSTATE.DEAD:
 			pass
 
-func pull_trigger():
+func pull_trigger(delta):
 	match actorData.weapon_type:
 		WEAPON.DEFAULT:
 			if shots_since_trigger_held == 0:
@@ -161,9 +182,18 @@ func pull_trigger():
 			const ft_shoot_delay_ms = 15 #ms between shots
 			var total_shots_allowed = ceil(float(trigger_held_timer_ms)/ft_shoot_delay_ms)
 			if shots_since_trigger_held < total_shots_allowed:
-				var aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
+				var aim_vector
+				if move_vector.x or move_vector.y:
+					#There ismovement this frame. Aim with it.
+					aim_vector = move_vector
+				else:
+					#No movement this frame. Aim with player's L/R facing direction.
+					aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
 				$BulletEmitter.shoot(self, aim_vector)
 				shots_since_trigger_held += 1
+			#THRUST! (Chicken Run reference.)
+			if !is_on_floor_backup and move_vector.y>0:
+				velocity.y += move_vector.y * HOVER_THRUST * (-1) * delta
 
 func _on_area_2d_area_entered(area):
 	var other = area.get_parent()
