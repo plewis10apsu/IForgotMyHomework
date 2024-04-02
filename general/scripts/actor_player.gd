@@ -5,11 +5,12 @@ const COYOTE_TIMER_MAX : float = 0.15 #seconds
 const WALK_SPEED : float = 120.0 #units per second
 const HURT_BLINK_RATE_MS : int = 30 #ms until hurt visibility toggles
 const HURT_BLINK_DURATION_MS : int = 1500 #ms player will be invincible after being hurt
-const HOVER_THRUST : float = 1800 #pixels per frame per second
+const HOVER_THRUST : float = -1800.0 #pixels per frame per second
 var actorData : ActorData
 var move_vector : Vector2 #for platforming movement input
 var is_facing_right : bool = true
 var is_on_floor_backup : bool = false #BUP we can use in functions other than _physics_process()
+var is_hovering : bool = false
 var state : int = PLAYERSTATE.PLAY # for _ready() state machine
 var coyote_timer : float = COYOTE_TIMER_MAX #sec we can still jump after walking off a ledge
 var invincible_timer_ms : int = 0 #set this=n to blink + be invincible for n miliseconds
@@ -50,6 +51,7 @@ func _process(delta):
 			else:
 				trigger_held_timer_ms = 0
 				has_shot_this_triggerpull = false
+				is_hovering = false
 				ms_since_last_shot_this_triggerpull = 0.0
 		PLAYERSTATE.KNOCKBACK:
 			pass
@@ -145,6 +147,7 @@ func _physics_process(delta):
 
 func pull_trigger(delta):
 	ms_since_last_shot_this_triggerpull += delta*1000 #(converting delta sec to ms)
+	is_hovering = false #We'll make it true again below, if needed.
 	match actorData.weapon_type:
 		WEAPON.DEFAULT:
 			if !has_shot_this_triggerpull:
@@ -187,11 +190,13 @@ func pull_trigger(delta):
 				var aim_vector
 				var walking_influence_vector #Increases horizontal aim angle while walking
 				if move_vector.x or move_vector.y:
+					#There is movement this frame. Aim with it.
 					if Input.is_action_pressed("bass_stop") or !is_on_floor_backup:
+						#No L/R movement influence on aim while Bass-stopping or airborn.
 						walking_influence_vector = Vector2(0,0)
 					else:
 						walking_influence_vector = Vector2(move_vector.x, 0)
-					#There ismovement this frame. Aim with it.
+					#Final aim math
 					aim_vector = (move_vector + walking_influence_vector).normalized()
 				else:
 					#No movement this frame. Aim with player's L/R facing direction.
@@ -201,7 +206,11 @@ func pull_trigger(delta):
 				ms_since_last_shot_this_triggerpull = 0
 			#THRUST! (Chicken Run reference.)
 			if !is_on_floor_backup and move_vector.y>0 and velocity.y>=0:
-				velocity.y += move_vector.y * HOVER_THRUST * (-1) * delta
+				#We're airborn, firing downward, and descending. Let's hover!
+				velocity.y += HOVER_THRUST * delta
+				is_hovering = true
+			else:
+				is_hovering = false
 
 func _on_area_2d_area_entered(area):
 	var other = area.get_parent()
