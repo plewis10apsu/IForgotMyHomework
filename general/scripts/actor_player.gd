@@ -185,9 +185,14 @@ func pull_trigger(delta):
 			const bubble_shoot_interval_ms = 15 #ms between shots
 			if ms_since_last_shot_this_triggerpull > bubble_shoot_interval_ms:
 				var aim_vector
+				var walking_influence_vector #Increases horizontal aim angle while walking
 				if move_vector.x or move_vector.y:
+					if Input.is_action_pressed("bass_stop"):
+						walking_influence_vector = Vector2(0,0)
+					else:
+						walking_influence_vector = Vector2(move_vector.x, 0)
 					#There ismovement this frame. Aim with it.
-					aim_vector = (move_vector + Vector2(move_vector.x, 0)).normalized()
+					aim_vector = (move_vector + walking_influence_vector).normalized()
 				else:
 					#No movement this frame. Aim with player's L/R facing direction.
 					aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
