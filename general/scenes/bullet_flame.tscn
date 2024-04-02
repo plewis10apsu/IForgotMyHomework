@@ -24,7 +24,7 @@ collision_layer = 0
 script = ExtResource("1_qnrnp")
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
-position = Vector2(0.320526, 2.21609)
+position = Vector2(0, 2)
 scale = Vector2(0.264373, 0.288955)
 color = Color(1, 0.498039, 0, 1)
 polygon = PackedVector2Array(29.0479, -7.66932, -1.2124, 13.0952, -31.4727, -7.66932, -20.1251, -59.5806, -23.9076, -21.5123, -12.56, -52.6591, -12.56, -21.5123, 2.57014, -69.9629, 2.57014, -24.9731, 10.1352, -56.1199, 17.7003, -31.8946, 17.7003, -59.5806)
