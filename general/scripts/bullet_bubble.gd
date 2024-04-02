@@ -24,6 +24,7 @@ func explicit_init(shooter_IN, aim_vector_IN:Vector2):
 	angles.x = angles.y
 	prev_position += aim_vector * -1 * INIT_LAUNCH # Initial impulse moving the bubble
 	var sprite = $Sprite
+	sprite.animation = "default"
 	sprite.frame = rng.randi_range(0,sprite.sprite_frames.get_frame_count("default")-3)
 
 func modulus_vector2(vector, bound):
@@ -40,20 +41,26 @@ func modulus_vector2(vector, bound):
 func _process(delta):
 	time_alive += delta
 	if time_alive > MAX_LIFETIME:
-		queue_free()
-	var velocity = (position - prev_position) 
-	prev_position = position #update previous before moving, for use next frame
-	# Move
-	# Calculate move vector using the angles
-	angles.x += rng.randf_range(-PI,PI) * 4 * delta
-	angles.y += rng.randf_range(-PI,PI) * 4 * delta
-	
-	angles = modulus_vector2(angles, PI*2)
-	velocity.x += (cos(angles.y) + cos(angles.x)) * SPEED
-	velocity.y += (sin(angles.y) + sin(angles.x)) * SPEED
-	velocity *= FRICTION * delta
-	
-	position += velocity #TODO: Add random noise
+		destroy()
+	else:
+		var velocity = (position - prev_position) 
+		prev_position = position #update previous before moving, for use next frame
+		# Move
+		# Calculate move vector using the angles
+		angles.x += rng.randf_range(-PI,PI) * 4 * delta
+		angles.y += rng.randf_range(-PI,PI) * 4 * delta
+		
+		angles = modulus_vector2(angles, PI*2)
+		velocity.x += (cos(angles.y) + cos(angles.x)) * SPEED
+		velocity.y += (sin(angles.y) + sin(angles.x)) * SPEED
+		velocity *= FRICTION * delta
+		
+		position += velocity #TODO: Add random noise
 
 func hit_something():
-	queue_free()
+	destroy()
+
+func destroy():
+	$Sprite.play("pop")
+	$Sprite.animation_finished.connect(func(): self.queue_free())
+	#queue_free()
