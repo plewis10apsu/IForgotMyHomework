@@ -82,8 +82,11 @@ func _physics_process(delta):
 				if Input.is_action_pressed("kb_moveright"):
 					move_vector.x += 1
 			if move_vector.x:
-				#Movement input is non-neutral. Apply it.
-				velocity.x = move_vector.x * WALK_SPEED
+				#Movement input is non-neutral. Apply it (unless we're Bass-stopping).
+				if Input.is_action_pressed("bass_stop"):
+					velocity.x = 0
+				else:
+					velocity.x = move_vector.x * WALK_SPEED
 				#Facing left or right?
 				if move_vector.x > 0:
 					is_facing_right = true
@@ -103,6 +106,9 @@ func _physics_process(delta):
 				if not $Sprite.is_playing() and is_on_floor():
 					$Sprite.frame = 1
 					$Sprite.play("default")
+				if Input.is_action_pressed("bass_stop"):
+					$Sprite.stop()
+					$Sprite.frame = 0
 			else:
 				#Neutral movement input. Velocity decays.
 				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
