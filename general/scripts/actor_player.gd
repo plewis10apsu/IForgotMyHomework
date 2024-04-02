@@ -187,7 +187,7 @@ func pull_trigger(delta):
 				var aim_vector
 				var walking_influence_vector #Increases horizontal aim angle while walking
 				if move_vector.x or move_vector.y:
-					if Input.is_action_pressed("bass_stop"):
+					if Input.is_action_pressed("bass_stop") or !is_on_floor_backup:
 						walking_influence_vector = Vector2(0,0)
 					else:
 						walking_influence_vector = Vector2(move_vector.x, 0)
