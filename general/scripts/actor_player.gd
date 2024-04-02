@@ -145,7 +145,7 @@ func pull_trigger():
 			const ft_shoot_delay_ms = 15 #ms between shots
 			var total_shots_allowed = ceil(float(trigger_held_timer_ms)/ft_shoot_delay_ms)
 			if shots_since_trigger_held < total_shots_allowed:
-				var aim_vector = Vector2(1 if is_facing_right else (-1), -0.2).normalized()
+				var aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
 				$BulletEmitter.shoot(self, aim_vector)
 				shots_since_trigger_held += 1
 
