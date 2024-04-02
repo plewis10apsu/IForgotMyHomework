@@ -26,8 +26,6 @@ func _ready():
 	actorData = ActorData.new(3, TEAM.PLAYER, WEAPON.BUBBLE, 0)
 	
 func _process(delta):
-	if Input.is_action_just_pressed("cheat"):
-		Global.use_controller = !Global.use_controller
 	#Check for death
 	if(state != PLAYERSTATE.DEAD and actorData.hp <= 0):
 		#KILL PLAYER
@@ -61,26 +59,14 @@ func _physics_process(delta):
 		PLAYERSTATE.PLAY:
 			#MOVE
 			move_vector = Vector2(0,0)
-			const stick_threshold = 0.05
-			if Global.use_controller:
-				if Input.get_action_strength("controller_left") >= stick_threshold:
-					move_vector.x -= 1
-				if Input.get_action_strength("controller_right") >= stick_threshold:
-					move_vector.x += 1
-				if Input.get_action_strength("controller_up") >= stick_threshold:
-					move_vector.y -= 1
-				if Input.get_action_strength("controller_down") >= stick_threshold:
-					move_vector.y += 1
-			else:
-				#We're using keyboard.
-				if Input.is_action_pressed("kb_moveup"):
-					move_vector.y -= 1
-				if Input.is_action_pressed("kb_movedown"):
-					move_vector.y += 1
-				if Input.is_action_pressed("kb_moveleft"):
-					move_vector.x -= 1
-				if Input.is_action_pressed("kb_moveright"):
-					move_vector.x += 1
+			if Input.is_action_pressed("move_left"):
+				move_vector.x -= 1
+			if Input.is_action_pressed("move_right"):
+				move_vector.x += 1
+			if Input.is_action_pressed("move_up"):
+				move_vector.y -= 1
+			if Input.is_action_pressed("move_down"):
+				move_vector.y += 1
 			if move_vector.x:
 				#Movement input is non-neutral. Apply it (unless we're Bass-stopping).
 				if Input.is_action_pressed("bass_stop"):
