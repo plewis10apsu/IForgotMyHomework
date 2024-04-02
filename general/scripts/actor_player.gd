@@ -67,14 +67,22 @@ func _physics_process(delta):
 					#Neutral input, so keep facing same direction.
 					pass
 				#Flip sprite
-				##TODO: This only flips the sprite; doesn't change collision!
+				##TODO: This only flips the sprite; doesn't change collision! 
+				#Not changing collision is fine because the collider is symmetrical
 				if is_facing_right:
-					$PhSprite.scale.x = abs($PhSprite.scale.x)
+					$Sprite.scale.x = abs($Sprite.scale.x) * -1
 				else:
-					$PhSprite.scale.x = abs($PhSprite.scale.x) * (-1)
+					$Sprite.scale.x = abs($Sprite.scale.x)
+				#Play the walking animation
+				if not $Sprite.is_playing() and is_on_floor():
+					$Sprite.frame = 1
+					$Sprite.play("default")
 			else:
 				#Neutral movement input. Velocity decays.
 				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+				#Stop the walking animation
+				$Sprite.stop()
+				$Sprite.frame = 0
 			#COYOTE TIMER
 			if is_on_floor():
 				#We're on the ground, so refill the timer.
@@ -91,9 +99,17 @@ func _physics_process(delta):
 				#When jump button is released, FALL immediately.
 				#Note that velocity.y<0 means we are rising, because UP is negative in Godot.
 				velocity.y = 0
+			if not is_jumping and not is_on_floor():
+				# The player is falling, so stop the walking animation
+				$Sprite.stop()
+				$Sprite.frame = 0
+			
 			if(is_jumping):
 				#Gravity is doubled while rising, for a snappy jump.
 				velocity.y += gravity * delta * 2
+				#The player is rising, so stop the walking animation
+				$Sprite.stop()
+				$Sprite.frame = 1
 			else:
 				velocity.y += gravity * delta
 			#EXTRA
@@ -152,9 +168,9 @@ func pull_trigger():
 func _on_area_2d_area_entered(area):
 	var other = area.get_parent()
 	#print("PLAYER OVERLAPPED AREA: " + str(other))
-	var is_friendly = (actorData.team == other.actorData.team)
+	var is_friendly = ("actorData" in other) and (actorData.team == other.actorData.team)
 	var is_hazardous_actor
-	if(other.actorData != null) and other.actorData.hazard_level>0:
+	if ("actorData" in other) and other.actorData.hazard_level>0:
 		is_hazardous_actor = true
 	else:
 		is_hazardous_actor = false
