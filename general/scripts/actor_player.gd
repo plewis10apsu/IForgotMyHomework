@@ -187,7 +187,7 @@ func pull_trigger(delta):
 				var aim_vector
 				if move_vector.x or move_vector.y:
 					#There ismovement this frame. Aim with it.
-					aim_vector = move_vector
+					aim_vector = (move_vector + Vector2(move_vector.x, 0)).normalized()
 				else:
 					#No movement this frame. Aim with player's L/R facing direction.
 					aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
