@@ -1,6 +1,5 @@
 extends Node
 
-var use_controller : bool = false
 var player #Player will put itself here when it spawns.
 var current_level #Level will put itself here when it spawns.
 var score : int = 0

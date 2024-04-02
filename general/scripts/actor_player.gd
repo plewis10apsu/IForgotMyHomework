@@ -19,6 +19,8 @@ var ammo : int = 0 #set this whenever you change the weapon type.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	#Make sprite face right (Left was default.)
+	$Sprite.scale.x = abs($Sprite.scale.x) * -1
 	#Set this as the Globally-recognized player
 	if(Global.player):
 		Global.player.queue_free()
