@@ -61,11 +61,16 @@ func _physics_process(delta):
 		PLAYERSTATE.PLAY:
 			#MOVE
 			move_vector = Vector2(0,0)
+			const stick_threshold = 0.05
 			if Global.use_controller:
-					move_vector.x -= Input.get_action_strength("controller_left")
-					move_vector.x += Input.get_action_strength("controller_right")
-					move_vector.y -= Input.get_action_strength("controller_up")
-					move_vector.y += Input.get_action_strength("controller_down")
+				if Input.get_action_strength("controller_left") >= stick_threshold:
+					move_vector.x -= 1
+				if Input.get_action_strength("controller_right") >= stick_threshold:
+					move_vector.x += 1
+				if Input.get_action_strength("controller_up") >= stick_threshold:
+					move_vector.y -= 1
+				if Input.get_action_strength("controller_down") >= stick_threshold:
+					move_vector.y += 1
 			else:
 				#We're using keyboard.
 				if Input.is_action_pressed("kb_moveup"):
