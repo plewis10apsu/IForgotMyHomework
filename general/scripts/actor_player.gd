@@ -192,7 +192,7 @@ func pull_trigger(delta):
 				$BulletEmitter.shoot(self, aim_vector)
 				shots_since_trigger_held += 1
 			#THRUST! (Chicken Run reference.)
-			if !is_on_floor_backup and move_vector.y>0:
+			if !is_on_floor_backup and move_vector.y>0 and velocity.y>=0:
 				velocity.y += move_vector.y * HOVER_THRUST * (-1) * delta
 
 func _on_area_2d_area_entered(area):
