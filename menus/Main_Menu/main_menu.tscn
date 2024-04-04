@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnt4b8ise03l1"]
+[gd_scene load_steps=8 format=3 uid="uid://dnt4b8ise03l1"]
 
 [ext_resource type="Texture2D" uid="uid://ce36o4kfk0u0j" path="res://menus/textures/tilemap-backgrounds_packed.png" id="1_ctvfs"]
 [ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ibt0l"]
 [ext_resource type="Texture2D" uid="uid://b715cgij2umwc" path="res://menus/textures/tile_0027.png" id="3_v1s6b"]
+[ext_resource type="FontFile" uid="uid://cs8850q2te7fk" path="res://menus/Font/ThaleahFat.ttf" id="3_v2n1h"]
 [ext_resource type="Texture2D" uid="uid://7ny0wsjiga62" path="res://menus/textures/tile_0028.png" id="4_nvumc"]
+[ext_resource type="Texture2D" uid="uid://bfq0pe5xdkyy1" path="res://menus/textures/backgroundEmpty.png" id="6_kc450"]
+[ext_resource type="Script" path="res://menus/Main_Menu/Camera2D.gd" id="6_qaj33"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -43,8 +46,13 @@ theme_override_constants/separation = 150
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 85
+theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 120
 text = "An Extreamly Ridiculously Long  Name That Goes On And On Forever For No Apparent Reason At All . . . . "
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -64,33 +72,35 @@ stretch_mode = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="LevelButton1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(115, 75)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
-text = "Play"
+text = "Level 1"
 
-[node name="LevelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(115, 115)
+[node name="LevelButton2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
-text = "Level"
+text = "Level  2
+"
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(115, 115)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Options"
 
 [node name="ScoreButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(115, 115)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Score"
 
 [node name="ExitButtion" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(115, 115)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Exit
 "
@@ -103,6 +113,90 @@ size_flags_vertical = 8
 texture_normal = ExtResource("3_v1s6b")
 stretch_mode = 0
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[node name="HighScore" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1080.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSBackground" type="TextureRect" parent="HighScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_kc450")
+
+[node name="MarginContainer2" type="MarginContainer" parent="HighScore"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0015625
+anchor_top = -0.990741
+anchor_right = 0.998438
+anchor_bottom = 0.00925926
+offset_left = -108.0
+offset_top = 1069.0
+offset_right = 108.0
+offset_bottom = 1091.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HighScore/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="Label" type="Label" parent="HighScore/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 120
+text = "High Score"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HighScore/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 720
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HighScore/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 60
+text = "Main Menu"
+
+[node name="ExitButtion" type="Button" parent="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 60
+text = "Exit
+"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(959, 540)
+script = ExtResource("6_qaj33")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScoreButton" to="Camera2D" method="_on_score_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitButtion" to="." method="_on_exit_buttion_pressed"]
+[connection signal="pressed" from="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/BackButton" to="Camera2D" method="_on_back_button_pressed"]
+[connection signal="pressed" from="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/ExitButtion" to="." method="_on_exit_buttion_pressed"]
