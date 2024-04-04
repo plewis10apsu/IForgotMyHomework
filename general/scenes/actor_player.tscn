@@ -1,36 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://h1euld2qohrv"]
+[gd_scene load_steps=8 format=3 uid="uid://h1euld2qohrv"]
 
 [ext_resource type="Script" path="res://general/scripts/actor_player.gd" id="1_xm6wn"]
-[ext_resource type="Texture2D" uid="uid://n2sqm6j1d5dw" path="res://general/sprites/ph_player.png" id="2_pk73f"]
 [ext_resource type="PackedScene" uid="uid://c6hlqk4ebdk" path="res://general/scenes/bullet_emitter.tscn" id="3_uebj2"]
+[ext_resource type="Texture2D" uid="uid://bmunbprqa4k34" path="res://general/sprites/player_frame_1.png" id="4_lsrsl"]
+[ext_resource type="Texture2D" uid="uid://mk7q0trey33r" path="res://general/sprites/player_frame_2.png" id="5_4cir8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8mkx"]
-size = Vector2(34, 15)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vn0ym"]
+radius = 8.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nbqmx"]
+radius = 8.0
+height = 22.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1hklf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lsrsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4cir8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.242273, 0.242273)
 collision_layer = 0
 script = ExtResource("1_xm6wn")
-
-[node name="PhSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 2)
-texture = ExtResource("2_pk73f")
-
-[node name="EnvironmentalCollision" type="CollisionPolygon2D" parent="."]
-position = Vector2(3, 19)
-polygon = PackedVector2Array(-14, -21, 9, -21, 25, 8, 14, 13, -17, 14, -26, 9)
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, -0.5)
-shape = SubResource("RectangleShape2D_e8mkx")
-debug_color = Color(1, 0, 0, 0.419608)
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_vn0ym")
+
+[node name="EnvironmentalCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_nbqmx")
 
 [node name="BulletEmitter" parent="." instance=ExtResource("3_uebj2")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(6, 6)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_1hklf")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

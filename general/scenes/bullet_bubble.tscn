@@ -1,18 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcwn3u01qj1yy"]
+[gd_scene load_steps=14 format=3 uid="uid://bcwn3u01qj1yy"]
 
 [ext_resource type="Script" path="res://general/scripts/bullet_bubble.gd" id="1_rxy58"]
+[ext_resource type="Texture2D" uid="uid://ctwggc6jcnr2b" path="res://general/sprites/bubble sprite 10px.png" id="2_shykq"]
+[ext_resource type="Texture2D" uid="uid://l6vqqjpydkbh" path="res://general/sprites/bubble sprite 16px.png" id="3_kt21y"]
+[ext_resource type="Texture2D" uid="uid://cili8khm3vofi" path="res://general/sprites/bubble sprite 20px.png" id="4_xqo1q"]
+[ext_resource type="Texture2D" uid="uid://5sixno0sann3" path="res://general/sprites/bubble sprite 32px.png" id="5_58mad"]
+[ext_resource type="Texture2D" uid="uid://d1kdlmo34ye8u" path="res://general/sprites/bubble pop frame_1.png" id="6_nhsi2"]
+[ext_resource type="Texture2D" uid="uid://belu3tfdu76g8" path="res://general/sprites/bubble pop frame_2.png" id="7_vgk5y"]
+[ext_resource type="Texture2D" uid="uid://wn8u0xpoml3s" path="res://general/sprites/bubble pop frame_3.png" id="8_n3cs5"]
+[ext_resource type="Texture2D" uid="uid://lms3k0l60sjp" path="res://general/sprites/bubble pop frame_4.png" id="9_g8xlb"]
+[ext_resource type="Texture2D" uid="uid://b01nob06pvqgt" path="res://general/sprites/bubble pop frame_5.png" id="10_xab57"]
+[ext_resource type="Texture2D" uid="uid://bmc2t7pjv535y" path="res://general/sprites/bubble pop frame_6.png" id="11_e568n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eg4nd"]
 size = Vector2(4, 4)
 
-[node name="BulletDefault" type="Node2D"]
-script = ExtResource("1_rxy58")
+[sub_resource type="SpriteFrames" id="SpriteFrames_toxki"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_shykq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kt21y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xqo1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_58mad")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_nhsi2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vgk5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n3cs5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g8xlb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xab57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_e568n")
+}],
+"loop": false,
+"name": &"pop",
+"speed": 16.0
+}]
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(2, 2)
-scale = Vector2(0.5, 0.5)
-color = Color(0, 1, 1, 1)
-polygon = PackedVector2Array(-8, -8, -4, -10, 0, -8, 2, -4, 0, 0, -4, 2, -8, 0, -10, -4)
+[node name="BulletBubble" type="Node2D"]
+script = ExtResource("1_rxy58")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
@@ -25,3 +72,9 @@ collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environmental collision"]
 polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_toxki")
+animation = &"pop"
+frame = 5
+frame_progress = 1.0

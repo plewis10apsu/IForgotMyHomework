@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctd1vldeuv3vd"]
+
+[ext_resource type="TileSet" uid="uid://hhqhysdekss0" path="res://general/etc/level_tileset_1.tres" id="1_48qaf"]
+[ext_resource type="Script" path="res://general/scripts/cloud_platform.gd" id="1_252gj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lovno"]
+size = Vector2(54, 15)
+
+[node name="CloudPlatform" type="Node2D"]
+script = ExtResource("1_252gj")
+
+[node name="Tilemap" type="TileMap" parent="."]
+position = Vector2(9, 0)
+tile_set = ExtResource("1_48qaf")
+format = 2
+layer_0/tile_data = PackedInt32Array(65534, 851968, 7, 65535, 917504, 7, 0, 983040, 7)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 7.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lovno")

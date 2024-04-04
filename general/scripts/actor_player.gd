@@ -5,17 +5,24 @@ const COYOTE_TIMER_MAX : float = 0.15 #seconds
 const WALK_SPEED : float = 120.0 #units per second
 const HURT_BLINK_RATE_MS : int = 30 #ms until hurt visibility toggles
 const HURT_BLINK_DURATION_MS : int = 1500 #ms player will be invincible after being hurt
+const HOVER_THRUST : float = -1800.0 #pixels per frame per second
 var actorData : ActorData
+var move_vector : Vector2 #for platforming movement input
 var is_facing_right : bool = true
-var state : int = PLAYERSTATE.PLAY
-var coyote_timer : float = COYOTE_TIMER_MAX
-var invincible_timer_ms : int = 0 #set to n = invincible and blink for n miliseconds
+var is_on_floor_backup : bool = false #BUP we can use in functions other than _physics_process()
+var is_hovering : bool = false
+var state : int = PLAYERSTATE.PLAY # for _ready() state machine
+var coyote_timer : float = COYOTE_TIMER_MAX #sec we can still jump after walking off a ledge
+var invincible_timer_ms : int = 0 #set this=n to blink + be invincible for n miliseconds
 var trigger_held_timer_ms : int = 0 #miliseconds player has been holding the trigger
-var shots_since_trigger_held : int = 0 #used for math, like in the MG trigger pull logic
+var has_shot_this_triggerpull : bool = false #Mostly for limiting single-shot weaps to one shot.
+var ms_since_last_shot_this_triggerpull : float = 0.0 #It's a float for accurate conversion from delta.
 var ammo : int = 0 #set this whenever you change the weapon type.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	#Make sprite face right (Left was default.)
+	$Sprite.scale.x = abs($Sprite.scale.x) * -1
 	#Set this as the Globally-recognized player
 	if(Global.player):
 		Global.player.queue_free()
@@ -40,46 +47,70 @@ func _process(delta):
 			#SHOOT
 			if Input.is_action_pressed("shoot"):
 				trigger_held_timer_ms += delta*1000
-				pull_trigger()
+				pull_trigger(delta)
 			else:
 				trigger_held_timer_ms = 0
-				shots_since_trigger_held = 0
+				has_shot_this_triggerpull = false
+				is_hovering = false
+				ms_since_last_shot_this_triggerpull = 0.0
 		PLAYERSTATE.KNOCKBACK:
 			pass
 		PLAYERSTATE.DEAD:
 			pass
 
 func _physics_process(delta):
+	is_on_floor_backup = is_on_floor()
 	#Physics state machine
 	match state:
 		PLAYERSTATE.PLAY:
 			#MOVE
-			var direction = Input.get_axis("ui_left", "ui_right")
-			if direction:
-				#Movement input is non-neutral. Apply it.
-				velocity.x = direction * WALK_SPEED
+			#(Decided not to normalize for now, since vectors like 1,1 make hover feel good.)
+			move_vector = Vector2(0,0)
+			if Input.is_action_pressed("move_left"):
+				move_vector.x -= 1
+			if Input.is_action_pressed("move_right"):
+				move_vector.x += 1
+			if Input.is_action_pressed("move_up"):
+				move_vector.y -= 1
+			if Input.is_action_pressed("move_down"):
+				move_vector.y += 1
+			if move_vector.x:
+				#Movement input is non-neutral. Apply it (unless we're Bass-stopping).
+				if Input.is_action_pressed("bass_stop"):
+					velocity.x = 0
+				else:
+					velocity.x = move_vector.x * WALK_SPEED
 				#Facing left or right?
-				if direction > 0:
+				if move_vector.x > 0:
 					is_facing_right = true
-				elif direction < 0:
+				elif move_vector.x < 0:
 					is_facing_right = false
 				else:
 					#Neutral input, so keep facing same direction.
 					pass
 				#Flip sprite
-				##TODO: This only flips the sprite; doesn't change collision!
 				if is_facing_right:
-					$PhSprite.scale.x = abs($PhSprite.scale.x)
+					$Sprite.scale.x = abs($Sprite.scale.x) * (-1)
 				else:
-					$PhSprite.scale.x = abs($PhSprite.scale.x) * (-1)
+					$Sprite.scale.x = abs($Sprite.scale.x)
+				#Play the walking animation
+				if not $Sprite.is_playing() and is_on_floor():
+					$Sprite.frame = 1
+					$Sprite.play("default")
+				if Input.is_action_pressed("bass_stop"):
+					$Sprite.stop()
+					$Sprite.frame = 0
 			else:
 				#Neutral movement input. Velocity decays.
 				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+				#Stop the walking animation
+				$Sprite.stop()
+				$Sprite.frame = 0
 			#COYOTE TIMER
 			if is_on_floor():
 				#We're on the ground, so refill the timer.
 				coyote_timer = COYOTE_TIMER_MAX
-			else: 
+			else:
 				#We're in the air, so decrement.
 				coyote_timer = clamp(coyote_timer-delta, 0, COYOTE_TIMER_MAX)
 			#JUMPING AND GRAVITY
@@ -91,9 +122,16 @@ func _physics_process(delta):
 				#When jump button is released, FALL immediately.
 				#Note that velocity.y<0 means we are rising, because UP is negative in Godot.
 				velocity.y = 0
+			if not is_jumping and not is_on_floor():
+				# The player is falling, so stop the walking animation
+				$Sprite.stop()
+				$Sprite.frame = 0
 			if(is_jumping):
 				#Gravity is doubled while rising, for a snappy jump.
 				velocity.y += gravity * delta * 2
+				#The player is rising, so stop the walking animation
+				$Sprite.stop()
+				$Sprite.frame = 1
 			else:
 				velocity.y += gravity * delta
 			#EXTRA
@@ -107,54 +145,79 @@ func _physics_process(delta):
 		PLAYERSTATE.DEAD:
 			pass
 
-func pull_trigger():
+func pull_trigger(delta):
+	ms_since_last_shot_this_triggerpull += delta*1000 #(converting delta sec to ms)
+	is_hovering = false #We'll make it true again below, if needed.
 	match actorData.weapon_type:
 		WEAPON.DEFAULT:
-			if shots_since_trigger_held == 0:
+			if !has_shot_this_triggerpull:
 				var aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
 				$BulletEmitter.shoot(self, aim_vector)
-				shots_since_trigger_held += 1
+				has_shot_this_triggerpull = true
+				ms_since_last_shot_this_triggerpull = 0
 		WEAPON.SLOW:
-			if shots_since_trigger_held == 0:
+			if !has_shot_this_triggerpull:
 				var aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
 				$BulletEmitter.shoot(self, aim_vector)
-				shots_since_trigger_held += 1
+				has_shot_this_triggerpull = true
+				ms_since_last_shot_this_triggerpull = 0
 		WEAPON.MG:
-			const mg_shoot_delay_ms = 75 #ms between shots
-			var total_shots_allowed = ceil(float(trigger_held_timer_ms)/mg_shoot_delay_ms)
-			if shots_since_trigger_held < total_shots_allowed:
+			const mg_shoot_interval_ms = 75 #ms between shots
+			if ms_since_last_shot_this_triggerpull > mg_shoot_interval_ms:
 				var aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
 				$BulletEmitter.shoot(self, aim_vector)
-				shots_since_trigger_held += 1
+				has_shot_this_triggerpull = true
+				ms_since_last_shot_this_triggerpull = 0
 		WEAPON.MAGNUM:
 			const magnum_shoot_delay_ms = 500
 			const magnum_blowback_force = 2000
-			if shots_since_trigger_held == 0 and trigger_held_timer_ms>magnum_shoot_delay_ms:
+			if !has_shot_this_triggerpull and ms_since_last_shot_this_triggerpull > magnum_shoot_delay_ms:
 				var aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
 				$BulletEmitter.shoot(self, aim_vector)
 				velocity.x += aim_vector.x * magnum_blowback_force * (-1)
-				shots_since_trigger_held += 1
+				has_shot_this_triggerpull = true
+				ms_since_last_shot_this_triggerpull = 0
 		WEAPON.FLAME:
-			const ft_shoot_delay_ms = 50 #ms between shots
-			var total_shots_allowed = ceil(float(trigger_held_timer_ms)/ft_shoot_delay_ms)
-			if shots_since_trigger_held < total_shots_allowed:
+			const ft_shoot_interval_ms = 50 #ms between shots
+			if ms_since_last_shot_this_triggerpull > ft_shoot_interval_ms:
 				var aim_vector = Vector2(1 if is_facing_right else (-1), -0.2).normalized()
 				$BulletEmitter.shoot(self, aim_vector)
-				shots_since_trigger_held += 1
+				has_shot_this_triggerpull = true
+				ms_since_last_shot_this_triggerpull = 0
 		WEAPON.BUBBLE:
-			const ft_shoot_delay_ms = 15 #ms between shots
-			var total_shots_allowed = ceil(float(trigger_held_timer_ms)/ft_shoot_delay_ms)
-			if shots_since_trigger_held < total_shots_allowed:
-				var aim_vector = Vector2(1 if is_facing_right else (-1), -0.2).normalized()
+			const bubble_shoot_interval_ms = 15 #ms between shots
+			if ms_since_last_shot_this_triggerpull > bubble_shoot_interval_ms:
+				var aim_vector
+				var walking_influence_vector #Increases horizontal aim angle while walking
+				if move_vector.x or move_vector.y:
+					#There is movement this frame. Aim with it.
+					if Input.is_action_pressed("bass_stop") or !is_on_floor_backup:
+						#No L/R movement influence on aim while Bass-stopping or airborn.
+						walking_influence_vector = Vector2(0,0)
+					else:
+						walking_influence_vector = Vector2(move_vector.x, 0)
+					#Final aim math
+					aim_vector = (move_vector + walking_influence_vector).normalized()
+				else:
+					#No movement this frame. Aim with player's L/R facing direction.
+					aim_vector = (Vector2.RIGHT if is_facing_right else Vector2.LEFT)
 				$BulletEmitter.shoot(self, aim_vector)
-				shots_since_trigger_held += 1
+				has_shot_this_triggerpull = true
+				ms_since_last_shot_this_triggerpull = 0
+			#THRUST! (Chicken Run reference.)
+			if !is_on_floor_backup and move_vector.y>0 and velocity.y>=0:
+				#We're airborn, firing downward, and descending. Let's hover!
+				velocity.y += HOVER_THRUST * delta
+				is_hovering = true
+			else:
+				is_hovering = false
 
 func _on_area_2d_area_entered(area):
 	var other = area.get_parent()
 	#print("PLAYER OVERLAPPED AREA: " + str(other))
-	var is_friendly = (actorData.team == other.actorData.team)
+	var is_friendly = ("actorData" in other) and (actorData.team == other.actorData.team)
 	var is_hazardous_actor
-	if(other.actorData != null) and other.actorData.hazard_level>0:
+	if ("actorData" in other) and other.actorData.hazard_level>0:
 		is_hazardous_actor = true
 	else:
 		is_hazardous_actor = false
