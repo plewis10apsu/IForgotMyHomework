@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0vkuf867sefn"]
+
+[ext_resource type="Script" path="res://menus/Help_Menu/Help_menu.gd" id="1_svlg4"]
+[ext_resource type="FontFile" uid="uid://cs8850q2te7fk" path="res://menus/Font/ThaleahFat.ttf" id="2_pih51"]
+
+[node name="HelpMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 539.0
+offset_top = 130.0
+offset_right = -572.0
+offset_bottom = -157.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_svlg4")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("2_pih51")
+theme_override_font_sizes/font_size = 120
+text = "Game 
+Controls"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="CloseButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("2_pih51")
+theme_override_font_sizes/font_size = 60
+text = "Close"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="Panel" method="_on_close_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnt4b8ise03l1"]
+[gd_scene load_steps=9 format=3 uid="uid://dnt4b8ise03l1"]
 
 [ext_resource type="Texture2D" uid="uid://ce36o4kfk0u0j" path="res://menus/textures/tilemap-backgrounds_packed.png" id="1_ctvfs"]
 [ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ibt0l"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://7ny0wsjiga62" path="res://menus/textures/tile_0028.png" id="4_nvumc"]
 [ext_resource type="Texture2D" uid="uid://bfq0pe5xdkyy1" path="res://menus/textures/backgroundEmpty.png" id="6_kc450"]
 [ext_resource type="Script" path="res://menus/Main_Menu/Camera2D.gd" id="6_qaj33"]
+[ext_resource type="Script" path="res://menus/Help_Menu/Help_menu.gd" id="8_rq06r"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -33,13 +34,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 120
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 120
-theme_override_constants/margin_bottom = 80
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(1890, 980)
 layout_mode = 2
 theme_override_constants/separation = 150
 
@@ -61,7 +63,7 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 720
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CreditsButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(115, 115)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -83,7 +85,7 @@ text = "Level 1"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
-text = "Level  2
+text = "Level 2
 "
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -98,14 +100,14 @@ theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Score"
 
-[node name="ExitButtion" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Exit
 "
 
-[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HelpButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(115, 115)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -183,7 +185,7 @@ theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Main Menu"
 
-[node name="ExitButtion" type="Button" parent="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
@@ -194,9 +196,153 @@ text = "Exit
 position = Vector2(959, 540)
 script = ExtResource("6_qaj33")
 
+[node name="HelpPanel" type="PopupPanel" parent="."]
+initial_position = 1
+size = Vector2i(600, 600)
+
+[node name="HelpMenu" type="Control" parent="HelpPanel"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 596.0
+offset_bottom = 596.0
+
+[node name="Panel3" type="Panel" parent="HelpPanel/HelpMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_rq06r")
+
+[node name="MarginContainer" type="MarginContainer" parent="HelpPanel/HelpMenu/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="HBoxContainer" parent="HelpPanel/HelpMenu/Panel3/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 120
+text = "Game 
+Controls"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="CloseButton" type="Button" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 60
+text = "Close"
+
+[node name="CreditsPanel" type="PopupPanel" parent="."]
+initial_position = 1
+size = Vector2i(600, 600)
+
+[node name="CreditsMenu" type="Control" parent="CreditsPanel"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 596.0
+offset_bottom = 596.0
+
+[node name="Panel3" type="Panel" parent="CreditsPanel/CreditsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_rq06r")
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPanel/CreditsMenu/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 120
+text = "Credits
+Menu"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="CloseButton" type="Button" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 60
+text = "Close"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScoreButton" to="Camera2D" method="_on_score_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitButtion" to="." method="_on_exit_buttion_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="pressed" from="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/BackButton" to="Camera2D" method="_on_back_button_pressed"]
-[connection signal="pressed" from="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/ExitButtion" to="." method="_on_exit_buttion_pressed"]
+[connection signal="pressed" from="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="HelpPanel/HelpMenu/Panel3" method="_on_close_button_pressed"]
+[connection signal="pressed" from="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="CreditsPanel/CreditsMenu/Panel3" method="_on_close_button_pressed"]
