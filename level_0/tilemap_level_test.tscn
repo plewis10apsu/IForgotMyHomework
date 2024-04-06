@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://5lug0b2o0ky5"]
+[gd_scene load_steps=5 format=3 uid="uid://5lug0b2o0ky5"]
 
 [ext_resource type="TileSet" uid="uid://hhqhysdekss0" path="res://general/etc/level_tileset_1.tres" id="1_q10gx"]
 [ext_resource type="PackedScene" uid="uid://h1euld2qohrv" path="res://general/scenes/actor_player.tscn" id="2_on4jh"]
 [ext_resource type="PackedScene" uid="uid://ctd1vldeuv3vd" path="res://general/scenes/cloud_platform.tscn" id="3_qmcg3"]
+[ext_resource type="PackedScene" uid="uid://cusmuny1el101" path="res://menus/Pause_Menu/pause_menu.tscn" id="4_x54o0"]
 
 [node name="Level" type="Node2D"]
 
@@ -21,3 +22,7 @@ polygon = PackedVector2Array(-1786, -1547, 2925, -1508, 2822, 1362, -1912, 1288)
 
 [node name="CloudPlatform" parent="." instance=ExtResource("3_qmcg3")]
 position = Vector2(459, -184)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_x54o0")]
