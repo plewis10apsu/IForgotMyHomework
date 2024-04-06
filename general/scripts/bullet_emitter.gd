@@ -13,7 +13,8 @@ var bullet_dictionary = {
 func shoot(shooter_IN, aim_vector_IN:Vector2):
 	var bullet_scene = load(bullet_dictionary[shooter_IN.actorData.weapon_type])
 	var new_bullet = bullet_scene.instantiate()
-	get_tree().root.add_child(new_bullet)
+	#OLD# get_tree().root.add_child(new_bullet)
+	Global.bullet_parent.add_child(new_bullet)
 	new_bullet.global_position = global_position
 	new_bullet.explicit_init(shooter_IN, aim_vector_IN)
 	if(shooter_IN.actorData.weapon_type == WEAPON.MAGNUM and aim_vector_IN.x<0):

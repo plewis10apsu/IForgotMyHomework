@@ -2,6 +2,7 @@ extends Node
 
 var player #Player will put itself here when it spawns.
 var current_level #Level will put itself here when it spawns.
+var bullet_parent = Node.new()
 var score : int = 0
 #Music player
 var music_player = AudioStreamPlayer.new()
@@ -14,6 +15,7 @@ var music_dictionary = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(music_player)
+	add_child(bullet_parent)
 	# TODO: When we have a default level, like a main menu or whatever, THAT
 	# will load levels instead of just loading one here in Global._ready()
 	#change_level("res://level_0/scenes/level_0.tscn")
@@ -24,6 +26,8 @@ func point_at_player_from(from_node_IN):
 	return Vector2(player.global_position - from_node_IN.global_position).normalized()
 
 func change_level(level_path):
+	for b in bullet_parent.get_children():
+		b.queue_free()
 	if(current_level):
 		current_level.queue_free()
 	var level_scene = load(level_path)
