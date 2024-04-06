@@ -74,5 +74,6 @@ collision_layer = 0
 polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_toxki")
 frame_progress = 0.0890267

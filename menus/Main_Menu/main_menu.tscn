@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dnt4b8ise03l1"]
 
-[ext_resource type="Texture2D" uid="uid://ce36o4kfk0u0j" path="res://menus/textures/tilemap-backgrounds_packed.png" id="1_ctvfs"]
 [ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ibt0l"]
+[ext_resource type="Texture2D" uid="uid://bercx77l05y7x" path="res://menus/textures/menu background.png" id="2_hsk56"]
 [ext_resource type="Texture2D" uid="uid://b715cgij2umwc" path="res://menus/textures/tile_0027.png" id="3_v1s6b"]
 [ext_resource type="FontFile" uid="uid://cs8850q2te7fk" path="res://menus/Font/ThaleahFat.ttf" id="3_v2n1h"]
 [ext_resource type="Texture2D" uid="uid://7ny0wsjiga62" path="res://menus/textures/tile_0028.png" id="4_nvumc"]
@@ -25,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ctvfs")
+texture = ExtResource("2_hsk56")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -46,16 +46,17 @@ layout_mode = 2
 theme_override_constants/separation = 150
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 120
-text = "An Extreamly Ridiculously Long  Name That Goes On And On Forever For No Apparent Reason At All . . . . "
+text = "I forgot my homework and I have to go back and get it or I'll fail the assignment and then my parents will be disappointed..."
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -75,6 +76,7 @@ stretch_mode = 0
 layout_mode = 2
 
 [node name="LevelButton1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(115, 75)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
@@ -207,7 +209,7 @@ offset_top = 4.0
 offset_right = 596.0
 offset_bottom = 596.0
 
-[node name="Panel" type="Panel" parent="HelpPanel/HelpMenu"]
+[node name="Panel3" type="Panel" parent="HelpPanel/HelpMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -216,7 +218,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_rq06r")
 
-[node name="MarginContainer" type="MarginContainer" parent="HelpPanel/HelpMenu/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="HelpPanel/HelpMenu/Panel3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -229,14 +231,14 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="HBoxContainer" parent="HelpPanel/HelpMenu/Panel/MarginContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="HelpPanel/HelpMenu/Panel3/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="VBoxContainer" parent="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title" type="Label" parent="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -248,12 +250,12 @@ text = "Game
 Controls"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 
-[node name="CloseButton" type="Button" parent="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="CloseButton" type="Button" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
@@ -315,7 +317,7 @@ theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 120
 text = "Credits
-"
+Menu"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -343,5 +345,5 @@ text = "Close"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="pressed" from="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/BackButton" to="Camera2D" method="_on_back_button_pressed"]
 [connection signal="pressed" from="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="HelpPanel/HelpMenu/Panel" method="_on_close_button_pressed"]
+[connection signal="pressed" from="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="HelpPanel/HelpMenu/Panel3" method="_on_close_button_pressed"]
 [connection signal="pressed" from="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="CreditsPanel/CreditsMenu/Panel3" method="_on_close_button_pressed"]
