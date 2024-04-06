@@ -4,6 +4,7 @@ var player #Player will put itself here when it spawns.
 var current_level #Level will put itself here when it spawns.
 var bullet_parent = Node.new()
 var score : int = 0
+var high_scores = [000000, 111111, 222222]	
 #Music player
 var music_player = AudioStreamPlayer.new()
 var current_music_name # In case we ever care what's playing.
