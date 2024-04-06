@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://b715cgij2umwc" path="res://menus/textures/tile_0027.png" id="3_v1s6b"]
 [ext_resource type="FontFile" uid="uid://cs8850q2te7fk" path="res://menus/Font/ThaleahFat.ttf" id="3_v2n1h"]
 [ext_resource type="Texture2D" uid="uid://7ny0wsjiga62" path="res://menus/textures/tile_0028.png" id="4_nvumc"]
-[ext_resource type="Texture2D" uid="uid://bfq0pe5xdkyy1" path="res://menus/textures/backgroundEmpty.png" id="6_kc450"]
 [ext_resource type="Script" path="res://menus/Main_Menu/Camera2D.gd" id="6_qaj33"]
 [ext_resource type="Script" path="res://menus/Help_Menu/Help_menu.gd" id="8_rq06r"]
+[ext_resource type="PackedScene" uid="uid://do83bjgrwbjjs" path="res://general/scenes/cloud.tscn" id="8_weypu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -126,14 +126,11 @@ offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HSBackground" type="TextureRect" parent="HighScore"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_kc450")
+[node name="ColorRect" type="ColorRect" parent="HighScore"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.298039, 0.898039, 0.992157, 1)
 
 [node name="MarginContainer2" type="MarginContainer" parent="HighScore"]
 layout_mode = 1
@@ -161,7 +158,7 @@ theme_override_constants/separation = 150
 [node name="Label" type="Label" parent="HighScore/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
@@ -180,11 +177,10 @@ theme_override_constants/separation = 720
 [node name="VBoxContainer" type="VBoxContainer" parent="HighScore/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_v2n1h")
-theme_override_font_sizes/font_size = 60
-text = "Main Menu"
+[node name="Camera2D" type="Camera2D" parent="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+position = Vector2(-1657, 189)
+anchor_mode = 0
+script = ExtResource("6_qaj33")
 
 [node name="ExitButton" type="Button" parent="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -193,9 +189,11 @@ theme_override_font_sizes/font_size = 60
 text = "Exit
 "
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(959, 540)
-script = ExtResource("6_qaj33")
+[node name="BackButton" type="Button" parent="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 60
+text = "Main Menu"
 
 [node name="HelpPanel" type="PopupPanel" parent="."]
 initial_position = 1
@@ -337,13 +335,16 @@ theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Close"
 
+[node name="Node2D" parent="." instance=ExtResource("8_weypu")]
+position = Vector2(2007, -676)
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScoreButton" to="Camera2D" method="_on_score_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScoreButton" to="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/Camera2D" method="_on_score_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
-[connection signal="pressed" from="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/BackButton" to="Camera2D" method="_on_back_button_pressed"]
 [connection signal="pressed" from="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/BackButton" to="HighScore/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/Camera2D" method="_on_back_button_pressed"]
 [connection signal="pressed" from="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="HelpPanel/HelpMenu/Panel3" method="_on_close_button_pressed"]
 [connection signal="pressed" from="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="CreditsPanel/CreditsMenu/Panel3" method="_on_close_button_pressed"]

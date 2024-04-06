@@ -1,14 +1,15 @@
 extends Camera2D
 
-enum CameraState { CENTER_MENU, HIGHSCORE_MENU }
 
 var main_menu_position = Vector2()
-var highscore_menu_position = Vector2(959, -540)
+var highscore_menu_position = Vector2()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main_menu_position = position # Initialize with the camera's starting position
+	highscore_menu_position.y = position.y - 1080
+	highscore_menu_position.x = position.x
 
 # Function to move the camera
 func move_camera(target_position: Vector2):
