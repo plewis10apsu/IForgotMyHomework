@@ -182,7 +182,7 @@ func pull_trigger(delta):
 				$BulletEmitter.shoot(self, aim_vector)
 				has_shot_this_triggerpull = true
 				ms_since_last_shot_this_triggerpull = 0
-		WEAPON.BUBBLE:
+		WEAPON.BUBBLE, WEAPON.BUBBLE_RAINBOW:
 			const bubble_shoot_interval_ms = 15 #ms between shots
 			if ms_since_last_shot_this_triggerpull > bubble_shoot_interval_ms:
 				var aim_vector

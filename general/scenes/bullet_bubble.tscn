@@ -75,6 +75,4 @@ polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_toxki")
-animation = &"pop"
-frame = 5
-frame_progress = 1.0
+frame_progress = 0.0890267
