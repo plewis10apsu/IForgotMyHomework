@@ -15,9 +15,9 @@ func pause():
 	$AnimationPlayer.play("blur")
 
 func pause_game():
-	if Input.is_action_just_pressed("esc") and !get_tree().paused:
+	if Input.is_action_just_pressed("escape") and !get_tree().paused:
 		pause()
-	elif Input.is_action_just_pressed("esc") and get_tree().paused:
+	elif Input.is_action_just_pressed("escape") and get_tree().paused:
 		resume()
 
 func _on_resume_button_pressed():
