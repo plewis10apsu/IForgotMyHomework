@@ -12,3 +12,4 @@ func _init(HP_MAX_IN, team_IN, weapon_type_IN, hazard_level_IN):
 	team = team_IN
 	weapon_type = weapon_type_IN
 	hazard_level = hazard_level_IN
+	

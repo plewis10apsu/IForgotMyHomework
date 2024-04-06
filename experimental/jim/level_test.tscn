@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://7uiic3tkehhq"]
+[gd_scene load_steps=6 format=3 uid="uid://7uiic3tkehhq"]
 
 [ext_resource type="PackedScene" uid="uid://b35v76uafaye1" path="res://experimental/jim/polygon_collision_color.tscn" id="1_gv5as"]
 [ext_resource type="PackedScene" uid="uid://h1euld2qohrv" path="res://general/scenes/actor_player.tscn" id="2_a7plw"]
 [ext_resource type="PackedScene" uid="uid://c7nmg1aisp8b4" path="res://general/scenes/actor_simple_turret.tscn" id="3_nfnvc"]
 [ext_resource type="PackedScene" uid="uid://cxlwynhh4lfxv" path="res://general/scenes/actor_walker.tscn" id="4_xjc7f"]
+[ext_resource type="PackedScene" uid="uid://dmi0478jwgtc" path="res://general/scenes/actor_spikes.tscn" id="5_r3b1q"]
 
 [node name="LevelCombat" type="Node2D"]
 
@@ -15,7 +16,7 @@ polygon = PackedVector2Array(-152, -120, -136, -120, -136, 32, -104, 32, -104, -
 color = Color(0.00784314, 0.301961, 0.533333, 1)
 
 [node name="SimpleTurret" parent="." instance=ExtResource("3_nfnvc")]
-position = Vector2(272, 80)
+position = Vector2(224, 152)
 
 [node name="ActorWalker" parent="." instance=ExtResource("4_xjc7f")]
 position = Vector2(32, 32)
@@ -24,3 +25,7 @@ scale = Vector2(0.5, 0.5)
 [node name="Player" parent="." instance=ExtResource("2_a7plw")]
 position = Vector2(120, 48)
 scale = Vector2(0.5, 0.5)
+
+[node name="Spikes" parent="." instance=ExtResource("5_r3b1q")]
+position = Vector2(-8, 152)
+scale = Vector2(0.480382, 0.480382)

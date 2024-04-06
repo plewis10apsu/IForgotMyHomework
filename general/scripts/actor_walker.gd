@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var turns_at_ledges = true
+const WALK_SPEED = 20 #pixels per second
+var is_facing_right : bool = true
 var actorData : ActorData
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -13,6 +15,7 @@ func _process(delta):
 	if actorData.hp <= 0:	
 		#DIE
 		queue_free()
+	velocity.x += WALK_SPEED * delta * (1 if is_facing_right else (-1))
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
@@ -34,3 +37,8 @@ func _on_area_2d_area_entered(area):
 
 func hit_something():
 	pass
+
+
+func _on_area_2d_2_area_exited(area):
+	print("SENSOR EXITED AREA!!!")
+	is_facing_right = !is_facing_right

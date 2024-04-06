@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxlwynhh4lfxv"]
+[gd_scene load_steps=6 format=3 uid="uid://cxlwynhh4lfxv"]
 
 [ext_resource type="Script" path="res://general/scripts/actor_walker.gd" id="1_8g53c"]
 [ext_resource type="Texture2D" uid="uid://dide32jki36kb" path="res://general/sprites/ph_baddie.png" id="2_vhdfq"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1hws"]
 size = Vector2(49, 39.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huwgo"]
+size = Vector2(8, 8)
 
 [node name="ActorWalker" type="CharacterBody2D"]
 collision_layer = 0
@@ -28,4 +31,14 @@ debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="BulletEmitter" parent="." instance=ExtResource("3_fm8gx")]
 
+[node name="LedgeSensor" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(24, 40)
+shape = SubResource("RectangleShape2D_huwgo")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]
