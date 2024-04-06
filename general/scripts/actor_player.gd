@@ -27,7 +27,7 @@ func _ready():
 	if(Global.player):
 		Global.player.queue_free()
 	Global.player = self
-	actorData = ActorData.new(3, TEAM.PLAYER, WEAPON.BUBBLE, 0)
+	actorData = ActorData.new(3, TEAM.PLAYER, WEAPON.BUBBLE 0)
 	
 func _process(delta):
 	#Check for death
@@ -184,7 +184,7 @@ func pull_trigger(delta):
 				$BulletEmitter.shoot(self, aim_vector)
 				has_shot_this_triggerpull = true
 				ms_since_last_shot_this_triggerpull = 0
-		WEAPON.BUBBLE:
+		WEAPON.BUBBLE, WEAPON.BUBBLE_RAINBOW:
 			const bubble_shoot_interval_ms = 15 #ms between shots
 			if ms_since_last_shot_this_triggerpull > bubble_shoot_interval_ms:
 				var aim_vector
