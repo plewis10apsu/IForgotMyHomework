@@ -13,6 +13,7 @@ size = Vector2(8, 8)
 [node name="ActorWalker" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_8g53c")
+turns_at_ledges = null
 
 [node name="PhBaddie" type="Sprite2D" parent="."]
 position = Vector2(0, 2)

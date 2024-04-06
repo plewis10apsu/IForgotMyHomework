@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 @export var turns_at_ledges = true
-const WALK_SPEED = 80 #pixels per second
+const WALK_SPEED = 80.0 #pixels per second
 var is_facing_right : bool = true
 var actorData : ActorData
 var position_x_last_frame : float
 var is_in_floor_backup : bool = false
+var ledge_sensor_overlapping_bodies
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Called when the node enters the scene tree for the first time.
@@ -20,14 +21,18 @@ func _process(delta):
 		queue_free()
 	#WALK!
 	if(is_on_floor()):
-		#Handle flipping
 		if(position.x == position_x_last_frame):
+			#We haven't moved, so flip!
 			is_facing_right = !is_facing_right
 		#Move
 		velocity.x = WALK_SPEED * (1 if is_facing_right else (-1))
 		position_x_last_frame = position.x
 	else:
 		position_x_last_frame = 0
+	ledge_sensor_overlapping_bodies = $LedgeSensor.get_overlapping_bodies()
+	#print("--- --- --- --- --- ---")
+	for o in ledge_sensor_overlapping_bodies:
+		pass#print(o)
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
@@ -54,3 +59,11 @@ func hit_something():
 func _on_area_2d_2_area_exited(area):
 	print("SENSOR EXITED AREA!!!")
 	is_facing_right = !is_facing_right
+
+
+func _on_area_2d_2_body_exited(body):
+	pass # Replace with function body.
+
+
+func _on_ledge_sensor_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
+	pass # Replace with function body.
