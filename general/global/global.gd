@@ -1,6 +1,6 @@
 extends Node
 
-const HIGH_SCORE_LENGTH = 6
+const MAX_SCORE_DIGITS = 6
 var player #Player will put itself here when it spawns.
 var current_level #Level will put itself here when it spawns.
 var bullet_parent = Node.new()
@@ -18,12 +18,12 @@ var music_dictionary = {
 func _ready():
 	add_child(music_player)
 	add_child(bullet_parent)
-	#score = 555555
-	#submit_score_and_reset()
-	#print("Player score: " + get_current_score_as_string())
-	#print("High score 1: " + get_high_score_as_string(0))
-	#print("High score 2: " + get_high_score_as_string(1))
-	#print("High score 3: " + get_high_score_as_string(2))
+	score = 123456789
+	submit_score_and_reset()
+	print("Player score: " + get_current_score_as_string())
+	print("High score 1: " + get_high_score_as_string(0))
+	print("High score 2: " + get_high_score_as_string(1))
+	print("High score 3: " + get_high_score_as_string(2))
 
 func point_at_player_from(from_node_IN):
 	#Creates normalized V2 pointing from argument's position to the player.
@@ -44,10 +44,16 @@ func change_level(level_path):
 	#add_child(current_level)
 
 func get_current_score_as_string():
-	return str(score).pad_zeros(HIGH_SCORE_LENGTH)
+	return str( clamped_score(score) ).pad_zeros(MAX_SCORE_DIGITS)
 
 func get_high_score_as_string(i):
-	return str(high_scores[i]).pad_zeros(HIGH_SCORE_LENGTH)
+	return str( clamped_score(high_scores[i]) ).pad_zeros(MAX_SCORE_DIGITS)
+	
+
+func clamped_score(score_IN):
+	#Clamps score to truncate digits exceeding max
+	var max_score_value_allowed = (pow(10, MAX_SCORE_DIGITS)) - 1
+	return clamp(score_IN, 0, max_score_value_allowed)
 
 func submit_score_and_reset():
 	#Starting rank is max highscore index + 1 (AKA length)
