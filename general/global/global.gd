@@ -18,12 +18,16 @@ var music_dictionary = {
 func _ready():
 	add_child(music_player)
 	add_child(bullet_parent)
-	score = 123456789
-	submit_score_and_reset()
-	print("Player score: " + get_current_score_as_string())
-	print("High score 1: " + get_high_score_as_string(0))
-	print("High score 2: " + get_high_score_as_string(1))
-	print("High score 3: " + get_high_score_as_string(2))
+	#high_scores = [696969, 555555, 420420, 318008, 246824, 123456]
+	#score = 1234567890
+	#submit_score_and_reset()
+	#print("Player score: " + get_current_score_as_string())
+	#print("High score 1: " + get_high_score_as_string(0))
+	#print("High score 2: " + get_high_score_as_string(1))
+	#print("High score 3: " + get_high_score_as_string(2))
+	#print("High score 4: " + get_high_score_as_string(3))
+	#print("High score 5: " + get_high_score_as_string(4))
+	#print("High score 6: " + get_high_score_as_string(5))
 
 func point_at_player_from(from_node_IN):
 	#Creates normalized V2 pointing from argument's position to the player.
