@@ -5,6 +5,8 @@ var main_menu_position = Vector2()
 var highscore_menu_position = Vector2()
 
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main_menu_position = position # Initialize with the camera's starting position
@@ -22,6 +24,9 @@ func move_to_highscore():
 	move_camera(highscore_menu_position)
 
 func _on_score_button_pressed():
+	$"../../../VBoxContainer/HighScore1".text = str(Global.high_scores[0])
+	$"../../../VBoxContainer/HighScore2".text = str(Global.high_scores[1])
+	$"../../../VBoxContainer/HighScore3".text = str(Global.high_scores[2])
 	move_to_highscore()
 
 # Function to move to the main menu menu
