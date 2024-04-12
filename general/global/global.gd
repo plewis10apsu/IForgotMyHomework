@@ -1,10 +1,11 @@
 extends Node
 
+const MAX_SCORE_DIGITS = 6
 var player #Player will put itself here when it spawns.
 var current_level #Level will put itself here when it spawns.
 var bullet_parent = Node.new()
 var score : int = 0
-var high_scores = [000001, 111111, 222222]	
+var high_scores = [696969, 420420, 318008]
 #Music player
 var music_player = AudioStreamPlayer.new()
 var current_music_name # In case we ever care what's playing.
@@ -17,9 +18,16 @@ var music_dictionary = {
 func _ready():
 	add_child(music_player)
 	add_child(bullet_parent)
-	# TODO: When we have a default level, like a main menu or whatever, THAT
-	# will load levels instead of just loading one here in Global._ready()
-	#change_level("res://level_0/scenes/level_0.tscn")
+	#high_scores = [696969, 555555, 420420, 318008, 246824, 123456]
+	#score = 1234567890
+	#submit_score_and_reset()
+	#print("Player score: " + get_current_score_as_string())
+	#print("High score 1: " + get_high_score_as_string(0))
+	#print("High score 2: " + get_high_score_as_string(1))
+	#print("High score 3: " + get_high_score_as_string(2))
+	#print("High score 4: " + get_high_score_as_string(3))
+	#print("High score 5: " + get_high_score_as_string(4))
+	#print("High score 6: " + get_high_score_as_string(5))
 
 func point_at_player_from(from_node_IN):
 	#Creates normalized V2 pointing from argument's position to the player.
@@ -38,6 +46,42 @@ func change_level(level_path):
 	#get_tree().change_scene_to_file(level_path)
 	#current_level = get_tree().current_scene
 	#add_child(current_level)
+
+func get_current_score_as_string():
+	return str( clamped_score(score) ).pad_zeros(MAX_SCORE_DIGITS)
+
+func get_high_score_as_string(i):
+	return str( clamped_score(high_scores[i]) ).pad_zeros(MAX_SCORE_DIGITS)
+	
+
+func clamped_score(score_IN):
+	#Clamps score to truncate digits exceeding max
+	var max_score_value_allowed = (pow(10, MAX_SCORE_DIGITS)) - 1
+	return clamp(score_IN, 0, max_score_value_allowed)
+
+func submit_score_and_reset():
+	#Starting rank is max highscore index + 1 (AKA length)
+	var rank : int = high_scores.size()
+	#Iterate over all scores, starting with lowest, and see if we placed.
+	var i = high_scores.size() - 1
+	while i >= 0:
+		if(score > high_scores[i]):
+			#The more times this is overridden, the higher our rank.
+			#Getting rank 0 means we have a new best score! (Because ranks are indices.)
+			rank = i
+		i -= 1
+	if rank < high_scores.size():
+		#We placed! Let's start at the last score and slide everything down.
+		i = high_scores.size() - 1 #NOTE(Jim): Notice that we are resetting i for reuse!
+		while i > rank:
+			#Slide next highest score down to this spot.
+			high_scores[i] = high_scores[i-1]
+			i -= 1
+		#When while loop ends, we have arrived at our rank (which is now stored in i).
+		#This rank has already slid down, so we simply need to override it.
+		#Again, if rank==0, we have the new best score!
+		high_scores[i] = score
+	score = 0
 
 func play_music_by_name(music_name):
 	# By making this a stream instead of a path, we can load the music during level loading.

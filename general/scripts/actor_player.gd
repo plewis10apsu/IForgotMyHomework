@@ -21,9 +21,6 @@ var ammo : int = 0 #set this whenever you change the weapon type.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	#Make sprite face right (Left was default.)
-	$Sprite.scale.x = abs($Sprite.scale.x) * -1
-	
 	Global.player = self
 	actorData = ActorData.new(3, TEAM.PLAYER, WEAPON.BUBBLE, 0)
 
@@ -88,9 +85,9 @@ func _physics_process(delta):
 					pass
 				#Flip sprite
 				if is_facing_right:
-					$Sprite.scale.x = abs($Sprite.scale.x) * (-1)
-				else:
 					$Sprite.scale.x = abs($Sprite.scale.x)
+				else:
+					$Sprite.scale.x = abs($Sprite.scale.x) * (-1)
 				#Play the walking animation
 				if not $Sprite.is_playing() and is_on_floor():
 					$Sprite.frame = 1
