@@ -3,7 +3,7 @@ extends Control
 func _ready():
 	$AnimationPlayer.play("RESET")
 
-func _process(delta):
+func _process(_delta):
 	pause_game()
 
 func resume():
