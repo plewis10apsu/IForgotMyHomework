@@ -3,6 +3,7 @@ extends Node
 const MAX_SCORE_DIGITS = 6
 var player #Player will put itself here when it spawns.
 var current_level #Level will put itself here when it spawns.
+var current_level_path = "" #Current scene path
 var bullet_parent = Node.new()
 var score : int = 0
 var high_scores = [000000, 000000, 000000]
@@ -13,6 +14,7 @@ var music_dictionary = {
 	# Paths for all music files
 	"pixelparty" : "res://general/music/noattrib_PandaBeats_PixelParty.wav"
 }
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,10 +42,14 @@ func change_level(level_path):
 	var level_scene = load(level_path)
 	current_level = level_scene.instantiate()
 	add_child(current_level)
+	current_level_path = level_path
 	###BUILT IN METHOD
 	#get_tree().change_scene_to_file(level_path)
 	#current_level = get_tree().current_scene
 	#add_child(current_level)
+
+func reload_current_scene():
+	change_level(current_level_path)
 
 func get_current_score_as_string():
 	return str( clamped_score(score) ).pad_zeros(MAX_SCORE_DIGITS)
