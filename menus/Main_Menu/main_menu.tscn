@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnt4b8ise03l1"]
+[gd_scene load_steps=13 format=3 uid="uid://dnt4b8ise03l1"]
 
 [ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ibt0l"]
 [ext_resource type="Texture2D" uid="uid://bercx77l05y7x" path="res://menus/textures/menu background.png" id="2_hsk56"]
@@ -8,6 +8,34 @@
 [ext_resource type="Script" path="res://menus/Main_Menu/Camera2D.gd" id="6_qaj33"]
 [ext_resource type="Script" path="res://menus/Help_Menu/Help_menu.gd" id="8_rq06r"]
 [ext_resource type="PackedScene" uid="uid://do83bjgrwbjjs" path="res://general/scenes/cloud.tscn" id="8_weypu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fixlo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huxv4"]
+bg_color = Color(0.298039, 0.898039, 0.992157, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_57sdk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlscf"]
+bg_color = Color(0.298039, 0.898039, 0.992157, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -76,7 +104,6 @@ stretch_mode = 0
 layout_mode = 2
 
 [node name="LevelButton1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(115, 75)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
@@ -161,7 +188,7 @@ theme_override_constants/outline_size = 9
 theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 120
-text = "High Score"
+text = "Top High Scores:"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -232,16 +259,16 @@ theme_override_font_sizes/font_size = 60
 text = "Main Menu"
 
 [node name="HelpPanel" type="PopupPanel" parent="."]
+transparent_bg = true
 initial_position = 1
 size = Vector2i(600, 600)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fixlo")
 
 [node name="HelpMenu" type="Control" parent="HelpPanel"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 596.0
-offset_bottom = 596.0
+offset_right = 600.0
+offset_bottom = 600.0
 
 [node name="Panel3" type="Panel" parent="HelpPanel/HelpMenu"]
 layout_mode = 1
@@ -250,6 +277,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_huxv4")
 script = ExtResource("8_rq06r")
 
 [node name="MarginContainer" type="MarginContainer" parent="HelpPanel/HelpMenu/Panel3"]
@@ -274,7 +302,7 @@ size_flags_horizontal = 3
 
 [node name="Title" type="Label" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 theme_override_constants/shadow_outline_size = 6
@@ -290,28 +318,24 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 
 [node name="CloseButton" type="Button" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Close"
 
 [node name="CreditsPanel" type="PopupPanel" parent="."]
+transparent_bg = true
 initial_position = 1
 size = Vector2i(600, 600)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_57sdk")
 
 [node name="CreditsMenu" type="Control" parent="CreditsPanel"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 596.0
-offset_bottom = 596.0
+offset_right = 600.0
+offset_bottom = 600.0
 
 [node name="Panel3" type="Panel" parent="CreditsPanel/CreditsMenu"]
 layout_mode = 1
@@ -320,6 +344,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tlscf")
 script = ExtResource("8_rq06r")
 
 [node name="MarginContainer" type="MarginContainer" parent="CreditsPanel/CreditsMenu/Panel3"]
@@ -344,7 +369,7 @@ size_flags_horizontal = 3
 
 [node name="Title" type="Label" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 theme_override_constants/shadow_outline_size = 6
@@ -364,9 +389,6 @@ layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.180392, 0.690196, 0.509804, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Close"

@@ -21,13 +21,16 @@ func pause_game():
 		resume()
 
 func _on_resume_button_pressed():
+	$PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2/ResumeButton.release_focus()
 	resume()
 
 func _on_restart_button_pressed():
+	$PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2/RestartButton.release_focus()
 	resume()
 	get_tree().reload_current_scene()
 
 func _on_main_menu_button_pressed():
+	$PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2/MainMenuButton.release_focus()
 	resume()
 	Global.change_level("res://menus/Main_Menu/main_menu.tscn")
 
