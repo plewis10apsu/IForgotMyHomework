@@ -26,14 +26,12 @@ func pause_game():
 func disable_buttons():
 	var buttons = $PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2.get_children()
 	for button in buttons:
-		if button is Button:
-			button.disabled = true
+		button.disabled = true
 
 func enable_buttons():
 	var buttons = $PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2.get_children()
 	for button in buttons:
-		if button is Button:
-			button.disabled = false
+		button.disabled = false
 
 func _on_resume_button_pressed():
 	$PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2/ResumeButton.release_focus()

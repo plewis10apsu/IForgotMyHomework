@@ -9,7 +9,7 @@
 shader = ExtResource("1_j3kof")
 shader_parameter/lod = 0.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dm2w"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_srxli"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pip67"]
 bg_color = Color(0.298039, 0.898039, 0.992157, 1)
@@ -95,7 +95,6 @@ grow_vertical = 2
 script = ExtResource("1_ll0l5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_kjvt6")
 layout_mode = 1
 anchors_preset = 15
@@ -119,7 +118,7 @@ offset_right = 300.0
 offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_3dm2w")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_srxli")
 
 [node name="Panel" type="Panel" parent="PanelContainer"]
 layout_mode = 2
