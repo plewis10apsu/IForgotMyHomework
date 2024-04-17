@@ -35,18 +35,14 @@ func point_at_player_from(from_node_IN):
 	return Vector2(player.global_position - from_node_IN.global_position).normalized()
 
 func change_level(level_path):
+	# Delete all the bullets
 	for b in bullet_parent.get_children():
 		b.queue_free()
-	if(current_level):
-		current_level.queue_free()
-	var level_scene = load(level_path)
-	current_level = level_scene.instantiate()
-	add_child(current_level)
+	
+	# Change scenes
+	get_tree().change_scene_to_file(level_path)
+	current_level = get_tree().current_scene
 	current_level_path = level_path
-	###BUILT IN METHOD
-	#get_tree().change_scene_to_file(level_path)
-	#current_level = get_tree().current_scene
-	#add_child(current_level)
 
 func reload_current_scene():
 	change_level(current_level_path)
