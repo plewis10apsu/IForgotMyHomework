@@ -7,7 +7,7 @@ signal killed
 @export var rate_of_fire = 0.25
 @onready var muzzle = $Muzzle
 
-var laser_scene = preload("res://experimental/peggy/SpaceShooterLevel/scenes/laser.tscn")
+var laser_scene = preload("res://level_2/SpaceShooterLevel/scenes/laser.tscn")
 
 var shoot_cd := false
 
