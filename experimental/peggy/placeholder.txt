@@ -1,1 +1,0 @@
-There has to be a file here, or else Git won't track the directory.
