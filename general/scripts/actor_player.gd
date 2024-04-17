@@ -6,14 +6,17 @@ const WALK_SPEED : float = 120.0 #units per second
 const HURT_BLINK_RATE_MS : int = 30 #ms until hurt visibility toggles
 const HURT_BLINK_DURATION_MS : int = 1500 #ms player will be invincible after being hurt
 const HOVER_THRUST : float = -1800.0 #pixels per frame per second
+var powerup : int = PLATFORMING_POWERUP.NONE
 var actorData : ActorData
 var move_vector : Vector2 #for platforming movement input
 var is_facing_right : bool = true
 var is_on_floor_backup : bool = false #BUP we can use in functions other than _physics_process()
 var is_hovering : bool = false
+var is_sparkling : bool = false #For easter egg powerup
 var state : int = PLAYERSTATE.PLAY # for _ready() state machine
 var coyote_timer : float = COYOTE_TIMER_MAX #sec we can still jump after walking off a ledge
 var invincible_timer_ms : int = 0 #set this=n to blink + be invincible for n miliseconds
+var powerup_timer_ms : int = 0 #set this=n to blink + be invincible for n miliseconds
 var trigger_held_timer_ms : int = 0 #miliseconds player has been holding the trigger
 var has_shot_this_triggerpull : bool = false #Mostly for limiting single-shot weaps to one shot.
 var ms_since_last_shot_this_triggerpull : float = 0.0 #It's a float for accurate conversion from delta.
@@ -33,6 +36,22 @@ func _process(delta):
 		#Global.play_music_name("player_death")
 	#Timers
 	invincible_timer_ms = clamp(invincible_timer_ms-int(delta*1000), 0, 999999)
+	
+	#Handle powerups
+	powerup_timer_ms = clamp(invincible_timer_ms-int(delta*1000), 0, 999999)
+	if !powerup_timer_ms:
+		powerup = PLATFORMING_POWERUP.NONE;
+	match powerup:
+		PLATFORMING_POWERUP.NONE:
+			actorData.weapon_type = WEAPON.BUBBLE
+			is_sparkling = false
+		PLATFORMING_POWERUP.RAINBOW:
+			actorData.weapon_type = WEAPON.BUBBLE_RAINBOW
+			is_sparkling = false
+		PLATFORMING_POWERUP.SPARKLE_RUNNING:
+			actorData.weapon_type = WEAPON.BUBBLE
+			is_sparkling = true
+				
 	#Hurt blinking (NOTE:(Jim) Feel free to ask me about the math for "its_blink_off_time"!)
 	var its_blink_off_time = bool(invincible_timer_ms%(2*HURT_BLINK_RATE_MS) > HURT_BLINK_RATE_MS)
 	visible = (false if (invincible_timer_ms>0 and its_blink_off_time) else true)

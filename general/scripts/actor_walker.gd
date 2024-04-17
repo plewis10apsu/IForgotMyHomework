@@ -19,23 +19,37 @@ func _process(delta):
 	if actorData.hp <= 0:	
 		#DIE
 		queue_free()
-	#WALK!
+
+func _physics_process(delta):
+	#GRAVITY
+	velocity.y += gravity * delta
+	#MOVE AND TURN AROUND
 	if(is_on_floor()):
-		if(position.x == position_x_last_frame):
-			#We haven't moved, so flip!
-			is_facing_right = !is_facing_right
+		if(
+			position.x == position_x_last_frame
+			or
+			!$PhBaddie/LedgeSensor.get_overlapping_bodies().size()
+		):
+			#We haven't moved, or we have reached a ledge, so flip!
+			if is_facing_right:
+				#Switch to left
+				is_facing_right = false
+				print("R->L Scale before flip: " + str(scale.y))
+				$PhBaddie.scale.x = abs($PhBaddie.scale.x) * (-1)
+				print("R->L Scale after flip: " + str(scale.y))
+			else:##not right yet
+				#Switch to right
+				is_facing_right = true
+				print("L->R Scale before flip: " + str(scale.y))
+				$PhBaddie.scale.x = abs($PhBaddie.scale.x)
+				print("L->R Scale after flip: " + str(scale.y))
 		#Move
 		velocity.x = WALK_SPEED * (1 if is_facing_right else (-1))
 		position_x_last_frame = position.x
 	else:
-		position_x_last_frame = 0
-	ledge_sensor_overlapping_bodies = $LedgeSensor.get_overlapping_bodies()
-	#print("--- --- --- --- --- ---")
-	for o in ledge_sensor_overlapping_bodies:
-		pass#print(o)
-
-func _physics_process(delta):
-	velocity.y += gravity * delta
+		position_x_last_frame = 0 #Zeroing this out is a hacky way to avoid detecting x stillness while airborn
+	#for o in ledge_sensor_overlapping_bodies:
+		#print(o)
 	move_and_slide()
 
 func _on_area_2d_area_entered(area):
@@ -55,15 +69,13 @@ func _on_area_2d_area_entered(area):
 func hit_something():
 	pass
 
-
 func _on_area_2d_2_area_exited(area):
-	print("SENSOR EXITED AREA!!!")
-	is_facing_right = !is_facing_right
-
+	#print("SENSOR EXITED AREA!!!")
+	#is_facing_right = !is_facing_right
+	pass
 
 func _on_area_2d_2_body_exited(body):
 	pass # Replace with function body.
-
 
 func _on_ledge_sensor_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	pass # Replace with function body.
