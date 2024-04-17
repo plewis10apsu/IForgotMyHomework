@@ -35,6 +35,10 @@ folder_colors={
 "res://menus/": "gray"
 }
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_accept={

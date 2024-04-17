@@ -357,6 +357,7 @@ theme_override_font_sizes/font_size = 60
 text = "Close"
 
 [node name="Jump(X)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+layout_mode = 0
 offset_left = 175.0
 offset_top = 175.0
 offset_right = 775.0
@@ -367,6 +368,7 @@ theme_override_font_sizes/font_size = 30
 text = "Jump"
 
 [node name="Shoot(X)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+layout_mode = 0
 offset_left = 175.0
 offset_top = 205.0
 offset_right = 775.0
@@ -377,6 +379,7 @@ theme_override_font_sizes/font_size = 30
 text = "Shoot"
 
 [node name="Move(X)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+layout_mode = 0
 offset_left = 175.0
 offset_top = 235.0
 offset_right = 775.0
@@ -388,6 +391,7 @@ text = "Move
 "
 
 [node name="Pause(X)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+layout_mode = 0
 offset_left = 175.0
 offset_top = 270.0
 offset_right = 775.0
@@ -400,6 +404,7 @@ text = "Pause
 "
 
 [node name="Jump(K)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+layout_mode = 0
 offset_left = 200.0
 offset_top = 340.0
 offset_right = 800.0
@@ -410,6 +415,7 @@ theme_override_font_sizes/font_size = 30
 text = "Jump"
 
 [node name="Shoot(K)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+layout_mode = 0
 offset_left = 200.0
 offset_top = 375.0
 offset_right = 800.0
@@ -420,6 +426,7 @@ theme_override_font_sizes/font_size = 30
 text = "Shoot"
 
 [node name="Move(K)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+layout_mode = 0
 offset_left = 200.0
 offset_top = 425.0
 offset_right = 800.0
@@ -431,6 +438,7 @@ text = "Move
 "
 
 [node name="Pause(K)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+layout_mode = 0
 offset_left = 200.0
 offset_top = 480.0
 offset_right = 800.0
