@@ -19,13 +19,13 @@ var sfx_player_dictionary : Dictionary #Keys will be defined in _ready()
 func _ready():
 	add_child(music_player)
 	add_child(bullet_parent)
-	prep_sfx_player("pop", "res://general/sfx/cc0_698818__funky_audio__dsgnsynth_bubble-pops-synth-singular_funky-audio_fass.mp3")
+	prep_sfx_player("pop", 16, "res://general/sfx/cc0_698818__funky_audio__dsgnsynth_bubble-pops-synth-singular_funky-audio_fass.mp3")
 	play_sfx_by_name("pop")
-	sfx_player_dictionary["pop"].max_polyphony = 8
 
-func prep_sfx_player(sfx_name_IN, asset_IN):
+func prep_sfx_player(sfx_name_IN, max_polyphony_IN, asset_IN):
 	sfx_player_dictionary[sfx_name_IN] = AudioStreamPlayer.new()
 	sfx_player_dictionary[sfx_name_IN].stream = load(asset_IN)
+	sfx_player_dictionary[sfx_name_IN].max_polyphony = max_polyphony_IN
 	add_child(sfx_player_dictionary[sfx_name_IN])
 	
 func point_at_player_from(from_node_IN):
