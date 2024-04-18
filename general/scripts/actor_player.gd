@@ -38,7 +38,7 @@ func _process(delta):
 	invincible_timer_ms = clamp(invincible_timer_ms-int(delta*1000), 0, 999999)
 	
 	#Handle powerups
-	powerup_timer_ms = clamp(invincible_timer_ms-int(delta*1000), 0, 999999)
+	powerup_timer_ms = clamp(powerup_timer_ms-int(delta*1000), 0, 999999)
 	if !powerup_timer_ms:
 		powerup = PLATFORMING_POWERUP.NONE;
 	match powerup:
@@ -54,7 +54,7 @@ func _process(delta):
 				
 	#Hurt blinking (NOTE:(Jim) Feel free to ask me about the math for "its_blink_off_time"!)
 	var its_blink_off_time = bool(invincible_timer_ms%(2*HURT_BLINK_RATE_MS) > HURT_BLINK_RATE_MS)
-	visible = (false if (invincible_timer_ms>0 and its_blink_off_time) else true)
+	$Sprite.visible = (false if (invincible_timer_ms>0 and its_blink_off_time) else true)
 	#Logic state machine
 	match state:
 		PLAYERSTATE.PLAY:
@@ -104,9 +104,9 @@ func _physics_process(delta):
 					pass
 				#Flip sprite
 				if is_facing_right:
-					$Sprite.scale.x = abs($Sprite.scale.x)
-				else:
 					$Sprite.scale.x = abs($Sprite.scale.x) * (-1)
+				else:
+					$Sprite.scale.x = abs($Sprite.scale.x)
 				#Play the walking animation
 				if not $Sprite.is_playing() and is_on_floor():
 					$Sprite.frame = 1
@@ -240,3 +240,7 @@ func _on_area_2d_area_entered(area):
 		invincible_timer_ms = HURT_BLINK_DURATION_MS
 		actorData.hp -= other.actorData.hazard_level
 		other.hit_something()
+	if other.actorData.team == TEAM.POWER_UP:
+		powerup_timer_ms = 15 * 1000 # 30 seconds to start
+		powerup = PLATFORMING_POWERUP.RAINBOW
+		other.queue_free()

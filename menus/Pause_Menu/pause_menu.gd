@@ -19,6 +19,7 @@ func pause():
 
 func pause_game():
 	if Input.is_action_just_pressed("escape") and !get_tree().paused:
+		$PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2/ResumeButton.grab_focus()
 		pause()
 	elif Input.is_action_just_pressed("escape") and get_tree().paused:
 		resume()

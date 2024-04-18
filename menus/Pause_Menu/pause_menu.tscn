@@ -2,7 +2,6 @@
 
 [ext_resource type="Shader" path="res://menus/Pause_Menu/pause_menu.gdshader" id="1_j3kof"]
 [ext_resource type="Script" path="res://menus/Pause_Menu/pause_menu.gd" id="1_ll0l5"]
-[ext_resource type="Script" path="res://menus/Help_Menu/Help_menu.gd" id="2_jka5h"]
 [ext_resource type="FontFile" uid="uid://cs8850q2te7fk" path="res://menus/Font/ThaleahFat.ttf" id="3_2374v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kjvt6"]
@@ -22,6 +21,8 @@ corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
+
+[sub_resource type="GDScript" id="GDScript_ll36t"]
 
 [sub_resource type="Animation" id="Animation_mefcl"]
 length = 0.001
@@ -123,7 +124,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_srxli")
 [node name="Panel" type="Panel" parent="PanelContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pip67")
-script = ExtResource("2_jka5h")
+script = SubResource("GDScript_ll36t")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/Panel"]
 layout_mode = 1
@@ -164,6 +165,10 @@ size_flags_vertical = 10
 [node name="ResumeButton" type="Button" parent="PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../RestartButton")
+focus_next = NodePath("../RestartButton")
+focus_previous = NodePath("../QuitButton")
 theme_override_fonts/font = ExtResource("3_2374v")
 theme_override_font_sizes/font_size = 60
 text = "Resume"
@@ -172,6 +177,10 @@ icon_alignment = 1
 [node name="RestartButton" type="Button" parent="PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../MainMenuButton")
+focus_next = NodePath("../MainMenuButton")
+focus_previous = NodePath("../ResumeButton")
 theme_override_fonts/font = ExtResource("3_2374v")
 theme_override_font_sizes/font_size = 60
 text = "Restart"
@@ -179,6 +188,10 @@ text = "Restart"
 [node name="MainMenuButton" type="Button" parent="PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../RestartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../RestartButton")
 theme_override_fonts/font = ExtResource("3_2374v")
 theme_override_font_sizes/font_size = 60
 text = "Main Menu"
@@ -186,6 +199,10 @@ text = "Main Menu"
 [node name="QuitButton" type="Button" parent="PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../MainMenuButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+focus_next = NodePath("../ResumeButton")
+focus_previous = NodePath("../MainMenuButton")
 theme_override_fonts/font = ExtResource("3_2374v")
 theme_override_font_sizes/font_size = 60
 text = "Quit"

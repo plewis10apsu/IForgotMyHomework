@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4bwr6c3m4qte"]
+
+[ext_resource type="PackedScene" uid="uid://h1euld2qohrv" path="res://general/scenes/actor_player.tscn" id="1_ym3xc"]
+[ext_resource type="PackedScene" uid="uid://cusmuny1el101" path="res://menus/Pause_Menu/pause_menu.tscn" id="2_q7t66"]
+[ext_resource type="Texture2D" uid="uid://dokewrt13dv30" path="res://general/sprites/moon texture.png" id="2_uny6s"]
+[ext_resource type="Script" path="res://level_3/moon_terrain.gd" id="2_x463h"]
+[ext_resource type="Texture2D" uid="uid://defld581ujpa7" path="res://general/sprites/lil house sprite.png" id="5_hu0d4"]
+[ext_resource type="Texture2D" uid="uid://bc5urby4qsk2u" path="res://general/sprites/homework sprite.png" id="6_5ikg0"]
+
+[node name="moon_level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ym3xc")]
+position = Vector2(2, -22)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -100
+offset_left = -2763.0
+offset_top = -2106.0
+offset_right = 4589.0
+offset_bottom = 1850.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_q7t66")]
+
+[node name="moon_terrain" type="StaticBody2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="moon_terrain"]
+position = Vector2(2, -14)
+script = ExtResource("2_x463h")
+
+[node name="Polygon2D" type="Polygon2D" parent="moon_terrain/CollisionPolygon2D"]
+texture_repeat = 2
+texture = ExtResource("2_uny6s")
+polygon = PackedVector2Array(-7, 27, 175, 24, 364, -53, 415, -57, 425, -51, 433, -44, 442, -35, 454, -24, 477, -14, 517, -18, 619, -19, 639, -21, 658, -36, 669, -49, 680, -56, 693, -56, 726, -49, 751, -39, 764, -32, 769, -26, 772, -12, 780, 3, 797, 5, 898, -11, 912, -18, 937, -31, 1016, -89, 1037, -105, 1062, -111, 1292, -112, 1382, -126, 1454, -176, 1521, -170, 1545, -79, 1451, 4, 1016, 232, -155, 238, -401, 212, -378, 47, -263, 31, -121, 27)
+
+[node name="LilHouseSprite" type="Sprite2D" parent="."]
+position = Vector2(1219, -182)
+texture = ExtResource("5_hu0d4")
+
+[node name="HomeworkSprite" type="Sprite2D" parent="."]
+position = Vector2(1125, -171)
+texture = ExtResource("6_5ikg0")

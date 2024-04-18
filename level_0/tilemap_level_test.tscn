@@ -4,7 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://h1euld2qohrv" path="res://general/scenes/actor_player.tscn" id="2_on4jh"]
 [ext_resource type="PackedScene" path="res://general/scenes/cloud_platform.tscn" id="3_qmcg3"]
 [ext_resource type="PackedScene" uid="uid://cusmuny1el101" path="res://menus/Pause_Menu/pause_menu.tscn" id="4_x54o0"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://djl6bhis4lqbh" path="res://general/scenes/actor_dave.tscn" id="5_omkk2"]
+=======
+[ext_resource type="PackedScene" path="res://general/scenes/power_up_1.tscn" id="5_yeyay"]
+>>>>>>> refs/remotes/origin/main
 
 [node name="Level" type="Node2D"]
 
@@ -29,7 +33,12 @@ position = Vector2(459, -184)
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_x54o0")]
 
+<<<<<<< HEAD
 [node name="ActorDave" parent="." instance=ExtResource("5_omkk2")]
 position = Vector2(120, -120)
 turns_at_ledges = false
 is_facing_right = false
+=======
+[node name="Power_up" parent="." instance=ExtResource("5_yeyay")]
+position = Vector2(269, -58)
+>>>>>>> refs/remotes/origin/main

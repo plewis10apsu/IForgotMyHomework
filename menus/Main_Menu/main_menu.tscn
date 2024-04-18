@@ -1,13 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://dnt4b8ise03l1"]
+[gd_scene load_steps=34 format=3 uid="uid://dnt4b8ise03l1"]
 
 [ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ibt0l"]
 [ext_resource type="Texture2D" uid="uid://bercx77l05y7x" path="res://menus/textures/menu background.png" id="2_hsk56"]
-[ext_resource type="Texture2D" uid="uid://b715cgij2umwc" path="res://menus/textures/tile_0027.png" id="3_v1s6b"]
 [ext_resource type="FontFile" uid="uid://cs8850q2te7fk" path="res://menus/Font/ThaleahFat.ttf" id="3_v2n1h"]
-[ext_resource type="Texture2D" uid="uid://7ny0wsjiga62" path="res://menus/textures/tile_0028.png" id="4_nvumc"]
 [ext_resource type="Script" path="res://menus/Main_Menu/Camera2D.gd" id="6_qaj33"]
 [ext_resource type="Texture2D" uid="uid://bk7eujxm0x84h" path="res://menus/textures/c1a6s8gx.bmp" id="8_gp728"]
-[ext_resource type="Script" path="res://menus/Help_Menu/Help_menu.gd" id="8_rq06r"]
 [ext_resource type="PackedScene" uid="uid://do83bjgrwbjjs" path="res://general/scenes/cloud.tscn" id="8_weypu"]
 [ext_resource type="Texture2D" uid="uid://chro3tcmjnbwn" path="res://menus/textures/tile_0004.png" id="9_k2jpv"]
 [ext_resource type="Texture2D" uid="uid://05qj4mb7ymbt" path="res://menus/textures/tile_0006.png" id="10_5rkhr"]
@@ -45,6 +42,8 @@ corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
+
+[sub_resource type="GDScript" id="GDScript_ll36t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_57sdk"]
 
@@ -113,27 +112,45 @@ autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 720
+theme_override_constants/separation = 689
 
-[node name="CreditsButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(115, 115)
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-texture_normal = ExtResource("4_nvumc")
-stretch_mode = 0
+focus_neighbor_left = NodePath("../HelpButton")
+focus_neighbor_top = NodePath("../VBoxContainer/LevelButton1")
+focus_neighbor_right = NodePath("../VBoxContainer/ExitButton")
+focus_neighbor_bottom = NodePath("../VBoxContainer/ExitButton")
+focus_next = NodePath("../VBoxContainer/LevelButton1")
+focus_previous = NodePath("../VBoxContainer/ExitButton")
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 60
+text = "Credits"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
 [node name="LevelButton1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../CreditsButton")
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_right = NodePath("../../HelpButton")
+focus_neighbor_bottom = NodePath("../LevelButton2")
+focus_next = NodePath("../LevelButton2")
+focus_previous = NodePath("../ExitButton")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Level 1"
 
 [node name="LevelButton2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../CreditsButton")
+focus_neighbor_top = NodePath("../LevelButton1")
+focus_neighbor_right = NodePath("../../HelpButton")
+focus_neighbor_bottom = NodePath("../LevelButton3")
+focus_next = NodePath("../LevelButton3")
+focus_previous = NodePath("../LevelButton1")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Level 2
@@ -141,12 +158,19 @@ text = "Level 2
 
 [node name="LevelButton3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../CreditsButton")
+focus_neighbor_top = NodePath("../LevelButton2")
+focus_neighbor_right = NodePath("../../HelpButton")
+focus_neighbor_bottom = NodePath("../ScoreButton")
+focus_next = NodePath("../ScoreButton")
+focus_previous = NodePath("../LevelButton2")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Level 3
 "
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
@@ -154,24 +178,46 @@ text = "Options"
 
 [node name="ScoreButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../CreditsButton")
+focus_neighbor_top = NodePath("../LevelButton3")
+focus_neighbor_right = NodePath("../../HelpButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
+focus_next = NodePath("../ExitButton")
+focus_previous = NodePath("../LevelButton3")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Score"
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../CreditsButton")
+focus_neighbor_top = NodePath("../ScoreButton")
+focus_neighbor_right = NodePath("../../HelpButton")
+focus_neighbor_bottom = NodePath("../LevelButton1")
+focus_next = NodePath("../../HelpButton")
+focus_previous = NodePath("../ScoreButton")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Exit
 "
 
-[node name="HelpButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(115, 115)
+[node name="HelpButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture_normal = ExtResource("3_v1s6b")
-stretch_mode = 0
+focus_neighbor_left = NodePath("../VBoxContainer/ExitButton")
+focus_neighbor_top = NodePath("../VBoxContainer/LevelButton1")
+focus_neighbor_right = NodePath("../CreditsButton")
+focus_neighbor_bottom = NodePath("../VBoxContainer/ExitButton")
+focus_next = NodePath("../CreditsButton")
+focus_previous = NodePath("../VBoxContainer/ExitButton")
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 60
+text = "Help"
+
+[node name="Node2D" parent="." instance=ExtResource("8_weypu")]
+z_index = 1
+position = Vector2(2007, -676)
 
 [node name="HighScore" type="Control" parent="."]
 layout_mode = 1
@@ -223,6 +269,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="HighScore1" type="Label" parent="HighScore/MarginContainer2/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 1)
@@ -236,6 +283,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="HighScore2" type="Label" parent="HighScore/MarginContainer2/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 1)
@@ -249,6 +297,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="HighScore3" type="Label" parent="HighScore/MarginContainer2/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 1)
@@ -271,22 +320,15 @@ theme_override_constants/separation = 720
 layout_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="HighScore/MarginContainer2/HBoxContainer/VBoxContainer"]
-position = Vector2(-1668, 131.996)
+position = Vector2(-1789, 65.9956)
 anchor_mode = 0
 script = ExtResource("6_qaj33")
-
-[node name="ExitButton" type="Button" parent="HighScore/MarginContainer2/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_v2n1h")
-theme_override_font_sizes/font_size = 60
-text = "Exit
-"
 
 [node name="BackButton" type="Button" parent="HighScore/MarginContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
-text = "Main Menu"
+text = "Back"
 
 [node name="HelpPanel" type="PopupPanel" parent="."]
 transparent_bg = true
@@ -308,7 +350,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_huxv4")
-script = ExtResource("8_rq06r")
+script = SubResource("GDScript_ll36t")
 
 [node name="MarginContainer" type="MarginContainer" parent="HelpPanel/HelpMenu/Panel3"]
 layout_mode = 1
@@ -588,7 +630,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tlscf")
-script = ExtResource("8_rq06r")
+script = SubResource("GDScript_ll36t")
 
 [node name="MarginContainer" type="MarginContainer" parent="CreditsPanel/CreditsMenu/Panel3"]
 layout_mode = 1
@@ -635,16 +677,14 @@ theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Close"
 
-[node name="Node2D" parent="." instance=ExtResource("8_weypu")]
-position = Vector2(2007, -676)
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton2" to="." method="_on_level_button_2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton3" to="." method="_on_level_button_3_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScoreButton" to="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/Camera2D" method="_on_score_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
-[connection signal="pressed" from="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/BackButton" to="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/Camera2D" method="_on_back_button_pressed"]
-[connection signal="pressed" from="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="HelpPanel/HelpMenu/Panel3" method="_on_close_button_pressed"]
-[connection signal="pressed" from="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="CreditsPanel/CreditsMenu/Panel3" method="_on_close_button_pressed"]
+[connection signal="pressed" from="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

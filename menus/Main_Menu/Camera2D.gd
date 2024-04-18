@@ -1,11 +1,7 @@
 extends Camera2D
 
-
 var main_menu_position = Vector2()
 var highscore_menu_position = Vector2()
-
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,15 +19,16 @@ func move_camera(target_position: Vector2):
 func move_to_highscore():
 	move_camera(highscore_menu_position)
 
-func _on_score_button_pressed():
-	$"../../../VBoxContainer/HighScore1".text = str(Global.high_scores[0])
-	$"../../../VBoxContainer/HighScore2".text = str(Global.high_scores[1])
-	$"../../../VBoxContainer/HighScore3".text = str(Global.high_scores[2])
-	move_to_highscore()
-
 # Function to move to the main menu menu
 func move_to_main_menu():
 	move_camera(main_menu_position)
+
+func _on_score_button_pressed():
+	$"../../../VBoxContainer/HighScore1".text = str(Global.get_high_score_as_string(0))
+	$"../../../VBoxContainer/HighScore2".text = str(Global.get_high_score_as_string(1))
+	$"../../../VBoxContainer/HighScore3".text = str(Global.get_high_score_as_string(2))
+	$"../BackButton".grab_focus()
+	move_to_highscore()
 
 func _on_back_button_pressed():
 	move_to_main_menu()
