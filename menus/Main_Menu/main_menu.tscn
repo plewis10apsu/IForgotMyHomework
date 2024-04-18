@@ -128,12 +128,24 @@ layout_mode = 2
 
 [node name="LevelButton1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../CreditsButton")
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_right = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../LevelButton2")
+focus_next = NodePath("../LevelButton2")
+focus_previous = NodePath("../ExitButton")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Level 1"
 
 [node name="LevelButton2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../CreditsButton")
+focus_neighbor_top = NodePath("../LevelButton1")
+focus_neighbor_right = NodePath("../../HelpButton")
+focus_neighbor_bottom = NodePath("../LevelButton3")
+focus_next = NodePath("../LevelButton3")
+focus_previous = NodePath("../LevelButton1")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Level 2
@@ -141,6 +153,12 @@ text = "Level 2
 
 [node name="LevelButton3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../CreditsButton")
+focus_neighbor_top = NodePath("../LevelButton2")
+focus_neighbor_right = NodePath("../../HelpButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../LevelButton2")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Level 3
