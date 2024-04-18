@@ -174,6 +174,10 @@ size_flags_vertical = 8
 texture_normal = ExtResource("3_v1s6b")
 stretch_mode = 0
 
+[node name="Node2D" parent="." instance=ExtResource("8_weypu")]
+z_index = 1
+position = Vector2(2007, -676)
+
 [node name="HighScore" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -224,6 +228,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="HighScore1" type="Label" parent="HighScore/MarginContainer2/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 1)
@@ -237,6 +242,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="HighScore2" type="Label" parent="HighScore/MarginContainer2/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 1)
@@ -250,6 +256,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="HighScore3" type="Label" parent="HighScore/MarginContainer2/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 1)
@@ -635,9 +642,6 @@ size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Close"
-
-[node name="Node2D" parent="." instance=ExtResource("8_weypu")]
-position = Vector2(2007, -676)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1" to="." method="_on_play_button_pressed"]
