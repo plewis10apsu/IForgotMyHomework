@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://5lug0b2o0ky5"]
+[gd_scene load_steps=6 format=3 uid="uid://5lug0b2o0ky5"]
 
 [ext_resource type="TileSet" uid="uid://hhqhysdekss0" path="res://general/etc/level_tileset_1.tres" id="1_q10gx"]
 [ext_resource type="PackedScene" uid="uid://h1euld2qohrv" path="res://general/scenes/actor_player.tscn" id="2_on4jh"]
-[ext_resource type="PackedScene" uid="uid://ctd1vldeuv3vd" path="res://general/scenes/cloud_platform.tscn" id="3_qmcg3"]
+[ext_resource type="PackedScene" path="res://general/scenes/cloud_platform.tscn" id="3_qmcg3"]
 [ext_resource type="PackedScene" uid="uid://cusmuny1el101" path="res://menus/Pause_Menu/pause_menu.tscn" id="4_x54o0"]
+[ext_resource type="PackedScene" uid="uid://djl6bhis4lqbh" path="res://general/scenes/actor_dave.tscn" id="5_omkk2"]
 
 [node name="Level" type="Node2D"]
 
@@ -17,6 +18,7 @@ position = Vector2(16, -64)
 
 [node name="Background (replace later lol)" type="Polygon2D" parent="."]
 z_index = -50
+position = Vector2(-392, 776)
 color = Color(0.172549, 0.772549, 0.964706, 1)
 polygon = PackedVector2Array(-1786, -1547, 2925, -1508, 2822, 1362, -1912, 1288)
 
@@ -26,3 +28,8 @@ position = Vector2(459, -184)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_x54o0")]
+
+[node name="ActorDave" parent="." instance=ExtResource("5_omkk2")]
+position = Vector2(120, -120)
+turns_at_ledges = false
+is_facing_right = false

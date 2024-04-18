@@ -5,14 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bmunbprqa4k34" path="res://general/sprites/player_frame_1.png" id="4_lsrsl"]
 [ext_resource type="Texture2D" uid="uid://mk7q0trey33r" path="res://general/sprites/player_frame_2.png" id="5_4cir8"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vn0ym"]
-radius = 8.0
-height = 22.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nbqmx"]
-radius = 8.0
-height = 22.0
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_1hklf"]
 animations = [{
 "frames": [{
@@ -27,9 +19,24 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vn0ym"]
+radius = 8.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nbqmx"]
+radius = 8.0
+height = 22.0
+
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -14)
 collision_layer = 0
 script = ExtResource("1_xm6wn")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2)
+rotation = 3.14159
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_1hklf")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -45,11 +52,6 @@ shape = SubResource("CapsuleShape2D_nbqmx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(6, 6)
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 2)
-scale = Vector2(-1, 1)
-sprite_frames = SubResource("SpriteFrames_1hklf")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
