@@ -13,6 +13,7 @@ var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	actorData = ActorData.new(100, TEAM.ENEMY, WEAPON.NONE, 1)
 	position_x_last_frame = 0
+	$AnimatedSprite2D.self_modulate = Color(1, 1, 1) # Set sprite color to white
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
