@@ -12,6 +12,7 @@ var prev_position : Vector2 #where this bubble was at the start of the previous 
 var angles : Vector2 # Movement
 
 func explicit_init(shooter_IN, aim_vector_IN:Vector2):
+	rng.randomize()
 	actorData = ActorData.new(
 		1, #HP_MAX
 		shooter_IN.actorData.team,
