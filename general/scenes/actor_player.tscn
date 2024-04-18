@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://h1euld2qohrv"]
+[gd_scene load_steps=10 format=3 uid="uid://h1euld2qohrv"]
 
 [ext_resource type="Script" path="res://general/scripts/actor_player.gd" id="1_xm6wn"]
+[ext_resource type="FontFile" uid="uid://cs8850q2te7fk" path="res://menus/Font/ThaleahFat.ttf" id="3_k0wqs"]
 [ext_resource type="PackedScene" uid="uid://c6hlqk4ebdk" path="res://general/scenes/bullet_emitter.tscn" id="3_uebj2"]
+[ext_resource type="Script" path="res://general/scripts/player_hud_score.gd" id="4_7hk7a"]
 [ext_resource type="Texture2D" uid="uid://bmunbprqa4k34" path="res://general/sprites/player_frame_1.png" id="4_lsrsl"]
 [ext_resource type="Texture2D" uid="uid://mk7q0trey33r" path="res://general/sprites/player_frame_2.png" id="5_4cir8"]
 
@@ -43,13 +45,24 @@ shape = SubResource("CapsuleShape2D_nbqmx")
 
 [node name="BulletEmitter" parent="." instance=ExtResource("3_uebj2")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(6, 6)
-
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_1hklf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6, 6)
+
+[node name="Score" type="Label" parent="Camera2D"]
+texture_filter = 1
+offset_left = 53.0
+offset_top = -88.0
+offset_right = 158.0
+offset_bottom = -73.0
+theme_override_fonts/font = ExtResource("3_k0wqs")
+text = "azdvz"
+horizontal_alignment = 2
+script = ExtResource("4_7hk7a")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

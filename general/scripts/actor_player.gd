@@ -54,7 +54,7 @@ func _process(delta):
 				
 	#Hurt blinking (NOTE:(Jim) Feel free to ask me about the math for "its_blink_off_time"!)
 	var its_blink_off_time = bool(invincible_timer_ms%(2*HURT_BLINK_RATE_MS) > HURT_BLINK_RATE_MS)
-	visible = (false if (invincible_timer_ms>0 and its_blink_off_time) else true)
+	$Sprite.visible = (false if (invincible_timer_ms>0 and its_blink_off_time) else true)
 	#Logic state machine
 	match state:
 		PLAYERSTATE.PLAY:

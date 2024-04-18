@@ -1,6 +1,7 @@
 extends "res://general/scripts/bullet_bubble.gd"
 
 var hue : float
+var initial_hue : float
 
 func explicit_init(shooter_IN, aim_vector_IN:Vector2):
 	super(shooter_IN, aim_vector_IN)

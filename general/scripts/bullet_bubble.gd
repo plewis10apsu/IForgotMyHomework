@@ -8,8 +8,9 @@ var actorData : ActorData
 var aim_vector : Vector2
 var time_alive : float = 0.0 #in seconds
 var rng = RandomNumberGenerator.new()
-var prev_position : Vector2 #where this bubble was at the start of the previous frame
+var prev_position : Vector2 # Where this bubble was at the start of the previous frame
 var angles : Vector2 # Movement
+var alpha : float = 0
 
 func explicit_init(shooter_IN, aim_vector_IN:Vector2):
 	rng.randomize()
@@ -41,6 +42,9 @@ func modulus_vector2(vector, bound):
 	
 func _process(delta):
 	time_alive += delta
+	if alpha < 1:
+		alpha += 0.5
+	$Sprite.modulate = Color(1.0, 1.0, 1.0, alpha)
 	if time_alive > MAX_LIFETIME:
 		destroy()
 	else:

@@ -19,3 +19,11 @@ func _on_help_button_pressed():
 
 func _on_credits_button_pressed():
 	$CreditsPanel.popup_centered()
+
+
+func _on_level_button_3_pressed():
+	Global.change_level("res://level_3/moon_level.tscn")
+
+
+func _on_level_button_2_pressed():
+	Global.change_level("res://level_2/SpaceShooterLevel/scenes/game.tscn")
