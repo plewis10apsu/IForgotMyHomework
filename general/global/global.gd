@@ -15,6 +15,7 @@ var music_dictionary = {
 	"pixelparty" : "res://general/music/noattrib_PandaBeats_PixelParty.wav"
 }
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(music_player)
@@ -37,7 +38,7 @@ func change_level(level_path):
 	# Delete all the bullets
 	for b in bullet_parent.get_children():
 		b.queue_free()
-
+	
 	# Change scenes
 	get_tree().change_scene_to_file(level_path)
 	current_level = get_tree().current_scene
@@ -51,7 +52,7 @@ func get_current_score_as_string():
 
 func get_high_score_as_string(i):
 	return str( clamped_score(high_scores[i]) ).pad_zeros(MAX_SCORE_DIGITS)
-
+	
 
 func clamped_score(score_IN):
 	#Clamps score to truncate digits exceeding max

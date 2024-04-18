@@ -1,19 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxlwynhh4lfxv"]
+[gd_scene load_steps=6 format=3 uid="uid://cxlwynhh4lfxv"]
 
 [ext_resource type="Script" path="res://general/scripts/actor_walker.gd" id="1_8g53c"]
 [ext_resource type="Texture2D" uid="uid://dide32jki36kb" path="res://general/sprites/ph_baddie.png" id="2_vhdfq"]
 [ext_resource type="PackedScene" uid="uid://c6hlqk4ebdk" path="res://general/scenes/bullet_emitter.tscn" id="3_fm8gx"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fh7tf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_vhdfq")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_huwgo"]
 size = Vector2(8, 8)
@@ -25,18 +14,18 @@ size = Vector2(49, 39.5)
 collision_layer = 0
 script = ExtResource("1_8g53c")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PhBaddie" type="Sprite2D" parent="."]
 position = Vector2(0, 2)
-sprite_frames = SubResource("SpriteFrames_fh7tf")
+texture = ExtResource("2_vhdfq")
 
-[node name="LedgeSensor" type="Area2D" parent="AnimatedSprite2D"]
+[node name="LedgeSensor" type="Area2D" parent="PhBaddie"]
 position = Vector2(0, -2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/LedgeSensor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhBaddie/LedgeSensor"]
 position = Vector2(24, 40)
 shape = SubResource("RectangleShape2D_huwgo")
 
-[node name="BulletEmitter" parent="AnimatedSprite2D" instance=ExtResource("3_fm8gx")]
+[node name="BulletEmitter" parent="PhBaddie" instance=ExtResource("3_fm8gx")]
 position = Vector2(0, -2)
 
 [node name="EnvironmentalCollision" type="CollisionPolygon2D" parent="."]
@@ -50,5 +39,5 @@ position = Vector2(-0.5, 4.25)
 shape = SubResource("RectangleShape2D_f1hws")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[connection signal="body_shape_exited" from="AnimatedSprite2D/LedgeSensor" to="." method="_on_ledge_sensor_body_shape_exited"]
+[connection signal="body_shape_exited" from="PhBaddie/LedgeSensor" to="." method="_on_ledge_sensor_body_shape_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
