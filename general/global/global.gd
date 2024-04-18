@@ -6,7 +6,7 @@ var current_level #Level will put itself here when it spawns.
 var current_level_path = "" #Current scene path
 var bullet_parent = Node.new()
 var score : int = 0
-var high_scores = [000000, 000000, 000000]
+var high_scores = [0, 0, 0]
 #Music player
 var music_player = AudioStreamPlayer.new()
 var current_music_name # In case we ever care what's playing.
