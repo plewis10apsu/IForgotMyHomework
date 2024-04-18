@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const WALK_SPEED = 80.0 #pixels per second
+const WALK_SPEED = 20.0 #pixels per second
 @export var turns_at_ledges = true
 @export var is_facing_right : bool = true
 var actorData : ActorData
@@ -11,7 +11,7 @@ var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	actorData = ActorData.new(1, TEAM.ENEMY, WEAPON.NONE, 1)
+	actorData = ActorData.new(100, TEAM.ENEMY, WEAPON.NONE, 1)
 	position_x_last_frame = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

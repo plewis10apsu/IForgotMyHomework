@@ -1,54 +1,58 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxlwynhh4lfxv"]
+[gd_scene load_steps=8 format=3 uid="uid://dgo7opjab5mm"]
 
-[ext_resource type="Script" path="res://general/scripts/actor_walker.gd" id="1_8g53c"]
-[ext_resource type="Texture2D" uid="uid://dide32jki36kb" path="res://general/sprites/ph_baddie.png" id="2_vhdfq"]
-[ext_resource type="PackedScene" uid="uid://c6hlqk4ebdk" path="res://general/scenes/bullet_emitter.tscn" id="3_fm8gx"]
+[ext_resource type="Script" path="res://general/scripts/actor_walker.gd" id="1_wwdl0"]
+[ext_resource type="Texture2D" uid="uid://cpuq2egwxv012" path="res://general/sprites/dave_sprite_frame_1.png" id="2_8y5bf"]
+[ext_resource type="Texture2D" uid="uid://3e0hph1oimts" path="res://general/sprites/dave_sprite_frame_2.png" id="3_f5d2d"]
+[ext_resource type="PackedScene" uid="uid://c6hlqk4ebdk" path="res://general/scenes/bullet_emitter.tscn" id="3_mc72q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pammy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_vhdfq")
+"texture": ExtResource("2_8y5bf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f5d2d")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_huwgo"]
 size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1hws"]
-size = Vector2(49, 39.5)
+size = Vector2(13, 12)
 
-[node name="ActorWalker" type="CharacterBody2D"]
-position = Vector2(0, -33)
+[node name="ActorDave" type="CharacterBody2D"]
 collision_layer = 0
-script = ExtResource("1_8g53c")
+script = ExtResource("1_wwdl0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_pammy")
 autoplay = "default"
 
 [node name="LedgeSensor" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(0, -2)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/LedgeSensor"]
-position = Vector2(24, 40)
+position = Vector2(10, 19)
 shape = SubResource("RectangleShape2D_huwgo")
 
-[node name="BulletEmitter" parent="AnimatedSprite2D" instance=ExtResource("3_fm8gx")]
+[node name="BulletEmitter" parent="AnimatedSprite2D" instance=ExtResource("3_mc72q")]
 position = Vector2(0, -2)
 
 [node name="EnvironmentalCollision" type="CollisionPolygon2D" parent="."]
-position = Vector2(3, 19)
-polygon = PackedVector2Array(-14, -21, 9, -21, 25, 8, 14, 13, -17, 14, -26, 9)
+position = Vector2(3, -1)
+polygon = PackedVector2Array(-9, -11, 4, -11, 4, 1, -9, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, 4.25)
+position = Vector2(0.5, -6)
 shape = SubResource("RectangleShape2D_f1hws")
 debug_color = Color(1, 0, 0, 0.419608)
 

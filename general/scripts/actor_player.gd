@@ -235,7 +235,7 @@ func _on_area_2d_area_entered(area):
 		is_hazardous_actor = true
 	else:
 		is_hazardous_actor = false
-	if is_hazardous_actor and !is_friendly:
+	if is_hazardous_actor and !is_friendly and !invincible_timer_ms:
 		#HIT!
 		invincible_timer_ms = HURT_BLINK_DURATION_MS
 		actorData.hp -= other.actorData.hazard_level
