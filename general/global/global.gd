@@ -19,8 +19,9 @@ var sfx_player_dictionary : Dictionary #Keys will be defined in _ready()
 func _ready():
 	add_child(music_player)
 	add_child(bullet_parent)
-	prep_sfx_player("pop", "res://general/sfx/cc0_411462__thebuilder15__bubble-pop.mp3")
+	prep_sfx_player("pop", "res://general/sfx/cc0_698818__funky_audio__dsgnsynth_bubble-pops-synth-singular_funky-audio_fass.mp3")
 	play_sfx_by_name("pop")
+	sfx_player_dictionary["pop"].max_polyphony = 8
 
 func prep_sfx_player(sfx_name_IN, asset_IN):
 	sfx_player_dictionary[sfx_name_IN] = AudioStreamPlayer.new()
@@ -88,5 +89,5 @@ func play_music_by_name(music_name):
 	music_player.play()
 	
 func play_sfx_by_name(sfx_name):
-	# By making this a stream instead of a path, we can load the music during level loading.
+	#if not sfx_player_dictionary[sfx_name].playing:
 	sfx_player_dictionary[sfx_name].play()

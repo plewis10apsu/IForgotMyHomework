@@ -28,7 +28,7 @@ func _physics_process(delta):
 		if(position.x == position_x_last_frame):
 			#We haven't moved, so we're against a wall. Flip!
 			flip()
-		if(!$AnimatedSprite2D/LedgeSensor.get_overlapping_bodies().size()):
+		if(turns_at_ledges and !$AnimatedSprite2D/LedgeSensor.get_overlapping_bodies().size()):
 			#We're at a ledge, and we turn at ledges. Flip!
 			flip()
 		#Move
@@ -44,19 +44,14 @@ func flip():
 	if is_facing_right:
 		#Switch to left
 		is_facing_right = false
-		print("R->L Scale before flip: " + str(scale.y))
 		$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x) * (-1)
-		print("R->L Scale after flip: " + str(scale.y))
 	else:##not right yet
 		#Switch to right
 		is_facing_right = true
-		print("L->R Scale before flip: " + str(scale.y))
 		$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
-		print("L->R Scale after flip: " + str(scale.y))
 
 func _on_area_2d_area_entered(area):
 	var other = area.get_parent()
-	print("WALKER OVERLAPPED AREA: " + str(other))
 	var is_friendly = (actorData.team == other.actorData.team)
 	var is_hazardous_actor
 	if(other.actorData != null) and other.actorData.hazard_level>0:

@@ -62,6 +62,7 @@ func _process(delta):
 		position += velocity
 
 func hit_something():
+	Global.play_sfx_by_name("pop")
 	destroy()
 
 func destroy():

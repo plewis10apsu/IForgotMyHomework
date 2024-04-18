@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://5lug0b2o0ky5"]
+[gd_scene load_steps=7 format=3 uid="uid://5lug0b2o0ky5"]
 
 [ext_resource type="TileSet" uid="uid://hhqhysdekss0" path="res://general/etc/level_tileset_1.tres" id="1_q10gx"]
 [ext_resource type="PackedScene" uid="uid://h1euld2qohrv" path="res://general/scenes/actor_player.tscn" id="2_on4jh"]
 [ext_resource type="PackedScene" uid="uid://ctd1vldeuv3vd" path="res://general/scenes/cloud_platform.tscn" id="3_qmcg3"]
 [ext_resource type="PackedScene" uid="uid://cusmuny1el101" path="res://menus/Pause_Menu/pause_menu.tscn" id="4_x54o0"]
-[ext_resource type="PackedScene" path="res://general/scenes/power_up_1.tscn" id="5_yeyay"]
+[ext_resource type="PackedScene" uid="uid://bwvsa0t1s1ych" path="res://general/scenes/power_up_1.tscn" id="5_yeyay"]
+[ext_resource type="PackedScene" uid="uid://dgo7opjab5mm" path="res://general/scenes/actor_dave.tscn" id="6_pj8kf"]
 
 [node name="Level" type="Node2D"]
 
@@ -30,3 +31,7 @@ position = Vector2(459, -184)
 
 [node name="Power_up" parent="." instance=ExtResource("5_yeyay")]
 position = Vector2(269, -58)
+
+[node name="ActorDave" parent="." instance=ExtResource("6_pj8kf")]
+position = Vector2(72, -112)
+turns_at_ledges = false
