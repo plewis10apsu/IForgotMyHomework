@@ -326,6 +326,12 @@ script = ExtResource("6_qaj33")
 
 [node name="BackButton" type="Button" parent="HighScore/MarginContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
+focus_neighbor_top = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
+focus_neighbor_right = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
+focus_neighbor_bottom = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
+focus_next = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
+focus_previous = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Back"
