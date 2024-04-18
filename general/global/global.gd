@@ -14,21 +14,19 @@ var music_dictionary = {
 	# Paths for all music files
 	"pixelparty" : "res://general/music/noattrib_PandaBeats_PixelParty.wav"
 }
+var sfx_player_dictionary : Dictionary #Keys will be defined in _ready()
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(music_player)
 	add_child(bullet_parent)
-	#score = 1234567890
-	#submit_score_and_reset()
-	#score = 1
-	#submit_score_and_reset()
-	#print("Player score: " + get_current_score_as_string())
-	#print("High score 1: " + get_high_score_as_string(0))
-	#print("High score 2: " + get_high_score_as_string(1))
-	#print("High score 3: " + get_high_score_as_string(2))
+	prep_sfx_player("pop", "res://general/sfx/cc0_411462__thebuilder15__bubble-pop.mp3")
+	play_sfx_by_name("pop")
 
+func prep_sfx_player(sfx_name_IN, asset_IN):
+	sfx_player_dictionary[sfx_name_IN] = AudioStreamPlayer.new()
+	sfx_player_dictionary[sfx_name_IN].stream = load(asset_IN)
+	add_child(sfx_player_dictionary[sfx_name_IN])
+	
 func point_at_player_from(from_node_IN):
 	#Creates normalized V2 pointing from argument's position to the player.
 	#For shooting, remember to pass the emitter node, NOT the actor's top-level "self".
@@ -88,3 +86,7 @@ func play_music_by_name(music_name):
 	var new_stream = load(Global.music_dictionary[music_name])
 	music_player.stream = new_stream
 	music_player.play()
+	
+func play_sfx_by_name(sfx_name):
+	# By making this a stream instead of a path, we can load the music during level loading.
+	sfx_player_dictionary[sfx_name].play()

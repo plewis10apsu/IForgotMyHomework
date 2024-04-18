@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var turns_at_ledges = true
 const WALK_SPEED = 80.0 #pixels per second
-var is_facing_right : bool = true
+@export var turns_at_ledges = true
+@export var is_facing_right : bool = true
 var actorData : ActorData
 var position_x_last_frame : float
 var is_in_floor_backup : bool = false
@@ -25,24 +25,12 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	#MOVE AND TURN AROUND
 	if(is_on_floor()):
-		if(
-			position.x == position_x_last_frame
-			or
-			!$PhBaddie/LedgeSensor.get_overlapping_bodies().size()
-		):
-			#We haven't moved, or we have reached a ledge, so flip!
-			if is_facing_right:
-				#Switch to left
-				is_facing_right = false
-				print("R->L Scale before flip: " + str(scale.y))
-				$PhBaddie.scale.x = abs($PhBaddie.scale.x) * (-1)
-				print("R->L Scale after flip: " + str(scale.y))
-			else:##not right yet
-				#Switch to right
-				is_facing_right = true
-				print("L->R Scale before flip: " + str(scale.y))
-				$PhBaddie.scale.x = abs($PhBaddie.scale.x)
-				print("L->R Scale after flip: " + str(scale.y))
+		if(position.x == position_x_last_frame):
+			#We haven't moved, so we're against a wall. Flip!
+			flip()
+		if(!$AnimatedSprite2D/LedgeSensor.get_overlapping_bodies().size()):
+			#We're at a ledge, and we turn at ledges. Flip!
+			flip()
 		#Move
 		velocity.x = WALK_SPEED * (1 if is_facing_right else (-1))
 		position_x_last_frame = position.x
@@ -51,6 +39,20 @@ func _physics_process(delta):
 	#for o in ledge_sensor_overlapping_bodies:
 		#print(o)
 	move_and_slide()
+
+func flip():
+	if is_facing_right:
+		#Switch to left
+		is_facing_right = false
+		print("R->L Scale before flip: " + str(scale.y))
+		$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x) * (-1)
+		print("R->L Scale after flip: " + str(scale.y))
+	else:##not right yet
+		#Switch to right
+		is_facing_right = true
+		print("L->R Scale before flip: " + str(scale.y))
+		$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
+		print("L->R Scale after flip: " + str(scale.y))
 
 func _on_area_2d_area_entered(area):
 	var other = area.get_parent()

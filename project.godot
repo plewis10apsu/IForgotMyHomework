@@ -31,7 +31,9 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://general/": "gray",
-"res://level_0/": "purple",
+"res://level_0/": "red",
+"res://level_2/": "orange",
+"res://level_3/": "yellow",
 "res://menus/": "gray"
 }
 
