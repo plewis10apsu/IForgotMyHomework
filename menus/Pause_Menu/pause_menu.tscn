@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cusmuny1el101"]
+[gd_scene load_steps=31 format=3 uid="uid://cusmuny1el101"]
 
 [ext_resource type="Shader" path="res://menus/Pause_Menu/pause_menu.gdshader" id="1_j3kof"]
 [ext_resource type="Script" path="res://menus/Pause_Menu/pause_menu.gd" id="1_ll0l5"]
@@ -23,6 +23,46 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="GDScript" id="GDScript_ll36t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_geafr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvtor"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b5c5q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_54q32"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5q8g3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dshgo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qovwt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ejkct"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_unbhp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3q4ri"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jj0km"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5a2tq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nuc0g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7cb1e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_274m8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5xcm1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dji5v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jsffc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ym0vq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmcb7"]
 
 [sub_resource type="Animation" id="Animation_mefcl"]
 length = 0.001
@@ -169,8 +209,17 @@ focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../RestartButton")
 focus_next = NodePath("../RestartButton")
 focus_previous = NodePath("../QuitButton")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_2374v")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_geafr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pvtor")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_b5c5q")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_54q32")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5q8g3")
 text = "Resume"
 icon_alignment = 1
 
@@ -181,8 +230,17 @@ focus_neighbor_top = NodePath("../ResumeButton")
 focus_neighbor_bottom = NodePath("../MainMenuButton")
 focus_next = NodePath("../MainMenuButton")
 focus_previous = NodePath("../ResumeButton")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_2374v")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dshgo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qovwt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ejkct")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unbhp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3q4ri")
 text = "Restart"
 
 [node name="MainMenuButton" type="Button" parent="PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
@@ -192,8 +250,17 @@ focus_neighbor_top = NodePath("../RestartButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 focus_next = NodePath("../QuitButton")
 focus_previous = NodePath("../RestartButton")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_2374v")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jj0km")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5a2tq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nuc0g")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7cb1e")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_274m8")
 text = "Main Menu"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
@@ -203,8 +270,17 @@ focus_neighbor_top = NodePath("../MainMenuButton")
 focus_neighbor_bottom = NodePath("../ResumeButton")
 focus_next = NodePath("../ResumeButton")
 focus_previous = NodePath("../MainMenuButton")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_2374v")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5xcm1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dji5v")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jsffc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ym0vq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nmcb7")
 text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

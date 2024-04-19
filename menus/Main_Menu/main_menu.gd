@@ -12,7 +12,7 @@ func _on_exit_button_pressed():
 	get_tree().quit()
 
 func _on_options_button_pressed():
-	$OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton.grab_focus()
+	$OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer2/CloseButton.grab_focus()
 	$OptionsPanel.popup_centered()
 	
 func _on_help_button_pressed():

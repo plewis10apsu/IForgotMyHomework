@@ -16,7 +16,7 @@ func _ready():
 	$AnimatedSprite2D.self_modulate = Color(1, 1, 1) # Set sprite color to white
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if actorData.hp <= 0:	
 		#DIE
 		queue_free()

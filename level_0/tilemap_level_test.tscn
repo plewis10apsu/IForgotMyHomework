@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://5lug0b2o0ky5"]
+[gd_scene load_steps=10 format=3 uid="uid://5lug0b2o0ky5"]
 
 [ext_resource type="TileSet" uid="uid://hhqhysdekss0" path="res://general/etc/level_tileset_1.tres" id="1_q10gx"]
 [ext_resource type="PackedScene" uid="uid://h1euld2qohrv" path="res://general/scenes/actor_player.tscn" id="2_on4jh"]
 [ext_resource type="PackedScene" uid="uid://ctd1vldeuv3vd" path="res://general/scenes/cloud_platform.tscn" id="3_qmcg3"]
 [ext_resource type="PackedScene" uid="uid://cusmuny1el101" path="res://menus/Pause_Menu/pause_menu.tscn" id="4_x54o0"]
+[ext_resource type="PackedScene" uid="uid://bb1ytyvtxlve0" path="res://general/scenes/transitions.tscn" id="5_lfaq5"]
 [ext_resource type="PackedScene" path="res://general/scenes/power_up_1.tscn" id="5_yeyay"]
+[ext_resource type="Script" path="res://general/scripts/CheckButton.gd" id="6_pccbv"]
 [ext_resource type="PackedScene" uid="uid://dgo7opjab5mm" path="res://general/scenes/actor_dave.tscn" id="6_pj8kf"]
+[ext_resource type="PackedScene" uid="uid://dxsdx21bpqdk" path="res://level_2/SpaceShooterLevel/scenes/game.tscn" id="8_tjekj"]
 
 [node name="Level" type="Node2D"]
 
@@ -25,9 +28,9 @@ polygon = PackedVector2Array(-1786, -1547, 2925, -1508, 2822, 1362, -1912, 1288)
 [node name="CloudPlatform" parent="." instance=ExtResource("3_qmcg3")]
 position = Vector2(459, -184)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PauseLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_x54o0")]
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource("4_x54o0")]
 
 [node name="Power_up" parent="." instance=ExtResource("5_yeyay")]
 position = Vector2(269, -58)
@@ -35,3 +38,20 @@ position = Vector2(269, -58)
 [node name="ActorDave" parent="." instance=ExtResource("6_pj8kf")]
 position = Vector2(72, -112)
 turns_at_ledges = false
+
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Transitions" parent="TransitionLayer" instance=ExtResource("5_lfaq5")]
+scene_to_load = ExtResource("8_tjekj")
+
+[node name="CheckButton" type="CheckButton" parent="TransitionLayer" node_paths=PackedStringArray("transitions")]
+z_index = 2
+offset_left = 39.0
+offset_top = -51.0
+offset_right = 83.0
+offset_bottom = -27.0
+script = ExtResource("6_pccbv")
+transitions = NodePath("../Transitions")
+
+[connection signal="toggled" from="TransitionLayer/CheckButton" to="TransitionLayer/CheckButton" method="_on_toggled"]

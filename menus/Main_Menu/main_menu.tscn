@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dnt4b8ise03l1"]
+[gd_scene load_steps=79 format=3 uid="uid://dnt4b8ise03l1"]
 
 [ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ibt0l"]
 [ext_resource type="Texture2D" uid="uid://bercx77l05y7x" path="res://menus/textures/menu background.png" id="2_hsk56"]
@@ -28,6 +28,96 @@
 [ext_resource type="Texture2D" uid="uid://ddn2bpkl31gno" path="res://menus/textures/tile_0121.png" id="28_1o7kb"]
 [ext_resource type="Texture2D" uid="uid://ctrqymuwdn6pd" path="res://menus/textures/tile_0122.png" id="29_hbwm4"]
 [ext_resource type="Texture2D" uid="uid://cu84ifsdt0qg7" path="res://menus/textures/tile_0017.png" id="30_uvhdj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t3m8v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i726o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x7ge2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aea6g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p85s0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h2u6d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hs046"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sn66m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_equwf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i86yx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwg1b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mey35"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xkyem"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjdve"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxh7w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e1r6w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dtpes"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vymi0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ggfw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cvdwe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rfx17"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xaf5e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1koe6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6nrql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mnhbr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jj1l6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wfofc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7m8w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_urlwi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2kpt4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2hghq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jg8x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7povm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6pyn6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hens"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xbix"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tns5h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hhovl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i2v2l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_co8e6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vndv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bgqij"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p5e72"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pq6t2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ipm1f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fixlo"]
 
@@ -124,8 +214,17 @@ focus_neighbor_right = NodePath("../VBoxContainer/ExitButton")
 focus_neighbor_bottom = NodePath("../VBoxContainer/ExitButton")
 focus_next = NodePath("../VBoxContainer/LevelButton1")
 focus_previous = NodePath("../VBoxContainer/ExitButton")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t3m8v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i726o")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x7ge2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_aea6g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p85s0")
 text = "Credits"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -139,8 +238,17 @@ focus_neighbor_right = NodePath("../../HelpButton")
 focus_neighbor_bottom = NodePath("../LevelButton2")
 focus_next = NodePath("../LevelButton2")
 focus_previous = NodePath("../ExitButton")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h2u6d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hs046")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sn66m")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_equwf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i86yx")
 text = "Level 1"
 
 [node name="LevelButton2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -151,8 +259,17 @@ focus_neighbor_right = NodePath("../../HelpButton")
 focus_neighbor_bottom = NodePath("../LevelButton3")
 focus_next = NodePath("../LevelButton3")
 focus_previous = NodePath("../LevelButton1")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fwg1b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mey35")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xkyem")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kjdve")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bxh7w")
 text = "Level 2
 "
 
@@ -164,8 +281,17 @@ focus_neighbor_right = NodePath("../../HelpButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
 focus_next = NodePath("../OptionsButton")
 focus_previous = NodePath("../LevelButton2")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_e1r6w")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dtpes")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vymi0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ggfw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cvdwe")
 text = "Level 3
 "
 
@@ -177,8 +303,17 @@ focus_neighbor_right = NodePath("../../HelpButton")
 focus_neighbor_bottom = NodePath("../ScoreButton")
 focus_next = NodePath("../ScoreButton")
 focus_previous = NodePath("../LevelButton3")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rfx17")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xaf5e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1koe6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6nrql")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mnhbr")
 text = "Options"
 
 [node name="ScoreButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -189,8 +324,17 @@ focus_neighbor_right = NodePath("../../HelpButton")
 focus_neighbor_bottom = NodePath("../ExitButton")
 focus_next = NodePath("../ExitButton")
 focus_previous = NodePath("../OptionsButton")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jj1l6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wfofc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7m8w")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_urlwi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2kpt4")
 text = "Score"
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -201,8 +345,17 @@ focus_neighbor_right = NodePath("../../HelpButton")
 focus_neighbor_bottom = NodePath("../LevelButton1")
 focus_next = NodePath("../../HelpButton")
 focus_previous = NodePath("../ScoreButton")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2hghq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8jg8x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7povm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6pyn6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3hens")
 text = "Exit
 "
 
@@ -216,8 +369,17 @@ focus_neighbor_right = NodePath("../CreditsButton")
 focus_neighbor_bottom = NodePath("../VBoxContainer/ExitButton")
 focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../VBoxContainer/ExitButton")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4xbix")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tns5h")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hhovl")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i2v2l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_co8e6")
 text = "Help"
 
 [node name="Node2D" parent="." instance=ExtResource("8_weypu")]
@@ -331,14 +493,23 @@ script = ExtResource("6_qaj33")
 
 [node name="BackButton" type="Button" parent="HighScore/MarginContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
-focus_neighbor_top = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
-focus_neighbor_right = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
-focus_neighbor_bottom = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
-focus_next = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
-focus_previous = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2vndv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bgqij")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_p5e72")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_pq6t2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ipm1f")
 text = "Back"
 
 [node name="HelpPanel" type="PopupPanel" parent="."]
@@ -723,14 +894,15 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="HBoxContainer" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="VBoxContainer" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Title" type="Label" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -741,12 +913,38 @@ theme_override_font_sizes/font_size = 95
 text = "Options"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CheckButton2" type="CheckButton" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 200
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 80
+text = "Music:"
 
-[node name="CloseButton" type="Button" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="CheckButton3" type="CheckButton" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 72
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 80
+text = "Sound FX:"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CloseButton" type="Button" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
@@ -766,4 +964,4 @@ text = "Close"
 [connection signal="pressed" from="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/BackButton" to="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/Camera2D" method="_on_back_button_pressed"]
 [connection signal="pressed" from="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="pressed" from="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_close_button_pressed"]
