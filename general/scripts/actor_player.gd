@@ -6,6 +6,7 @@ const WALK_SPEED : float = 120.0 #units per second
 const HURT_BLINK_RATE_MS : int = 30 #ms until hurt visibility toggles
 const HURT_BLINK_DURATION_MS : int = 1500 #ms player will be invincible after being hurt
 const HOVER_THRUST : float = -1800.0 #pixels per frame per second
+const HP_MAX : int = 5 # Maximum hit points
 var powerup : int = PLATFORMING_POWERUP.NONE
 var actorData : ActorData
 var move_vector : Vector2 #for platforming movement input
@@ -22,10 +23,11 @@ var has_shot_this_triggerpull : bool = false #Mostly for limiting single-shot we
 var ms_since_last_shot_this_triggerpull : float = 0.0 #It's a float for accurate conversion from delta.
 var ammo : int = 0 #set this whenever you change the weapon type.
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var rng = RandomNumberGenerator.new()
 
 func _ready():
 	Global.player = self
-	actorData = ActorData.new(5, TEAM.PLAYER, WEAPON.BUBBLE, 0)
+	actorData = ActorData.new(HP_MAX, TEAM.PLAYER, WEAPON.BUBBLE, 0)
 
 func _process(delta):
 	#Check for death
@@ -48,6 +50,9 @@ func _process(delta):
 		PLATFORMING_POWERUP.RAINBOW:
 			actorData.weapon_type = WEAPON.BUBBLE_RAINBOW
 			is_sparkling = false
+			if actorData.hp < HP_MAX:
+				if rng.randi_range(0,100) < 1:
+					actorData.hp += 1
 		PLATFORMING_POWERUP.SPARKLE_RUNNING:
 			actorData.weapon_type = WEAPON.BUBBLE
 			is_sparkling = true

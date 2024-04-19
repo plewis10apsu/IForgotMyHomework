@@ -86,22 +86,27 @@ script = ExtResource("4_7hk7a")
 script = ExtResource("7_o74it")
 
 [node name="heart_1" type="AnimatedSprite2D" parent="Camera2D/Health_HUD"]
+z_index = 100
 position = Vector2(-149, -79)
 sprite_frames = SubResource("SpriteFrames_dqa1q")
 
 [node name="heart_2" type="AnimatedSprite2D" parent="Camera2D/Health_HUD"]
+z_index = 100
 position = Vector2(-131, -79)
 sprite_frames = SubResource("SpriteFrames_dqa1q")
 
 [node name="heart_3" type="AnimatedSprite2D" parent="Camera2D/Health_HUD"]
+z_index = 100
 position = Vector2(-113, -79)
 sprite_frames = SubResource("SpriteFrames_dqa1q")
 
 [node name="heart_4" type="AnimatedSprite2D" parent="Camera2D/Health_HUD"]
+z_index = 100
 position = Vector2(-95, -79)
 sprite_frames = SubResource("SpriteFrames_dqa1q")
 
 [node name="heart_5" type="AnimatedSprite2D" parent="Camera2D/Health_HUD"]
+z_index = 100
 position = Vector2(-77, -79)
 sprite_frames = SubResource("SpriteFrames_dqa1q")
 
