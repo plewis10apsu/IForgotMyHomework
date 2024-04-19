@@ -161,8 +161,8 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../../CreditsButton")
 focus_neighbor_top = NodePath("../LevelButton2")
 focus_neighbor_right = NodePath("../../HelpButton")
-focus_neighbor_bottom = NodePath("../ScoreButton")
-focus_next = NodePath("../ScoreButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
 focus_previous = NodePath("../LevelButton2")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
@@ -170,8 +170,13 @@ text = "Level 3
 "
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
+focus_neighbor_left = NodePath("../../CreditsButton")
+focus_neighbor_top = NodePath("../LevelButton3")
+focus_neighbor_right = NodePath("../../HelpButton")
+focus_neighbor_bottom = NodePath("../ScoreButton")
+focus_next = NodePath("../ScoreButton")
+focus_previous = NodePath("../LevelButton3")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Options"
@@ -179,11 +184,11 @@ text = "Options"
 [node name="ScoreButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../CreditsButton")
-focus_neighbor_top = NodePath("../LevelButton3")
+focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_right = NodePath("../../HelpButton")
 focus_neighbor_bottom = NodePath("../ExitButton")
 focus_next = NodePath("../ExitButton")
-focus_previous = NodePath("../LevelButton3")
+focus_previous = NodePath("../OptionsButton")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Score"
@@ -326,6 +331,12 @@ script = ExtResource("6_qaj33")
 
 [node name="BackButton" type="Button" parent="HighScore/MarginContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
+focus_neighbor_top = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
+focus_neighbor_right = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
+focus_neighbor_bottom = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
+focus_next = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
+focus_previous = NodePath("../../../../../CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton")
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Back"
@@ -342,7 +353,7 @@ anchors_preset = 0
 offset_right = 600.0
 offset_bottom = 600.0
 
-[node name="Panel3" type="Panel" parent="HelpPanel/HelpMenu"]
+[node name="Panel" type="Panel" parent="HelpPanel/HelpMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -352,7 +363,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_huxv4")
 script = SubResource("GDScript_ll36t")
 
-[node name="MarginContainer" type="MarginContainer" parent="HelpPanel/HelpMenu/Panel3"]
+[node name="MarginContainer" type="MarginContainer" parent="HelpPanel/HelpMenu/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -365,14 +376,14 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="HBoxContainer" parent="HelpPanel/HelpMenu/Panel3/MarginContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="HelpPanel/HelpMenu/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="VBoxContainer" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title" type="Label" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -385,12 +396,12 @@ text = "Game
 Controls"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 
-[node name="CloseButton" type="Button" parent="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="CloseButton" type="Button" parent="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -398,7 +409,7 @@ theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
 text = "Close"
 
-[node name="Jump(X)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+[node name="Jump(X)" type="Label" parent="HelpPanel/HelpMenu/Panel"]
 layout_mode = 0
 offset_left = 175.0
 offset_top = 175.0
@@ -409,7 +420,7 @@ theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 30
 text = "Jump"
 
-[node name="Shoot(X)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+[node name="Shoot(X)" type="Label" parent="HelpPanel/HelpMenu/Panel"]
 layout_mode = 0
 offset_left = 175.0
 offset_top = 205.0
@@ -420,7 +431,7 @@ theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 30
 text = "Shoot"
 
-[node name="Move(X)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+[node name="Move(X)" type="Label" parent="HelpPanel/HelpMenu/Panel"]
 layout_mode = 0
 offset_left = 175.0
 offset_top = 235.0
@@ -432,7 +443,7 @@ theme_override_font_sizes/font_size = 30
 text = "Move
 "
 
-[node name="Pause(X)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+[node name="Pause(X)" type="Label" parent="HelpPanel/HelpMenu/Panel"]
 layout_mode = 0
 offset_left = 175.0
 offset_top = 270.0
@@ -445,7 +456,7 @@ text = "Pause
 
 "
 
-[node name="Jump(K)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+[node name="Jump(K)" type="Label" parent="HelpPanel/HelpMenu/Panel"]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 340.0
@@ -456,7 +467,7 @@ theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 30
 text = "Jump"
 
-[node name="Shoot(K)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+[node name="Shoot(K)" type="Label" parent="HelpPanel/HelpMenu/Panel"]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 375.0
@@ -467,7 +478,7 @@ theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 30
 text = "Shoot"
 
-[node name="Move(K)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+[node name="Move(K)" type="Label" parent="HelpPanel/HelpMenu/Panel"]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 425.0
@@ -479,7 +490,7 @@ theme_override_font_sizes/font_size = 30
 text = "Move
 "
 
-[node name="Pause(K)" type="Label" parent="HelpPanel/HelpMenu/Panel3"]
+[node name="Pause(K)" type="Label" parent="HelpPanel/HelpMenu/Panel"]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 480.0
@@ -622,7 +633,7 @@ anchors_preset = 0
 offset_right = 600.0
 offset_bottom = 600.0
 
-[node name="Panel3" type="Panel" parent="CreditsPanel/CreditsMenu"]
+[node name="Panel" type="Panel" parent="CreditsPanel/CreditsMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -632,7 +643,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tlscf")
 script = SubResource("GDScript_ll36t")
 
-[node name="MarginContainer" type="MarginContainer" parent="CreditsPanel/CreditsMenu/Panel3"]
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPanel/CreditsMenu/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -645,14 +656,14 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="HBoxContainer" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="CreditsPanel/CreditsMenu/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="VBoxContainer" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title" type="Label" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -663,12 +674,79 @@ theme_override_font_sizes/font_size = 95
 text = "Credits"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 
-[node name="CloseButton" type="Button" parent="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="CloseButton" type="Button" parent="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 60
+text = "Close"
+
+[node name="OptionsPanel" type="PopupPanel" parent="."]
+transparent_bg = true
+initial_position = 1
+size = Vector2i(600, 600)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_57sdk")
+
+[node name="OptionsMenu" type="Control" parent="OptionsPanel"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 600.0
+offset_bottom = 600.0
+
+[node name="Panel" type="Panel" parent="OptionsPanel/OptionsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tlscf")
+script = SubResource("GDScript_ll36t")
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsPanel/OptionsMenu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="HBoxContainer" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 95
+text = "Options"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="CloseButton" type="Button" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
@@ -686,5 +764,6 @@ text = "Close"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="pressed" from="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/BackButton" to="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/Camera2D" method="_on_back_button_pressed"]
-[connection signal="pressed" from="HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="pressed" from="CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

@@ -12,15 +12,16 @@ func _on_exit_button_pressed():
 	get_tree().quit()
 
 func _on_options_button_pressed():
-	Global.change_level("res://menus/Options_Menu/options_menu.tscn")
-
+	$OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton.grab_focus()
+	$OptionsPanel.popup_centered()
+	
 func _on_help_button_pressed():
 	#$MarginContainer/VBoxContainer/HBoxContainer/HelpButton.release_focus()
-	$HelpPanel/HelpMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton.grab_focus()
+	$HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton.grab_focus()
 	$HelpPanel.popup_centered()
 
 func _on_credits_button_pressed():
-	$CreditsPanel/CreditsMenu/Panel3/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton.grab_focus()
+	$CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton.grab_focus()
 	$CreditsPanel.popup_centered()
 
 func _on_level_button_3_pressed():
@@ -32,3 +33,4 @@ func _on_level_button_2_pressed():
 func _on_close_button_pressed():
 	$HelpPanel.visible = false
 	$CreditsPanel.visible = false
+	$OptionsPanel.visible = false
