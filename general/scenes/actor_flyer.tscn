@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7443fggmgbvs"]
+[gd_scene load_steps=6 format=3 uid="uid://cy5uyk3214614"]
 
 [ext_resource type="Script" path="res://general/scripts/actor_flyer.gd" id="1_62lwg"]
 [ext_resource type="PackedScene" uid="uid://c6hlqk4ebdk" path="res://general/scenes/bullet_emitter.tscn" id="2_gu03f"]

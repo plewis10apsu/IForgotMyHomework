@@ -913,7 +913,6 @@ text = "Close"
 transparent_bg = true
 initial_position = 1
 size = Vector2i(600, 600)
-visible = true
 theme_override_styles/panel = SubResource("StyleBoxEmpty_57sdk")
 
 [node name="OptionsMenu" type="Control" parent="OptionsPanel"]

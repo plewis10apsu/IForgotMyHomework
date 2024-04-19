@@ -2,4 +2,4 @@ extends Control
 
 @onready var score = $Score:
 	set(value):
-		score.text = "Score: " + str(value)
+		score.text = "Score: " + str(value + Global.score)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgo7opjab5mm"]
+[gd_scene load_steps=8 format=3 uid="uid://4osk76a4o7l1"]
 
 [ext_resource type="Script" path="res://general/scripts/actor_walker.gd" id="1_wwdl0"]
 [ext_resource type="Texture2D" uid="uid://cpuq2egwxv012" path="res://general/sprites/dave_sprite_frame_1.png" id="2_8y5bf"]

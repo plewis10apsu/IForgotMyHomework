@@ -13,7 +13,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if actorData.hp <= 0:	
+	if actorData.hp <= 0:
+		Global.score += 35
 		#DIE
 		queue_free()
 	if needs_to_blink_white:

@@ -246,6 +246,11 @@ func _on_area_2d_area_entered(area):
 		actorData.hp -= other.actorData.hazard_level
 		other.hit_something()
 	if other.actorData.team == TEAM.POWER_UP:
-		powerup_timer_ms = 15 * 1000 # 30 seconds to start
-		powerup = PLATFORMING_POWERUP.RAINBOW
-		other.queue_free()
+		if not "health_up" in other:
+			# This is the rainbow power up
+			powerup_timer_ms = 15 * 1000 # 30 seconds to start
+			powerup = PLATFORMING_POWERUP.RAINBOW
+			other.queue_free()
+		if "health_up" in other:
+			actorData.hp += other.health_up
+			other.queue_free()

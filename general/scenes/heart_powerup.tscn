@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckx68ee60wlx5"]
+
+[ext_resource type="Script" path="res://heart_powerup.gd" id="1_f2d50"]
+[ext_resource type="Texture2D" uid="uid://cehh5dy4sa3mx" path="res://general/sprites/heart_filled.png" id="2_xvbke"]
+[ext_resource type="Script" path="res://general/scripts/power_up_sprite_animation.gd" id="3_ncy4x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3syu7"]
+size = Vector2(14, 12)
+
+[node name="Heart" type="Node2D"]
+script = ExtResource("1_f2d50")
+
+[node name="Heart_power_up" type="Sprite2D" parent="."]
+texture = ExtResource("2_xvbke")
+script = ExtResource("3_ncy4x")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3syu7")
