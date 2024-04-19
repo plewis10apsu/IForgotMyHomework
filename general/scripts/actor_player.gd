@@ -25,7 +25,7 @@ var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	Global.player = self
-	actorData = ActorData.new(3, TEAM.PLAYER, WEAPON.BUBBLE, 0)
+	actorData = ActorData.new(5, TEAM.PLAYER, WEAPON.BUBBLE, 0)
 
 func _process(delta):
 	#Check for death

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://h1euld2qohrv"]
+[gd_scene load_steps=14 format=3 uid="uid://h1euld2qohrv"]
 
 [ext_resource type="Script" path="res://general/scripts/actor_player.gd" id="1_xm6wn"]
 [ext_resource type="FontFile" uid="uid://cs8850q2te7fk" path="res://menus/Font/ThaleahFat.ttf" id="3_k0wqs"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://general/scripts/player_hud_score.gd" id="4_7hk7a"]
 [ext_resource type="Texture2D" uid="uid://bmunbprqa4k34" path="res://general/sprites/player_frame_1.png" id="4_lsrsl"]
 [ext_resource type="Texture2D" uid="uid://mk7q0trey33r" path="res://general/sprites/player_frame_2.png" id="5_4cir8"]
+[ext_resource type="Script" path="res://general/scripts/Health_HUD.gd" id="7_o74it"]
+[ext_resource type="Texture2D" uid="uid://cehh5dy4sa3mx" path="res://general/sprites/heart_filled.png" id="8_dlwhf"]
+[ext_resource type="Texture2D" uid="uid://dt8wakvuqio16" path="res://general/sprites/heart_empty.png" id="9_behyi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vn0ym"]
 radius = 8.0
@@ -27,6 +30,20 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 6.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqa1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_dlwhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_behyi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -64,6 +81,29 @@ theme_override_fonts/font = ExtResource("3_k0wqs")
 text = "azdvz"
 horizontal_alignment = 2
 script = ExtResource("4_7hk7a")
+
+[node name="Health_HUD" type="Node2D" parent="Camera2D"]
+script = ExtResource("7_o74it")
+
+[node name="heart_1" type="AnimatedSprite2D" parent="Camera2D/Health_HUD"]
+position = Vector2(-149, -79)
+sprite_frames = SubResource("SpriteFrames_dqa1q")
+
+[node name="heart_2" type="AnimatedSprite2D" parent="Camera2D/Health_HUD"]
+position = Vector2(-131, -79)
+sprite_frames = SubResource("SpriteFrames_dqa1q")
+
+[node name="heart_3" type="AnimatedSprite2D" parent="Camera2D/Health_HUD"]
+position = Vector2(-113, -79)
+sprite_frames = SubResource("SpriteFrames_dqa1q")
+
+[node name="heart_4" type="AnimatedSprite2D" parent="Camera2D/Health_HUD"]
+position = Vector2(-95, -79)
+sprite_frames = SubResource("SpriteFrames_dqa1q")
+
+[node name="heart_5" type="AnimatedSprite2D" parent="Camera2D/Health_HUD"]
+position = Vector2(-77, -79)
+sprite_frames = SubResource("SpriteFrames_dqa1q")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
