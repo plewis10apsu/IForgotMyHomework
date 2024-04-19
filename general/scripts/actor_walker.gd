@@ -8,29 +8,33 @@ var position_x_last_frame : float
 var is_in_floor_backup : bool = false
 var ledge_sensor_overlapping_bodies
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var needs_to_blink_white = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	actorData = ActorData.new(100, TEAM.ENEMY, WEAPON.NONE, 1)
 	position_x_last_frame = 0
-	$AnimatedSprite2D.self_modulate = Color(1, 1, 1) # Set sprite color to white
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if actorData.hp <= 0:	
 		#DIE
 		queue_free()
+	if needs_to_blink_white:
+		needs_to_blink_white = false
+		$AnimatedSprite2D.modulate = Color(5,5,5,5) #Make it white
+	else:
+		$AnimatedSprite2D.modulate = Color(1,1,1,1)
 
 func _physics_process(delta):
 	#GRAVITY
 	velocity.y += gravity * delta
 	#MOVE AND TURN AROUND
 	if(is_on_floor()):
-		if(position.x == position_x_last_frame):
-			#We haven't moved, so we're against a wall. Flip!
-			flip()
-		if(turns_at_ledges and !$AnimatedSprite2D/LedgeSensor.get_overlapping_bodies().size()):
-			#We're at a ledge, and we turn at ledges. Flip!
+		var hasnt_moved : bool = (position.x == position_x_last_frame)
+		var needs_ledge_turn : bool = (turns_at_ledges and !$AnimatedSprite2D/LedgeSensor.get_overlapping_bodies().size())
+		if(hasnt_moved or needs_ledge_turn):
 			flip()
 		#Move
 		velocity.x = WALK_SPEED * (1 if is_facing_right else (-1))
@@ -62,7 +66,8 @@ func _on_area_2d_area_entered(area):
 	if is_hazardous_actor and !is_friendly:
 		#HIT!
 		actorData.hp -= other.actorData.hazard_level
-		other.hit_something()
+		needs_to_blink_white = true;
+		other.hit_something()	
 
 func hit_something():
 	pass

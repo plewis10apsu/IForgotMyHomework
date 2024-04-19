@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://byeaat0hjsy5o"]
+
+[ext_resource type="Script" path="res://general/scripts/actor_flyer.gd" id="1_vkr5p"]
+[ext_resource type="Texture2D" uid="uid://dnmcbj3o1k7e3" path="res://general/sprites/louie_frame_1.png" id="2_ej5ww"]
+[ext_resource type="PackedScene" uid="uid://c6hlqk4ebdk" path="res://general/scenes/bullet_emitter.tscn" id="3_ah1t3"]
+[ext_resource type="Texture2D" uid="uid://buqxfo8la5yxc" path="res://general/sprites/louie_frame_2.png" id="3_o4o8q"]
+[ext_resource type="Texture2D" uid="uid://csdkjokxxm2s5" path="res://general/sprites/louie_frame_3.png" id="4_h1jcj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pammy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ej5ww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o4o8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h1jcj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1hws"]
+size = Vector2(12, 11)
+
+[node name="ActorLouie" type="Node2D"]
+script = ExtResource("1_vkr5p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.13687e-13, -1.90735e-06)
+sprite_frames = SubResource("SpriteFrames_pammy")
+autoplay = "default"
+
+[node name="BulletEmitter" parent="AnimatedSprite2D" instance=ExtResource("3_ah1t3")]
+position = Vector2(3.63798e-13, 3.8147e-06)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_f1hws")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
