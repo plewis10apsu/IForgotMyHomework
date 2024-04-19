@@ -15,6 +15,7 @@ var music_dictionary = {
 	"pixelparty" : "res://general/music/noattrib_PandaBeats_PixelParty.wav"
 }
 var sfx_player_dictionary : Dictionary #Keys will be defined in _ready()
+var sfx_player_name_list = []
 
 func _ready():
 	add_child(music_player)
@@ -26,7 +27,24 @@ func prep_sfx_player(sfx_name_IN, max_polyphony_IN, asset_IN):
 	sfx_player_dictionary[sfx_name_IN] = AudioStreamPlayer.new()
 	sfx_player_dictionary[sfx_name_IN].stream = load(asset_IN)
 	sfx_player_dictionary[sfx_name_IN].max_polyphony = max_polyphony_IN
+	sfx_player_name_list += [sfx_name_IN]
+	print("Registered sfx player name: " + str(sfx_player_name_list[sfx_player_name_list.size() - 1]))
+	print(sfx_player_dictionary[sfx_name_IN].stream_paused)
 	add_child(sfx_player_dictionary[sfx_name_IN])
+
+func pause_all_sound():
+	if music_player.playing:
+		music_player.stream_paused = true
+	for key in sfx_player_name_list:
+		if sfx_player_dictionary[key].playing:
+			sfx_player_dictionary[key].stream_paused = true
+
+func unpause_all_sound():
+	if music_player.stream_paused:
+		music_player.stream_paused = false
+	for key in sfx_player_name_list:
+		if sfx_player_dictionary[key].stream_paused:
+			sfx_player_dictionary[key].stream_paused = false
 	
 func point_at_player_from(from_node_IN):
 	#Creates normalized V2 pointing from argument's position to the player.
@@ -37,7 +55,6 @@ func change_level(level_path):
 	# Delete all the bullets
 	for b in bullet_parent.get_children():
 		b.queue_free()
-	
 	# Change scenes
 	get_tree().change_scene_to_file(level_path)
 	current_level = get_tree().current_scene
@@ -47,13 +64,13 @@ func reload_current_scene():
 	change_level(current_level_path)
 
 func get_current_score_as_string():
-	return str( clamped_score(score) ).pad_zeros(MAX_SCORE_DIGITS)
+	return str( get_clamped_score(score) ).pad_zeros(MAX_SCORE_DIGITS)
 
 func get_high_score_as_string(i):
-	return str( clamped_score(high_scores[i]) ).pad_zeros(MAX_SCORE_DIGITS)
+	return str( get_clamped_score(high_scores[i]) ).pad_zeros(MAX_SCORE_DIGITS)
 	
 
-func clamped_score(score_IN):
+func get_clamped_score(score_IN):
 	#Clamps score to truncate digits exceeding max
 	var max_score_value_allowed = (pow(10, MAX_SCORE_DIGITS)) - 1
 	return clamp(score_IN, 0, max_score_value_allowed)

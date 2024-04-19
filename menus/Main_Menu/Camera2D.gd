@@ -31,4 +31,5 @@ func _on_score_button_pressed():
 	move_to_highscore()
 
 func _on_back_button_pressed():
+	$"../../../../../MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1".grab_focus()
 	move_to_main_menu()

@@ -4,10 +4,11 @@ const WALK_SPEED = 20.0 #pixels per second
 @export var is_facing_right : bool = true
 var actorData : ActorData
 var position_x_last_frame : float
+var needs_to_blink_white = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	actorData = ActorData.new(1, TEAM.ENEMY, WEAPON.NONE, 1)
+	actorData = ActorData.new(50, TEAM.ENEMY, WEAPON.NONE, 1)
 	position_x_last_frame = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,6 +16,11 @@ func _process(delta):
 	if actorData.hp <= 0:	
 		#DIE
 		queue_free()
+	if needs_to_blink_white:
+		needs_to_blink_white = false
+		$AnimatedSprite2D.modulate = Color(5,5,5,5) #Make it white
+	else:
+		$AnimatedSprite2D.modulate = Color(1,1,1,1)
 
 func _physics_process(delta):
 	#NO GRAVITY
@@ -42,6 +48,7 @@ func _on_area_2d_area_entered(area):
 	if is_hazardous_actor and !is_friendly:
 		#HIT!
 		actorData.hp -= other.actorData.hazard_level
+		needs_to_blink_white = true;
 		other.hit_something()
 
 func hit_something():
