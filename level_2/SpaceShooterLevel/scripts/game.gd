@@ -20,6 +20,7 @@ var score := 0:
 		hud.score = score
 var high_score
 var scroll_speed = 100
+var level_timer : Timer
 
 func _ready():
 	Global.current_level = get_tree().current_scene
@@ -30,14 +31,19 @@ func _ready():
 	else:
 		high_score = 0
 		save_game()
-		
-	
 	score = 0
 	player = get_tree().get_first_node_in_group("player")
 	assert(player!= null)
 	player.global_position = player_spawn_pos.global_position
 	player.laser_shot.connect(_on_player_laser_shot)
 	player.killed.connect(_on_player_killed)
+	
+	# Level timer, time until next level is loaded
+	level_timer = Timer.new()
+	add_child(level_timer)
+	level_timer.timeout.connect(func (): $TransitionLayer/Transitions.set_next_animation(true))
+	level_timer.wait_time = 10
+	level_timer.start()
 	
 func save_game():
 	var save_file = FileAccess.open("user://save.data", FileAccess.WRITE)
