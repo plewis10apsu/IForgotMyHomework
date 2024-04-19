@@ -8,7 +8,6 @@ class_name Transitions extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	if animation_tex:
 		animation_tex.visible = false
 	animation_player.queue("fade_in")

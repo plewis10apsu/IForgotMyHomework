@@ -7,11 +7,11 @@ extends Node2D
 @onready var timer = $EnemySpawnTimer
 @onready var enemy_container = $EnemyContainer
 @onready var hud = $UILayer/HUD
-@onready var gmOverScn = $UILayer/GameOverScreen
 @onready var parallaxB = $ParallaxBackground
 @onready var laser_sound = $SFX/LaserSound
 @onready var hit_sound = $SFX/HitSound
 @onready var explode_sound = $SFX/ExplodeSound
+
 
 var player = null
 var score := 0:
@@ -22,6 +22,8 @@ var high_score
 var scroll_speed = 100
 
 func _ready():
+	Global.current_level = get_tree().current_scene
+	Global.current_level_path = "res://level_2/SpaceShooterLevel/scenes/game.tscn"
 	var save_file = FileAccess.open("user://save.data", FileAccess.READ)
 	if save_file != null:
 		high_score = save_file.get_32()
@@ -76,9 +78,6 @@ func _on_enemy_hit():
 
 func _on_player_killed():
 	explode_sound.play()
-	gmOverScn.set_score(score)
-	gmOverScn.set_high_score(high_score)
 	save_game()
-	await get_tree().create_timer(1.5).timeout
-	gmOverScn.visible = true
+	Global.reload_current_scene()
 	

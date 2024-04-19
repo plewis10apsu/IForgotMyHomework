@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dnt4b8ise03l1"]
+[gd_scene load_steps=96 format=3 uid="uid://dnt4b8ise03l1"]
 
 [ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ibt0l"]
 [ext_resource type="Texture2D" uid="uid://bercx77l05y7x" path="res://menus/textures/menu background.png" id="2_hsk56"]
@@ -26,7 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://2npiky6fdylc" path="res://menus/textures/tile_0086.png" id="26_fkwmt"]
 [ext_resource type="Texture2D" uid="uid://d3co71c5uok38" path="res://menus/textures/tile_0120.png" id="27_f67yr"]
 [ext_resource type="Texture2D" uid="uid://ddn2bpkl31gno" path="res://menus/textures/tile_0121.png" id="28_1o7kb"]
+[ext_resource type="Texture2D" uid="uid://70u7sftpyo2w" path="res://general/sprites/check_button_1.png" id="29_52qrx"]
 [ext_resource type="Texture2D" uid="uid://ctrqymuwdn6pd" path="res://menus/textures/tile_0122.png" id="29_hbwm4"]
+[ext_resource type="Texture2D" uid="uid://kh2ahah87mcy" path="res://general/sprites/check_button_3.png" id="30_53a2g"]
 [ext_resource type="Texture2D" uid="uid://cu84ifsdt0qg7" path="res://menus/textures/tile_0017.png" id="30_uvhdj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t3m8v"]
@@ -135,6 +137,16 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="GDScript" id="GDScript_ll36t"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4axu3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_smvrk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7xun"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iewds"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e41vm"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_57sdk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlscf"]
@@ -148,6 +160,26 @@ corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iiyoq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n88ox"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gmlg0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w2tlb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7p4ks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_821fq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lu136"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6k7mt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_knyfq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r7l3v"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -576,8 +608,17 @@ size_flags_vertical = 10
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4axu3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_smvrk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w7xun")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iewds")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e41vm")
 text = "Close"
 
 [node name="Jump(X)" type="Label" parent="HelpPanel/HelpMenu/Panel"]
@@ -855,14 +896,24 @@ layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iiyoq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n88ox")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gmlg0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_w2tlb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7p4ks")
 text = "Close"
 
 [node name="OptionsPanel" type="PopupPanel" parent="."]
 transparent_bg = true
 initial_position = 1
 size = Vector2i(600, 600)
+visible = true
 theme_override_styles/panel = SubResource("StyleBoxEmpty_57sdk")
 
 [node name="OptionsMenu" type="Control" parent="OptionsPanel"]
@@ -917,22 +968,27 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CheckButton2" type="CheckButton" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="MusicCheckButton" type="CheckButton" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/h_separation = 200
 theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 80
+theme_override_icons/checked = ExtResource("29_52qrx")
+theme_override_icons/unchecked = ExtResource("30_53a2g")
 text = "Music:"
 
-[node name="CheckButton3" type="CheckButton" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="SoundFXCheckButton" type="CheckButton" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0.956863, 0.705882, 0.105882, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/h_separation = 72
 theme_override_constants/outline_size = 9
@@ -949,8 +1005,17 @@ layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_821fq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lu136")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6k7mt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_knyfq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r7l3v")
 text = "Close"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
