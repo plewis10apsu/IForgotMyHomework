@@ -6,6 +6,7 @@ var current_level #Level will put itself here when it spawns.
 var current_level_path = "" #Current scene path
 var bullet_parent = Node.new()
 var score : int = 0
+var score_at_level_start : int = 0
 var high_scores = [0, 0, 0]
 #Music player
 var music_player = AudioStreamPlayer.new()
@@ -52,6 +53,7 @@ func point_at_player_from(from_node_IN):
 	return Vector2(player.global_position - from_node_IN.global_position).normalized()
 
 func change_level(level_path):
+	score_at_level_start = score
 	# Delete all the bullets
 	for b in bullet_parent.get_children():
 		b.queue_free()
@@ -76,6 +78,7 @@ func get_clamped_score(score_IN):
 	return clamp(score_IN, 0, max_score_value_allowed)
 
 func submit_score_and_reset():
+	score_at_level_start = 0
 	#Starting rank is max highscore index + 1 (AKA length)
 	var rank : int = high_scores.size()
 	#Iterate over all scores, starting with lowest, and see if we placed.

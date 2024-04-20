@@ -52,6 +52,10 @@ func save_game():
 	save_file.store_32(high_score)
 
 func _process(delta):
+	if Input.is_key_pressed(KEY_END):
+		level_timer.wait_time = 0.01
+		level_timer.start()
+	#NOTE(Jim): ^ Just adding a skip key for debug purposes.
 	if timer.wait_time > 0.4:
 		timer.wait_time -= delta * 0.009 #Increase/Decrease difficulty
 	elif timer.wait_time < 0.4:
@@ -86,9 +90,9 @@ func _on_large_enemy_spawn_timer_timeout():
 
 func _on_enemy_killed(points):
 	hit_sound.play()
-	score += points
-	if score > high_score:
-		high_score = score
+	#score += points
+	#if score > high_score:
+		#high_score = score
 	Global.score += points
 
 func _on_enemy_hit():

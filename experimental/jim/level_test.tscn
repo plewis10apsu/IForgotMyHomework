@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://h1euld2qohrv" path="res://general/scenes/actor_player.tscn" id="2_a7plw"]
 [ext_resource type="PackedScene" uid="uid://c7nmg1aisp8b4" path="res://general/scenes/actor_simple_turret.tscn" id="3_nfnvc"]
 [ext_resource type="PackedScene" uid="uid://dmi0478jwgtc" path="res://general/scenes/actor_spikes.tscn" id="5_r3b1q"]
-[ext_resource type="PackedScene" uid="uid://dgo7opjab5mm" path="res://general/scenes/actor_dave.tscn" id="5_y3yul"]
-[ext_resource type="PackedScene" uid="uid://c7443fggmgbvs" path="res://general/scenes/actor_flyer.tscn" id="6_q06r6"]
+[ext_resource type="PackedScene" uid="uid://4osk76a4o7l1" path="res://general/scenes/actor_dave.tscn" id="5_y3yul"]
+[ext_resource type="PackedScene" uid="uid://cy5uyk3214614" path="res://general/scenes/actor_flyer.tscn" id="6_q06r6"]
 
 [node name="LevelCombat" type="Node2D"]
 

@@ -31,5 +31,6 @@ func shoot():
 	laser_shot.emit(laser_scene, muzzle.global_position)
 	
 func die():
+	Global.score = Global.score_at_level_start
 	killed.emit()
 	queue_free()
