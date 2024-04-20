@@ -10,7 +10,7 @@ signal killed
 var laser_scene = preload("res://level_2/SpaceShooterLevel/scenes/laser.tscn")
 var shoot_cd := false
 
-const HP_MAX : int = 3
+const HP_MAX : int = 5
 const HURT_BLINK_RATE_MS : int = 30 #ms until hurt visibility toggles
 const HURT_BLINK_DURATION_MS : int = 1500 #ms player will be invincible after being hurt
 var hp : int = HP_MAX
