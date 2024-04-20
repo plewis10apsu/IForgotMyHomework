@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4bwr6c3m4qte"]
+[gd_scene load_steps=8 format=3 uid="uid://d4bwr6c3m4qte"]
 
 [ext_resource type="PackedScene" uid="uid://h1euld2qohrv" path="res://general/scenes/actor_player.tscn" id="1_ym3xc"]
 [ext_resource type="PackedScene" uid="uid://cusmuny1el101" path="res://menus/Pause_Menu/pause_menu.tscn" id="2_q7t66"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://level_3/moon_terrain.gd" id="2_x463h"]
 [ext_resource type="Texture2D" uid="uid://defld581ujpa7" path="res://general/sprites/lil house sprite.png" id="5_hu0d4"]
 [ext_resource type="Texture2D" uid="uid://bc5urby4qsk2u" path="res://general/sprites/homework sprite.png" id="6_5ikg0"]
+[ext_resource type="PackedScene" uid="uid://bb1ytyvtxlve0" path="res://general/scenes/transitions.tscn" id="7_m8mhg"]
 
 [node name="moon_level" type="Node2D"]
 
@@ -43,3 +44,7 @@ texture = ExtResource("5_hu0d4")
 [node name="HomeworkSprite" type="Sprite2D" parent="."]
 position = Vector2(1125, -171)
 texture = ExtResource("6_5ikg0")
+
+[node name="TransitionsLayer" type="CanvasLayer" parent="."]
+
+[node name="Transitions" parent="TransitionsLayer" instance=ExtResource("7_m8mhg")]

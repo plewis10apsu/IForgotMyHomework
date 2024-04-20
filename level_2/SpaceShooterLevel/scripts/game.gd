@@ -1,10 +1,12 @@
 extends Node2D
 
 @export var enemy_scenes: Array[PackedScene] = []
+@export var large_enemy_scenes: Array[PackedScene] = []
 
 @onready var player_spawn_pos = $PlayerSpawnPos
 @onready var laser_container = $LaserContainer
 @onready var timer = $EnemySpawnTimer
+@onready var largeTimer = $LargeEnemySpawnTimer
 @onready var enemy_container = $EnemyContainer
 @onready var hud = $UILayer/HUD
 @onready var parallaxB = $ParallaxBackground
@@ -42,7 +44,7 @@ func _ready():
 	level_timer = Timer.new()
 	add_child(level_timer)
 	level_timer.timeout.connect(func (): $TransitionLayer/Transitions.set_next_animation(true))
-	level_timer.wait_time = 10
+	level_timer.wait_time = 120
 	level_timer.start()
 	
 func save_game():
@@ -73,6 +75,14 @@ func _on_enemy_spawn_timer_timeout():
 	e.hit.connect(_on_enemy_hit)
 	enemy_container.add_child(e) #Add enemy as a child of the scene
 
+func _on_large_enemy_spawn_timer_timeout():
+	var largeE = large_enemy_scenes.pick_random().instantiate() #Create a new instance of an enemy
+	largeE.global_position =  Vector2(randf_range(40,1880),-50) #Random pointing float x value range, y
+	largeE.killed.connect(_on_enemy_killed)
+	largeE.hit.connect(_on_enemy_hit)
+	enemy_container.add_child(largeE) #Add enemy as a child of the scene
+
+
 func _on_enemy_killed(points):
 	hit_sound.play()
 	score += points
@@ -87,3 +97,5 @@ func _on_player_killed():
 	save_game()
 	Global.reload_current_scene()
 	
+
+

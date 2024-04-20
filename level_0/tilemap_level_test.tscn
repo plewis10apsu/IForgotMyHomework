@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ctd1vldeuv3vd" path="res://general/scenes/cloud_platform.tscn" id="3_qmcg3"]
 [ext_resource type="PackedScene" uid="uid://cusmuny1el101" path="res://menus/Pause_Menu/pause_menu.tscn" id="4_x54o0"]
 [ext_resource type="PackedScene" uid="uid://bb1ytyvtxlve0" path="res://general/scenes/transitions.tscn" id="5_lfaq5"]
-[ext_resource type="PackedScene" uid="uid://bwvsa0t1s1ych" path="res://general/scenes/power_up_1.tscn" id="5_yeyay"]
+[ext_resource type="PackedScene" path="res://general/scenes/power_up_1.tscn" id="5_yeyay"]
 [ext_resource type="Script" path="res://general/scripts/CheckButton.gd" id="6_pccbv"]
 [ext_resource type="PackedScene" uid="uid://4osk76a4o7l1" path="res://general/scenes/actor_dave.tscn" id="6_pj8kf"]
 [ext_resource type="PackedScene" uid="uid://byeaat0hjsy5o" path="res://general/scenes/actor_louie.tscn" id="7_fu8lv"]

@@ -6,11 +6,13 @@
 [node name="MedEnemy" instance=ExtResource("1_l85wj")]
 speed = 150
 hp = 2
-points = 200
+points = 25
 
 [node name="Asteroid" parent="." index="0"]
+rotation = 2.90455
 scale = Vector2(0.695, 0.695)
 texture = ExtResource("2_sq46o")
 
 [node name="CollisionShape2D" parent="." index="1"]
+rotation = 3.12173
 scale = Vector2(1.37, 1.37)
