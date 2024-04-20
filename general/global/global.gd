@@ -22,7 +22,7 @@ func _ready():
 	add_child(music_player)
 	add_child(bullet_parent)
 	prep_sfx_player("pop", 16, "res://general/sfx/cc0_698818__funky_audio__dsgnsynth_bubble-pops-synth-singular_funky-audio_fass.mp3")
-	play_sfx_by_name("pop")
+	prep_sfx_player("bop_ouch", 1, "res://general/sfx/cc0_340288__kevinduffy1234_and_404747__owlstorm.mp3")
 
 func prep_sfx_player(sfx_name_IN, max_polyphony_IN, asset_IN):
 	sfx_player_dictionary[sfx_name_IN] = AudioStreamPlayer.new()

@@ -242,6 +242,7 @@ func _on_area_2d_area_entered(area):
 		is_hazardous_actor = false
 	if is_hazardous_actor and !is_friendly and !invincible_timer_ms:
 		#HIT!
+		Global.play_sfx_by_name("bop_ouch")
 		invincible_timer_ms = HURT_BLINK_DURATION_MS
 		actorData.hp -= other.actorData.hazard_level
 		other.hit_something()
@@ -252,5 +253,5 @@ func _on_area_2d_area_entered(area):
 			powerup = PLATFORMING_POWERUP.RAINBOW
 			other.queue_free()
 		if "health_up" in other:
-			actorData.hp += other.health_up
+			actorData.hp = clamp(actorData.hp+actorData.hp, 0, HP_MAX)
 			other.queue_free()

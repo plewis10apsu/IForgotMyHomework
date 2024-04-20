@@ -15,6 +15,7 @@ extends Node2D
 @onready var explode_sound = $SFX/ExplodeSound
 
 
+
 var player = null
 var score := 0:
 	set(value):
