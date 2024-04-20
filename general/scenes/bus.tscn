@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh41out5qwy0i"]
+
+[ext_resource type="Texture2D" uid="uid://dav0c6s5sl7ha" path="res://general/sprites/lil bus sprite.png" id="1_e0agy"]
+
+[node name="bus" type="Node2D"]
+
+[node name="bus_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_e0agy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="bus_sprite"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bus_sprite/StaticBody2D"]
+polygon = PackedVector2Array(-45, -27, 68, -27, 77, -18, 77, 19, 53, 19, 44, 27, 34, 19, -53, 19, -62, 28, -71, 19, -77, 19, -77, 12, -65, 0, -53, 0, -53, -18, -45, -27)

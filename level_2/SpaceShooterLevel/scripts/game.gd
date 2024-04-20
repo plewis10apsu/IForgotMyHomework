@@ -31,7 +31,7 @@ func _ready():
 	else:
 		high_score = 0
 		save_game()
-	score = 0
+	score = Global.score
 	player = get_tree().get_first_node_in_group("player")
 	assert(player!= null)
 	player.global_position = player_spawn_pos.global_position
@@ -59,6 +59,7 @@ func _process(delta):
 	parallaxB.scroll_offset.y += delta * scroll_speed
 	if parallaxB.scroll_offset.y >= 1080:
 		parallaxB.scroll_offset.y = 0
+	
 
 func _on_player_laser_shot(laser_scene, location):
 	var laser = laser_scene.instantiate()
@@ -78,6 +79,7 @@ func _on_enemy_killed(points):
 	score += points
 	if score > high_score:
 		high_score = score
+	Global.score += points
 
 func _on_enemy_hit():
 	hit_sound.play()
@@ -86,4 +88,3 @@ func _on_player_killed():
 	explode_sound.play()
 	save_game()
 	Global.reload_current_scene()
-	

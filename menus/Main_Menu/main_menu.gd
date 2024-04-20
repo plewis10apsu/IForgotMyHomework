@@ -4,6 +4,8 @@ extends Control
 func _ready():
 	Global.current_level = self
 	$MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1.grab_focus()
+	$CanvasLayer/Transitions.scene_to_load = null
+	$CanvasLayer/Transitions.set_next_animation(false)
 
 func _on_play_button_pressed():
 	Global.change_level("res://level_0/tilemap_level_test.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://dnt4b8ise03l1"]
+[gd_scene load_steps=97 format=3 uid="uid://dnt4b8ise03l1"]
 
 [ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ibt0l"]
 [ext_resource type="Texture2D" uid="uid://bercx77l05y7x" path="res://menus/textures/menu background.png" id="2_hsk56"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://ctrqymuwdn6pd" path="res://menus/textures/tile_0122.png" id="29_hbwm4"]
 [ext_resource type="Texture2D" uid="uid://kh2ahah87mcy" path="res://general/sprites/check_button_3.png" id="30_53a2g"]
 [ext_resource type="Texture2D" uid="uid://cu84ifsdt0qg7" path="res://menus/textures/tile_0017.png" id="30_uvhdj"]
+[ext_resource type="PackedScene" uid="uid://bb1ytyvtxlve0" path="res://general/scenes/transitions.tscn" id="31_07hsw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t3m8v"]
 
@@ -1016,6 +1017,15 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_6k7mt")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_knyfq")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_r7l3v")
 text = "Close"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Transitions" parent="CanvasLayer" instance=ExtResource("31_07hsw")]
+offset_left = 680.0
+offset_top = 250.0
+offset_right = 680.0
+offset_bottom = 250.0
+scale = Vector2(10, 10)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1" to="." method="_on_play_button_pressed"]
