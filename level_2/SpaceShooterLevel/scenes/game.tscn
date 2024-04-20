@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dvt2liyu3nvqe" path="res://level_2/SpaceShooterLevel/scenes/player.tscn" id="2_4hrb5"]
 [ext_resource type="PackedScene" uid="uid://8wlng5j7gxyb" path="res://level_2/SpaceShooterLevel/scenes/enemy.tscn" id="2_rccw1"]
 [ext_resource type="PackedScene" uid="uid://mlr8jrnww76s" path="res://level_2/SpaceShooterLevel/scenes/med_enemy.tscn" id="3_2rhwc"]
+[ext_resource type="PackedScene" uid="uid://bokptchcuudpy" path="res://level_2/SpaceShooterLevel/scenes/large_enemy.tscn" id="4_2w64i"]
 [ext_resource type="AudioStream" uid="uid://bilqdtwfkds2q" path="res://level_2/SpaceShooterLevel/assets/audio/laserSmall_003.ogg" id="4_eqn4p"]
-[ext_resource type="PackedScene" uid="uid://bokptchcuudpy" path="res://level_2/SpaceShooterLevel/scenes/large_enemy.tscn" id="4_omiq3"]
 [ext_resource type="PackedScene" uid="uid://bqp6p342xvdxh" path="res://level_2/SpaceShooterLevel/scenes/hud.tscn" id="4_w50o4"]
 [ext_resource type="AudioStream" uid="uid://b1pgmslpvo037" path="res://level_2/SpaceShooterLevel/assets/audio/explosionCrunch_000.ogg" id="5_wty6y"]
 [ext_resource type="AudioStream" uid="uid://c8570gr4ynekk" path="res://level_2/SpaceShooterLevel/assets/audio/explosionCrunch_002.ogg" id="6_bh30a"]
@@ -28,7 +28,7 @@ gravity = Vector3(0, 0, 0)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_00qm6")
 enemy_scenes = Array[PackedScene]([ExtResource("2_rccw1"), ExtResource("3_2rhwc")])
-large_enemy_scenes = Array[PackedScene]([ExtResource("4_omiq3")])
+large_enemy_scenes = Array[PackedScene]([ExtResource("4_2w64i")])
 
 [node name="SFX" type="Node2D" parent="."]
 

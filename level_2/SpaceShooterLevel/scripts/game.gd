@@ -44,7 +44,7 @@ func _ready():
 	level_timer = Timer.new()
 	add_child(level_timer)
 	level_timer.timeout.connect(func (): $TransitionLayer/Transitions.set_next_animation(true))
-	level_timer.wait_time = 120
+	level_timer.wait_time = 60
 	level_timer.start()
 	
 func save_game():
