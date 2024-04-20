@@ -16,6 +16,9 @@ const HURT_BLINK_DURATION_MS : int = 1500 #ms player will be invincible after be
 var hp : int = HP_MAX
 var invincible_timer_ms : int = 0 #set this=n to blink + be invincible for n miliseconds
 
+func _ready():
+	Global.player = self
+
 func _process(delta):
 	if Input.is_action_pressed("shoot"):
 		if !shoot_cd:
