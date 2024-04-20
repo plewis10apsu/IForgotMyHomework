@@ -981,6 +981,7 @@ theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 80
 theme_override_icons/checked = ExtResource("29_52qrx")
 theme_override_icons/unchecked = ExtResource("30_53a2g")
+button_pressed = true
 text = "Music:"
 
 [node name="SoundFXCheckButton" type="CheckButton" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
@@ -994,6 +995,9 @@ theme_override_constants/h_separation = 72
 theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 80
+theme_override_icons/checked = ExtResource("29_52qrx")
+theme_override_icons/unchecked = ExtResource("30_53a2g")
+button_pressed = true
 text = "Sound FX:"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer"]

@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c7kw7p6arj31i" path="res://menus/credits/credits.tscn" id="3_11okw"]
 [ext_resource type="Texture2D" uid="uid://defld581ujpa7" path="res://general/sprites/lil house sprite.png" id="5_hu0d4"]
 [ext_resource type="PackedScene" uid="uid://s6ra6llk58wc" path="res://general/scenes/level_3_flag.tscn" id="6_mndu5"]
+[ext_resource type="Texture2D" uid="uid://bc5urby4qsk2u" path="res://general/sprites/homework sprite.png" id="6_5ikg0"]
+[ext_resource type="PackedScene" uid="uid://bb1ytyvtxlve0" path="res://general/scenes/transitions.tscn" id="7_m8mhg"]
 
 [node name="moon_level" type="Node2D"]
 
@@ -47,5 +49,9 @@ polygon = PackedVector2Array(-7, 27, 175, 24, 364, -53, 415, -57, 425, -51, 433,
 position = Vector2(1219, -182)
 texture = ExtResource("5_hu0d4")
 
+
 [node name="level_3_flag" parent="." instance=ExtResource("6_mndu5")]
 position = Vector2(1120, -169)
+
+[node name="TransitionsLayer" type="CanvasLayer" parent="."]
+[node name="Transitions" parent="TransitionsLayer" instance=ExtResource("7_m8mhg")]
