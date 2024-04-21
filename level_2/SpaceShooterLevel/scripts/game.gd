@@ -2,7 +2,6 @@ extends Node2D
 
 @export var enemy_scenes: Array[PackedScene] = []
 @export var large_enemy_scenes: Array[PackedScene] = []
-
 @onready var player_spawn_pos = $PlayerSpawnPos
 @onready var laser_container = $LaserContainer
 @onready var timer = $EnemySpawnTimer
@@ -13,8 +12,6 @@ extends Node2D
 @onready var laser_sound = $SFX/LaserSound
 @onready var hit_sound = $SFX/HitSound
 @onready var explode_sound = $SFX/ExplodeSound
-
-
 
 var player = null
 var score := 0:
@@ -47,6 +44,7 @@ func _ready():
 	level_timer.timeout.connect(func (): $TransitionLayer/Transitions.set_next_animation(true))
 	level_timer.wait_time = 60
 	level_timer.start()
+	Global.level_timer = level_timer
 	
 func save_game():
 	var save_file = FileAccess.open("user://save.data", FileAccess.WRITE)

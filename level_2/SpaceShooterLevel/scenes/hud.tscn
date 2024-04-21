@@ -1,11 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqp6p342xvdxh"]
+[gd_scene load_steps=11 format=3 uid="uid://bqp6p342xvdxh"]
 
 [ext_resource type="Script" path="res://level_2/SpaceShooterLevel/scripts/hud.gd" id="1_qkndt"]
 [ext_resource type="FontFile" uid="uid://c8687svw2jimg" path="res://level_2/SpaceShooterLevel/assets/fonts/ThaleahFat.ttf" id="2_akqyk"]
+[ext_resource type="Script" path="res://general/scripts/Health_HUD_level_2.gd" id="3_eiad6"]
+[ext_resource type="Script" path="res://level_2/SpaceShooterLevel/scenes/level_2_progress_hud.gd" id="3_hu2d7"]
+[ext_resource type="Texture2D" uid="uid://c7pfwmn7p6d11" path="res://general/sprites/earth mini.png" id="3_ps273"]
+[ext_resource type="Texture2D" uid="uid://bq7hp1cw4r2ig" path="res://general/sprites/moon mini.png" id="4_ctn5s"]
+[ext_resource type="Texture2D" uid="uid://cehh5dy4sa3mx" path="res://general/sprites/heart_filled.png" id="4_ku3wn"]
+[ext_resource type="Texture2D" uid="uid://dt8wakvuqio16" path="res://general/sprites/heart_empty.png" id="5_rgw57"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1y0vl"]
 font = ExtResource("2_akqyk")
 font_size = 48
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0e3kf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ku3wn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rgw57")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -22,7 +42,56 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "Score: 9999"
+text = "9999"
 label_settings = SubResource("LabelSettings_1y0vl")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Progress hud" type="Node2D" parent="."]
+position = Vector2(640, 351)
+scale = Vector2(4, 4)
+script = ExtResource("3_hu2d7")
+
+[node name="ColorRect" type="ColorRect" parent="Progress hud"]
+offset_left = 308.0
+offset_top = 34.0
+offset_right = 313.0
+offset_bottom = 105.0
+
+[node name="EarthMini" type="Sprite2D" parent="Progress hud"]
+position = Vector2(310.25, 113.5)
+texture = ExtResource("3_ps273")
+
+[node name="MoonMini" type="Sprite2D" parent="Progress hud"]
+position = Vector2(310.25, 26)
+texture = ExtResource("4_ctn5s")
+
+[node name="Health_HUD" type="Node2D" parent="."]
+position = Vector2(640, 351)
+scale = Vector2(4, 4)
+script = ExtResource("3_eiad6")
+
+[node name="heart_1" type="AnimatedSprite2D" parent="Health_HUD"]
+z_index = 100
+position = Vector2(-149, -79)
+sprite_frames = SubResource("SpriteFrames_0e3kf")
+
+[node name="heart_2" type="AnimatedSprite2D" parent="Health_HUD"]
+z_index = 100
+position = Vector2(-131, -79)
+sprite_frames = SubResource("SpriteFrames_0e3kf")
+
+[node name="heart_3" type="AnimatedSprite2D" parent="Health_HUD"]
+z_index = 100
+position = Vector2(-113, -79)
+sprite_frames = SubResource("SpriteFrames_0e3kf")
+
+[node name="heart_4" type="AnimatedSprite2D" parent="Health_HUD"]
+z_index = 100
+position = Vector2(-95, -79)
+sprite_frames = SubResource("SpriteFrames_0e3kf")
+
+[node name="heart_5" type="AnimatedSprite2D" parent="Health_HUD"]
+z_index = 100
+position = Vector2(-77, -79)
+sprite_frames = SubResource("SpriteFrames_0e3kf")

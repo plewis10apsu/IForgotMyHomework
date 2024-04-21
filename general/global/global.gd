@@ -8,6 +8,7 @@ var bullet_parent = Node.new()
 var score : int = 0
 var score_at_level_start : int = 0
 var high_scores = [0, 0, 0]
+var level_timer : Timer
 #Music player
 var music_player = AudioStreamPlayer.new()
 var current_music_name # In case we ever care what's playing.

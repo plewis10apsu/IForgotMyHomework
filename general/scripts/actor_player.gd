@@ -35,6 +35,9 @@ func _process(delta):
 		#KILL PLAYER
 		state = PLAYERSTATE.DEAD
 		invincible_timer_ms = 0
+		# Restart the current level
+		Global.score = Global.score_at_level_start
+		Global.reload_current_scene() # Should change to use transitions
 		#Global.play_music_name("player_death")
 	#Timers
 	invincible_timer_ms = clamp(invincible_timer_ms-int(delta*1000), 0, 999999)
@@ -154,8 +157,8 @@ func _physics_process(delta):
 			else:
 				velocity.y += gravity * delta
 			#EXTRA
-			if Input.is_action_just_pressed("cheat"):
-				actorData.hp += 3
+			#if Input.is_action_just_pressed("cheat"):
+			#	actorData.hp += 3
 			#PHYSICS BLACK BOX
 			move_and_slide()
 		PLAYERSTATE.KNOCKBACK:
@@ -253,5 +256,5 @@ func _on_area_2d_area_entered(area):
 			powerup = PLATFORMING_POWERUP.RAINBOW
 			other.queue_free()
 		if "health_up" in other:
-			actorData.hp = clamp(actorData.hp+actorData.hp, 0, HP_MAX)
+			actorData.hp = clamp(actorData.hp+other.health_up, 0, HP_MAX)
 			other.queue_free()
