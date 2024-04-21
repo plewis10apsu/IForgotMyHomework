@@ -2,7 +2,7 @@ extends Node2D
 
 const INIT_LAUNCH : float = 100.0 # Distance in pixels, initial impulse
 const SPEED : float = 150 # Pixels per second
-const MAX_LIFETIME : float = 3.0
+var MAX_LIFETIME : float = 3.0
 const FRICTION : float = 0.6
 var actorData : ActorData
 var aim_vector : Vector2

@@ -8,7 +8,8 @@ var bullet_dictionary = {
 	WEAPON.MAGNUM : "res://general/scenes/bullet_magnum.tscn",
 	WEAPON.FLAME : "res://general/scenes/bullet_flame.tscn",
 	WEAPON.BUBBLE : "res://general/scenes/bullet_bubble.tscn",
-	WEAPON.BUBBLE_RAINBOW : "res://general/scenes/bullet_bubble_rainbow.tscn"
+	WEAPON.BUBBLE_RAINBOW : "res://general/scenes/bullet_bubble_rainbow.tscn",
+	WEAPON.BUBBLE_SHIP : "res://general/scenes/bullet_bubble_ship.tscn"
 }
 
 func shoot(shooter_IN, aim_vector_IN:Vector2):

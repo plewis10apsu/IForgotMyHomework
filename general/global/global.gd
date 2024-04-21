@@ -53,11 +53,15 @@ func point_at_player_from(from_node_IN):
 	#For shooting, remember to pass the emitter node, NOT the actor's top-level "self".
 	return Vector2(player.global_position - from_node_IN.global_position).normalized()
 
+func clear_bullets():
+	# Deletes all children of the bullet parent
+	for b in bullet_parent.get_children():
+		b.queue_free()
+
 func change_level(level_path):
 	score_at_level_start = score
 	# Delete all the bullets
-	for b in bullet_parent.get_children():
-		b.queue_free()
+	clear_bullets()
 	# Change scenes
 	get_tree().change_scene_to_file(level_path)
 	current_level = get_tree().current_scene
@@ -72,7 +76,6 @@ func get_current_score_as_string():
 func get_high_score_as_string(i):
 	return str( get_clamped_score(high_scores[i]) ).pad_zeros(MAX_SCORE_DIGITS)
 	
-
 func get_clamped_score(score_IN):
 	#Clamps score to truncate digits exceeding max
 	var max_score_value_allowed = (pow(10, MAX_SCORE_DIGITS)) - 1

@@ -25,6 +25,7 @@ var level_timer : Timer
 func _ready():
 	Global.current_level = get_tree().current_scene
 	Global.current_level_path = "res://level_2/SpaceShooterLevel/scenes/game.tscn"
+	Global.clear_bullets()
 	var save_file = FileAccess.open("user://save.data", FileAccess.READ)
 	if save_file != null:
 		high_score = save_file.get_32()

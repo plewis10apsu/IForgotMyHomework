@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxi18eufhiv0b"]
+
+[ext_resource type="PackedScene" uid="uid://bcwn3u01qj1yy" path="res://general/scenes/bullet_bubble.tscn" id="1_61ei1"]
+[ext_resource type="Script" path="res://general/scripts/bullet_bubble_ship.gd" id="2_be3ml"]
+
+[node name="BulletBubbleShip" instance=ExtResource("1_61ei1")]
+script = ExtResource("2_be3ml")

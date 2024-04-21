@@ -2,15 +2,19 @@ extends Node2D
 
 var actorData : ActorData
 var sprite
+var active = false
+@onready var emitter = $BulletEmitter
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	actorData = ActorData.new(999, TEAM.PLAYER, WEAPON.NONE, 0)
+	actorData = ActorData.new(999, TEAM.PLAYER, WEAPON.BUBBLE, 0)
 	sprite = $sprite
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if active:
+		emitter.shoot(self, Vector2(0,1))
+		position.y -= 30*delta
 
 func _on_area_2d_area_entered(area):
 	print(area.get_parent())
@@ -19,6 +23,7 @@ func _on_area_2d_area_entered(area):
 		Global.player.visible = false
 		sprite.frame = 2
 		var timer = Timer.new()
+		active = true
 		add_child(timer)
 		timer.wait_time = 2
 		timer.timeout.connect(func ():
