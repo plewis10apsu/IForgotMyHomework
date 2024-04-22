@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cehh5dy4sa3mx" path="res://general/sprites/heart_filled.png" id="4_ku3wn"]
 [ext_resource type="Texture2D" uid="uid://dt8wakvuqio16" path="res://general/sprites/heart_empty.png" id="5_rgw57"]
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_1y0vl"]
 font = ExtResource("2_akqyk")
 font_size = 48

@@ -42,7 +42,7 @@ func _ready():
 	# Level timer, time until next level is loaded
 	level_timer = Timer.new()
 	add_child(level_timer)
-	level_timer.timeout.connect(func (): $TransitionLayer/Transitions.set_next_animation(true))
+	level_timer.timeout.connect(func (): $TransitionsLayer/Transitions.set_next_animation(true))
 	level_timer.wait_time = 60
 	level_timer.start()
 	Global.level_timer = level_timer
@@ -82,7 +82,7 @@ func _on_enemy_spawn_timer_timeout():
 
 func _on_large_enemy_spawn_timer_timeout():
 	var largeE = large_enemy_scenes.pick_random().instantiate() #Create a new instance of an enemy
-	largeE.global_position =  Vector2(randf_range(40,1880),-50) #Random pointing float x value range, y
+	largeE.global_position =  Vector2(randf_range(40,1880),-270) #Random pointing float x value range, y
 	largeE.killed.connect(_on_enemy_killed)
 	largeE.hit.connect(_on_enemy_hit)
 	enemy_container.add_child(largeE) #Add enemy as a child of the scene
