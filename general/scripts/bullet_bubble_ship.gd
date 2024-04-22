@@ -12,3 +12,6 @@ func explicit_init(shooter_IN, aim_vector_IN:Vector2):
 func _process(delta):
 	super(delta)
 	position.y += 300*delta
+
+func play_pop_sound():
+	pass

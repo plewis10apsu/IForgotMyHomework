@@ -250,11 +250,13 @@ func _on_area_2d_area_entered(area):
 		actorData.hp -= other.actorData.hazard_level
 		other.hit_something()
 	if other.actorData.team == TEAM.POWER_UP:
-		if not "health_up" in other:
-			# This is the rainbow power up
-			powerup_timer_ms = 15 * 1000 # 30 seconds to start
+		if other.power_up_type == "rainbow":
+			powerup_timer_ms = 15 * 1000 # 30 seconds of rainbow mode :D
 			powerup = PLATFORMING_POWERUP.RAINBOW
-			other.queue_free()
-		if "health_up" in other:
+			other.destroy()
+		if other.power_up_type == "health":
 			actorData.hp = clamp(actorData.hp+other.health_up, 0, HP_MAX)
-			other.queue_free()
+			other.destroy()
+		if other.power_up_type == "coin":
+			Global.score += 25
+			other.destroy()

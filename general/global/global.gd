@@ -24,6 +24,13 @@ func _ready():
 	add_child(bullet_parent)
 	prep_sfx_player("pop", 16, "res://general/sfx/cc0_698818__funky_audio__dsgnsynth_bubble-pops-synth-singular_funky-audio_fass.mp3")
 	prep_sfx_player("bop_ouch", 1, "res://general/sfx/cc0_340288__kevinduffy1234_and_404747__owlstorm.mp3")
+	prep_sfx_player("pop_1", 16, "res://general/sfx/bubble_pop_1.wav")
+	prep_sfx_player("pop_2", 16, "res://general/sfx/bubble_pop_2.wav")
+	prep_sfx_player("pop_3", 16, "res://general/sfx/bubble_pop_3.wav")
+	prep_sfx_player("pop_4", 16, "res://general/sfx/bubble_pop_4.wav")
+	prep_sfx_player("pop_5", 16, "res://general/sfx/bubble_pop_5.wav")
+	prep_sfx_player("heart_up", 3, "res://general/sfx/heart_up.wav")
+	prep_sfx_player("pick_up_coin", 16, "res://general/sfx/pick_up_coin.wav")
 
 func prep_sfx_player(sfx_name_IN, max_polyphony_IN, asset_IN):
 	sfx_player_dictionary[sfx_name_IN] = AudioStreamPlayer.new()

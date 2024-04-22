@@ -887,6 +887,19 @@ theme_override_font_sizes/font_size = 95
 text = "Credits"
 horizontal_alignment = 1
 
+[node name="Credits text" type="Label" parent="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 47
+text = "A game developed by
+J. Brady
+P. Lewis
+J. Lehtola
+
+With assets by
+Kenney (www.kenney.nl)"
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4

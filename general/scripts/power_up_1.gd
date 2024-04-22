@@ -2,6 +2,7 @@ extends Node2D
 
 var actorData : ActorData
 var hue : float
+var power_up_type = "rainbow"
 
 func _ready():
 	actorData = ActorData.new(1, TEAM.POWER_UP, WEAPON.NONE, 0)
@@ -15,3 +16,7 @@ func _process(delta):
 
 func hit_something():
 	pass
+
+func destroy():
+	Global.play_sfx_by_name("heart_up")
+	queue_free()

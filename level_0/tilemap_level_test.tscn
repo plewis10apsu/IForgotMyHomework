@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bx36w0ilwfe4j"]
+[gd_scene load_steps=16 format=3 uid="uid://bx36w0ilwfe4j"]
 
 [ext_resource type="TileSet" uid="uid://hhqhysdekss0" path="res://general/etc/level_tileset_1.tres" id="1_q10gx"]
 [ext_resource type="PackedScene" uid="uid://h1euld2qohrv" path="res://general/scenes/actor_player.tscn" id="2_on4jh"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c80tgtd814il2" path="res://general/scenes/level_1_flag.tscn" id="13_0r4f1"]
 [ext_resource type="PackedScene" uid="uid://dh41out5qwy0i" path="res://general/scenes/bus.tscn" id="13_sehbo"]
 [ext_resource type="Texture2D" uid="uid://n2sqm6j1d5dw" path="res://general/sprites/ph_player.png" id="14_tmn8p"]
+[ext_resource type="PackedScene" uid="uid://dy7drdin15j75" path="res://general/scenes/coin.tscn" id="15_1lgwo"]
 
 [node name="Level" type="Node2D"]
 
@@ -24,6 +25,78 @@ layer_0/tile_data = PackedInt32Array(-65536, 131072, 1, -65535, 131072, 1, -6553
 
 [node name="Player" parent="." instance=ExtResource("2_on4jh")]
 position = Vector2(16, -64)
+
+[node name="Coins_collection" type="Node2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="Coin" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(206, -28)
+
+[node name="Coin17" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(-208, -27)
+
+[node name="Coin18" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(-136, -81)
+
+[node name="Coin19" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(-118, -81)
+
+[node name="Coin20" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(836, -45)
+
+[node name="Coin21" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(890, 189)
+
+[node name="Coin22" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(962, -351)
+
+[node name="Coin23" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(854, -333)
+
+[node name="Coin2" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(224, -28)
+
+[node name="Coin3" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(530, -64)
+
+[node name="Coin4" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(566, -208)
+
+[node name="Coin5" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(584, -208)
+
+[node name="Coin6" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(602, -208)
+
+[node name="Coin7" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(620, -208)
+
+[node name="Coin8" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(638, -208)
+
+[node name="Coin9" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(1214, -100)
+
+[node name="Coin10" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(1232, -118)
+
+[node name="Coin11" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(1250, -136)
+
+[node name="Coin12" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(1268, -154)
+
+[node name="Coin13" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(1286, -172)
+
+[node name="Coin14" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(1304, -190)
+
+[node name="Coin15" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(1322, -208)
+
+[node name="Coin16" parent="Coins_collection" instance=ExtResource("15_1lgwo")]
+position = Vector2(1376, -225)
 
 [node name="Background (replace later lol)" type="Polygon2D" parent="."]
 z_index = -50
@@ -62,7 +135,7 @@ position = Vector2(387, -162)
 position = Vector2(710, -86)
 
 [node name="ActorDave3" parent="ActorDave3" instance=ExtResource("6_pj8kf")]
-position = Vector2(837, -202)
+position = Vector2(829, -211)
 
 [node name="ActorLouie" parent="." instance=ExtResource("7_fu8lv")]
 position = Vector2(11, -121)
