@@ -28,17 +28,16 @@ func _on_credits_button_pressed():
 
 func _on_level_button_1_pressed():
 	$TransitionsLayer/Transitions.set_next_animation(true)
-	#NOTE (Peggy) Fade out is triggered with $TransitionsLayer/Transitions.set_next_animation(true)
-	# Scene change is handled with Transitions node, "Scene to Load" in Inspector
-	Global.change_level("res://level_0/tilemap_level_test.tscn")
+	$TransitionsLayer/Transitions.scene_to_load = preload("res://level_0/tilemap_level_test.tscn")
+	
 
 func _on_level_button_2_pressed():
 	$TransitionsLayer/Transitions.set_next_animation(true)
-	Global.change_level("res://level_2/SpaceShooterLevel/scenes/game.tscn")
+	$TransitionsLayer/Transitions.scene_to_load = preload("res://level_2/SpaceShooterLevel/scenes/game.tscn")
 
 func _on_level_button_3_pressed():
 	$TransitionsLayer/Transitions.set_next_animation(true)
-	Global.change_level("res://level_3/moon_level.tscn")
+	$TransitionsLayer/Transitions.scene_to_load = preload("res://level_3/moon_level.tscn")
 
 func _on_close_button_pressed():
 	$HelpPanel.visible = false
