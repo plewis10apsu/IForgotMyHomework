@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://dnt4b8ise03l1"]
+[gd_scene load_steps=98 format=3 uid="uid://dnt4b8ise03l1"]
 
 [ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ibt0l"]
 [ext_resource type="Texture2D" uid="uid://bercx77l05y7x" path="res://menus/textures/menu background.png" id="2_hsk56"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://2npiky6fdylc" path="res://menus/textures/tile_0086.png" id="26_fkwmt"]
 [ext_resource type="Texture2D" uid="uid://d3co71c5uok38" path="res://menus/textures/tile_0120.png" id="27_f67yr"]
 [ext_resource type="Texture2D" uid="uid://ddn2bpkl31gno" path="res://menus/textures/tile_0121.png" id="28_1o7kb"]
+[ext_resource type="Script" path="res://menus/Main_Menu/options_panel.gd" id="29_2ptma"]
 [ext_resource type="Texture2D" uid="uid://70u7sftpyo2w" path="res://general/sprites/check_button_1.png" id="29_52qrx"]
 [ext_resource type="Texture2D" uid="uid://ctrqymuwdn6pd" path="res://menus/textures/tile_0122.png" id="29_hbwm4"]
 [ext_resource type="Texture2D" uid="uid://kh2ahah87mcy" path="res://general/sprites/check_button_3.png" id="30_53a2g"]
@@ -943,7 +944,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tlscf")
-script = SubResource("GDScript_ll36t")
+script = ExtResource("29_2ptma")
 
 [node name="MarginContainer" type="MarginContainer" parent="OptionsPanel/OptionsMenu/Panel"]
 layout_mode = 1
@@ -1055,4 +1056,5 @@ scale = Vector2(5, 5)
 [connection signal="pressed" from="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/BackButton" to="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/Camera2D" method="_on_back_button_pressed"]
 [connection signal="pressed" from="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="toggled" from="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/VBoxContainer/SoundFXCheckButton" to="OptionsPanel/OptionsMenu/Panel" method="_on_sound_fx_check_button_toggled"]
 [connection signal="pressed" from="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_close_button_pressed"]

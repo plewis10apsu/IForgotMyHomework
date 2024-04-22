@@ -18,6 +18,7 @@ var music_dictionary = {
 }
 var sfx_player_dictionary : Dictionary #Keys will be defined in _ready()
 var sfx_player_name_list = []
+var sfx_muted : bool = false
 
 func _ready():
 	add_child(music_player)
@@ -54,7 +55,19 @@ func unpause_all_sound():
 	for key in sfx_player_name_list:
 		if sfx_player_dictionary[key].stream_paused:
 			sfx_player_dictionary[key].stream_paused = false
-	
+
+func mute_sfx():
+	# Set all sfx player volume to -60
+	for key in sfx_player_name_list:
+		sfx_player_dictionary[key].volume_db = -60.0
+	sfx_muted = true
+
+func unmute_sfx():
+	# Set all sfx player volume to 0
+	for key in sfx_player_name_list:
+		sfx_player_dictionary[key].volume_db = 0.0
+	sfx_muted = false
+
 func point_at_player_from(from_node_IN):
 	#Creates normalized V2 pointing from argument's position to the player.
 	#For shooting, remember to pass the emitter node, NOT the actor's top-level "self".

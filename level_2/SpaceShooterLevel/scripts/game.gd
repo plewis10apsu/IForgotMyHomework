@@ -71,7 +71,8 @@ func _on_player_laser_shot(laser_scene, location):
 	var laser = laser_scene.instantiate()
 	laser.global_position = location
 	laser_container.add_child(laser)
-	laser_sound.play()
+	if !Global.sfx_muted:
+		laser_sound.play()
 
 func _on_enemy_spawn_timer_timeout():
 	var e = enemy_scenes.pick_random().instantiate() #Create a new instance of an enemy
@@ -89,16 +90,19 @@ func _on_large_enemy_spawn_timer_timeout():
 
 
 func _on_enemy_killed(points):
-	hit_sound.play()
+	if !Global.sfx_muted:
+		hit_sound.play()
 	#score += points
 	#if score > high_score:
 		#high_score = score
 	Global.score += points
 
 func _on_enemy_hit():
-	hit_sound.play()
+	if !Global.sfx_muted:
+		hit_sound.play()
 
 func _on_player_killed():
-	explode_sound.play()
+	if !Global.sfx_muted:
+		explode_sound.play()
 	save_game()
 	Global.reload_current_scene()
