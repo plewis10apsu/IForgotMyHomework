@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://level_2/SpaceShooterLevel/scripts/hud.gd" id="1_qkndt"]
 [ext_resource type="FontFile" uid="uid://c8687svw2jimg" path="res://level_2/SpaceShooterLevel/assets/fonts/ThaleahFat.ttf" id="2_akqyk"]
 [ext_resource type="Script" path="res://general/scripts/Health_HUD_level_2.gd" id="3_eiad6"]
-[ext_resource type="Script" path="res://level_2/SpaceShooterLevel/scenes/level_2_progress_hud.gd" id="3_hu2d7"]
+[ext_resource type="Script" path="res://level_2/SpaceShooterLevel/scripts/level_2_progress_hud.gd" id="3_hu2d7"]
 [ext_resource type="Texture2D" uid="uid://c7pfwmn7p6d11" path="res://general/sprites/earth mini.png" id="3_ps273"]
 [ext_resource type="Texture2D" uid="uid://bq7hp1cw4r2ig" path="res://general/sprites/moon mini.png" id="4_ctn5s"]
 [ext_resource type="Texture2D" uid="uid://cehh5dy4sa3mx" path="res://general/sprites/heart_filled.png" id="4_ku3wn"]

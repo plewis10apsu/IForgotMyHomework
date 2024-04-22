@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckx68ee60wlx5"]
 
-[ext_resource type="Script" path="res://heart_powerup.gd" id="1_f2d50"]
+[ext_resource type="Script" path="res://general/scripts/heart_powerup.gd" id="1_f2d50"]
 [ext_resource type="Texture2D" uid="uid://cehh5dy4sa3mx" path="res://general/sprites/heart_filled.png" id="2_xvbke"]
 [ext_resource type="Script" path="res://general/scripts/power_up_sprite_animation.gd" id="3_ncy4x"]
 

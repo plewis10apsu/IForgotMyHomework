@@ -887,6 +887,19 @@ theme_override_font_sizes/font_size = 95
 text = "Credits"
 horizontal_alignment = 1
 
+[node name="Credits text" type="Label" parent="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_v2n1h")
+theme_override_font_sizes/font_size = 47
+text = "A game developed by
+J. Brady
+P. Lewis
+J. Lehtola
+
+With assets by
+Kenney (www.kenney.nl)"
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1022,17 +1035,17 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_knyfq")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_r7l3v")
 text = "Close"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="TransitionsLayer" type="CanvasLayer" parent="."]
 
-[node name="Transitions" parent="CanvasLayer" instance=ExtResource("31_07hsw")]
-offset_left = 680.0
-offset_top = 250.0
-offset_right = 680.0
-offset_bottom = 250.0
-scale = Vector2(10, 10)
+[node name="Transitions" parent="TransitionsLayer" instance=ExtResource("31_07hsw")]
+offset_left = 800.0
+offset_top = 375.0
+offset_right = 800.0
+offset_bottom = 375.0
+scale = Vector2(5, 5)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1" to="." method="_on_level_button_1_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton2" to="." method="_on_level_button_2_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton3" to="." method="_on_level_button_3_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

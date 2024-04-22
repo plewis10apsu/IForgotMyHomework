@@ -86,13 +86,13 @@ position = Vector2(960, 970)
 
 [node name="PauseMenu" parent="PauseLayer" instance=ExtResource("12_qltov")]
 
-[node name="TransitionLayer" type="CanvasLayer" parent="."]
+[node name="TransitionsLayer" type="CanvasLayer" parent="."]
 
-[node name="Transitions" parent="TransitionLayer" instance=ExtResource("14_ftqq6")]
+[node name="Transitions" parent="TransitionsLayer" instance=ExtResource("14_ftqq6")]
 offset_left = 780.0
-offset_top = 420.0
+offset_top = 380.0
 offset_right = 780.0
-offset_bottom = 420.0
+offset_bottom = 380.0
 scale = Vector2(5, 5)
 scene_to_load = ExtResource("13_jit6v")
 

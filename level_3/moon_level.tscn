@@ -22,14 +22,19 @@ offset_right = 4589.0
 offset_bottom = 1850.0
 color = Color(0, 0, 0, 1)
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="TransitionsLayer" type="CanvasLayer" parent="."]
 
-[node name="Transitions" parent="CanvasLayer2" instance=ExtResource("2_aoi7s")]
+[node name="Transitions" parent="TransitionsLayer" instance=ExtResource("2_aoi7s")]
+offset_left = 800.0
+offset_top = 400.0
+offset_right = 800.0
+offset_bottom = 400.0
+scale = Vector2(5, 5)
 scene_to_load = ExtResource("3_11okw")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PauseLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_q7t66")]
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource("2_q7t66")]
 
 [node name="moon_terrain" type="StaticBody2D" parent="."]
 position = Vector2(0, -8)

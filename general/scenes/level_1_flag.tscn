@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c80tgtd814il2"]
+[gd_scene load_steps=7 format=3 uid="uid://c80tgtd814il2"]
 
 [ext_resource type="Script" path="res://general/scripts/level_1_flag.gd" id="1_a01es"]
 [ext_resource type="Texture2D" uid="uid://d0k0gn47mkhpm" path="res://general/sprites/level_1_flag_frame_1.png" id="2_wcj3t"]
 [ext_resource type="Texture2D" uid="uid://c1gyqui85hesy" path="res://general/sprites/level_1_flag_frame_2.png" id="3_whpgg"]
+[ext_resource type="PackedScene" uid="uid://c6hlqk4ebdk" path="res://general/scenes/bullet_emitter.tscn" id="4_cx5dw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkacw"]
 size = Vector2(52, 90)
@@ -32,5 +33,8 @@ shape = SubResource("RectangleShape2D_mkacw")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b7u8g")
+
+[node name="BulletEmitter" parent="." instance=ExtResource("4_cx5dw")]
+position = Vector2(0, 35)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

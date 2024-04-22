@@ -24,6 +24,6 @@ func _on_area_2d_area_entered(area):
 		timer.wait_time = 5
 		timer.timeout.connect(func ():
 			Global.submit_score_and_reset()
-			$"../CanvasLayer2/Transitions".set_next_animation(true)
+			$"../TransitionsLayer/Transitions".set_next_animation(true)
 		)
 		timer.start()

@@ -24,6 +24,13 @@ func _ready():
 	add_child(bullet_parent)
 	prep_sfx_player("pop", 16, "res://general/sfx/cc0_698818__funky_audio__dsgnsynth_bubble-pops-synth-singular_funky-audio_fass.mp3")
 	prep_sfx_player("bop_ouch", 1, "res://general/sfx/cc0_340288__kevinduffy1234_and_404747__owlstorm.mp3")
+	prep_sfx_player("pop_1", 16, "res://general/sfx/bubble_pop_1.wav")
+	prep_sfx_player("pop_2", 16, "res://general/sfx/bubble_pop_2.wav")
+	prep_sfx_player("pop_3", 16, "res://general/sfx/bubble_pop_3.wav")
+	prep_sfx_player("pop_4", 16, "res://general/sfx/bubble_pop_4.wav")
+	prep_sfx_player("pop_5", 16, "res://general/sfx/bubble_pop_5.wav")
+	prep_sfx_player("heart_up", 3, "res://general/sfx/heart_up.wav")
+	prep_sfx_player("pick_up_coin", 16, "res://general/sfx/pick_up_coin.wav")
 
 func prep_sfx_player(sfx_name_IN, max_polyphony_IN, asset_IN):
 	sfx_player_dictionary[sfx_name_IN] = AudioStreamPlayer.new()
@@ -53,11 +60,15 @@ func point_at_player_from(from_node_IN):
 	#For shooting, remember to pass the emitter node, NOT the actor's top-level "self".
 	return Vector2(player.global_position - from_node_IN.global_position).normalized()
 
+func clear_bullets():
+	# Deletes all children of the bullet parent
+	for b in bullet_parent.get_children():
+		b.queue_free()
+
 func change_level(level_path):
 	score_at_level_start = score
 	# Delete all the bullets
-	for b in bullet_parent.get_children():
-		b.queue_free()
+	clear_bullets()
 	# Change scenes
 	get_tree().change_scene_to_file(level_path)
 	current_level = get_tree().current_scene
@@ -72,7 +83,6 @@ func get_current_score_as_string():
 func get_high_score_as_string(i):
 	return str( get_clamped_score(high_scores[i]) ).pad_zeros(MAX_SCORE_DIGITS)
 	
-
 func get_clamped_score(score_IN):
 	#Clamps score to truncate digits exceeding max
 	var max_score_value_allowed = (pow(10, MAX_SCORE_DIGITS)) - 1

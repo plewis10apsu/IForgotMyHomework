@@ -15,6 +15,7 @@ const HURT_BLINK_RATE_MS : int = 30 #ms until hurt visibility toggles
 const HURT_BLINK_DURATION_MS : int = 1500 #ms player will be invincible after being hurt
 var hp : int = HP_MAX
 var invincible_timer_ms : int = 0 #set this=n to blink + be invincible for n miliseconds
+@onready var actorData : ActorData = ActorData.new(999, TEAM.PLAYER, WEAPON.BUBBLE_SHIP, 0)
 
 func _ready():
 	Global.player = self
@@ -30,6 +31,7 @@ func _process(delta):
 	invincible_timer_ms = clamp(invincible_timer_ms-int(delta*1000), 0, 999999)
 	var its_blink_off_time = bool(invincible_timer_ms%(2*HURT_BLINK_RATE_MS) > HURT_BLINK_RATE_MS)
 	$Sprite2D.visible = (false if (invincible_timer_ms>0 and its_blink_off_time) else true)
+	$BulletEmitter.shoot(self, Vector2(0,1))
 
 func _physics_process(_delta):
 	var direction = Vector2(Input.get_axis("move_left", "move_right"),
