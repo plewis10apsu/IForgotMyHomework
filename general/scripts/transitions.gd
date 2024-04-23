@@ -6,12 +6,9 @@ class_name Transitions extends Control
 @onready var animation_tex : TextureRect = $TextureRect
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	if animation_tex:
-		animation_tex.visible = false
-	animation_player.queue("fade_in")
 
+func _ready():
+	pass
 
 func set_next_animation(fading_out : bool):
 	animation_tex.visible = true

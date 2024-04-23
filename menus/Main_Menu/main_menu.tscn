@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://dnt4b8ise03l1"]
+[gd_scene load_steps=99 format=3 uid="uid://dnt4b8ise03l1"]
 
 [ext_resource type="Script" path="res://menus/Main_Menu/main_menu.gd" id="1_ibt0l"]
 [ext_resource type="Texture2D" uid="uid://bercx77l05y7x" path="res://menus/textures/menu background.png" id="2_hsk56"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://kh2ahah87mcy" path="res://general/sprites/check_button_3.png" id="30_53a2g"]
 [ext_resource type="Texture2D" uid="uid://cu84ifsdt0qg7" path="res://menus/textures/tile_0017.png" id="30_uvhdj"]
 [ext_resource type="PackedScene" uid="uid://bb1ytyvtxlve0" path="res://general/scenes/transitions.tscn" id="31_07hsw"]
+[ext_resource type="PackedScene" uid="uid://bx36w0ilwfe4j" path="res://level_0/tilemap_level_test.tscn" id="33_7m6rf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t3m8v"]
 
@@ -1044,6 +1045,7 @@ offset_top = 375.0
 offset_right = 800.0
 offset_bottom = 375.0
 scale = Vector2(5, 5)
+scene_to_load = ExtResource("33_7m6rf")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1" to="." method="_on_level_button_1_pressed"]

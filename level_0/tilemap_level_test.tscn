@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ctd1vldeuv3vd" path="res://general/scenes/cloud_platform.tscn" id="3_qmcg3"]
 [ext_resource type="PackedScene" uid="uid://cusmuny1el101" path="res://menus/Pause_Menu/pause_menu.tscn" id="4_x54o0"]
 [ext_resource type="PackedScene" uid="uid://bb1ytyvtxlve0" path="res://general/scenes/transitions.tscn" id="5_lfaq5"]
-[ext_resource type="PackedScene" uid="uid://bwvsa0t1s1ych" path="res://general/scenes/power_up_1.tscn" id="5_yeyay"]
+[ext_resource type="PackedScene" path="res://general/scenes/power_up_1.tscn" id="5_yeyay"]
 [ext_resource type="PackedScene" uid="uid://4osk76a4o7l1" path="res://general/scenes/actor_dave.tscn" id="6_pj8kf"]
 [ext_resource type="PackedScene" uid="uid://byeaat0hjsy5o" path="res://general/scenes/actor_louie.tscn" id="7_fu8lv"]
 [ext_resource type="PackedScene" uid="uid://dxsdx21bpqdk" path="res://level_2/SpaceShooterLevel/scenes/game.tscn" id="8_tjekj"]
@@ -25,6 +25,26 @@ layer_0/tile_data = PackedInt32Array(-65536, 131072, 1, -65535, 131072, 1, -6553
 
 [node name="Player" parent="." instance=ExtResource("2_on4jh")]
 position = Vector2(16, -64)
+
+[node name="TransitionsLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Transitions" parent="TransitionsLayer" instance=ExtResource("5_lfaq5")]
+offset_left = -14.0
+offset_top = -60.0
+offset_right = -14.0
+offset_bottom = -60.0
+scene_to_load = ExtResource("8_tjekj")
+
+[node name="TransitionsLayer2" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Transitions" parent="TransitionsLayer2" instance=ExtResource("5_lfaq5")]
+offset_left = 1695.0
+offset_top = -375.0
+offset_right = 1695.0
+offset_bottom = -375.0
+scene_to_load = ExtResource("8_tjekj")
 
 [node name="Coins_collection" type="Node2D" parent="."]
 position = Vector2(1, 0)
@@ -116,16 +136,6 @@ position = Vector2(269, -58)
 [node name="ActorDave" parent="." instance=ExtResource("6_pj8kf")]
 position = Vector2(72, -112)
 turns_at_ledges = false
-
-[node name="TransitionsLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="Transitions" parent="TransitionsLayer" instance=ExtResource("5_lfaq5")]
-offset_left = -19.0
-offset_top = -67.0
-offset_right = -19.0
-offset_bottom = -67.0
-scene_to_load = ExtResource("8_tjekj")
 
 [node name="ActorDave2" parent="." instance=ExtResource("6_pj8kf")]
 position = Vector2(387, -162)

@@ -25,8 +25,8 @@ func _on_area_2d_area_entered(area):
 		var timer = Timer.new()
 		active = true
 		add_child(timer)
-		timer.wait_time = 2
 		timer.timeout.connect(func ():
-			$"../TransitionsLayer/Transitions".set_next_animation(true)
-		)
+			$"../TransitionsLayer2/Transitions".set_next_animation(true))
+		timer.wait_time = 2
 		timer.start()
+		
