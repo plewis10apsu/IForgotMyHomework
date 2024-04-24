@@ -23,6 +23,7 @@ var scroll_speed = 100
 var level_timer : Timer
 
 func _ready():
+	Global.play_music_by_name_plus_volume("voyage", -6)
 	Global.current_level = get_tree().current_scene
 	Global.current_level_path = "res://level_2/SpaceShooterLevel/scenes/game.tscn"
 	Global.clear_bullets()
@@ -52,7 +53,7 @@ func save_game():
 	save_file.store_32(high_score)
 
 func _process(delta):
-	if Input.is_key_pressed(KEY_END):
+	if Input.is_key_pressed(KEY_END) and Global.cheats_enabled:
 		level_timer.wait_time = 0.01
 		level_timer.start()
 	#NOTE(Jim): ^ Just adding a skip key for debug purposes.

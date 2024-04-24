@@ -12,7 +12,7 @@ var distance_from_player
 const active_radius = 200 #Unit proximity from player required to be active
 
 func _ready():
-	actorData = ActorData.new(3, TEAM.ENEMY, WEAPON.FLAME, 0)
+	actorData = ActorData.new(3, TEAM.ENEMY, WEAPON.SLOW, 0)
 
 func _process(delta):
 	#Handle shoot timer

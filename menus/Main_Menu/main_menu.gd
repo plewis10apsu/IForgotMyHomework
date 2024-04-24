@@ -5,6 +5,7 @@ var transitions_node : Transitions
 
 func _ready():
 	Global.current_level = self
+	Global.stop_music()
 	$MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelButton1.grab_focus()
 	transitions_node = $TransitionsLayer/Transitions
 	$TransitionsLayer/Transitions.scene_to_load = null
@@ -28,7 +29,7 @@ func _on_credits_button_pressed():
 
 func _on_level_button_1_pressed():
 	$TransitionsLayer/Transitions.set_next_animation(true)
-	$TransitionsLayer/Transitions.scene_to_load = preload("res://level_0/tilemap_level_test.tscn")
+	$TransitionsLayer/Transitions.scene_to_load = preload("res://level_1/tilemap_level_test.tscn")
 	
 
 func _on_level_button_2_pressed():

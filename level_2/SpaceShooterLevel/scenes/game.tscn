@@ -34,9 +34,11 @@ large_enemy_scenes = Array[PackedScene]([ExtResource("4_2w64i")])
 
 [node name="LaserSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_eqn4p")
+volume_db = -4.0
 
 [node name="HitSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_wty6y")
+volume_db = -6.0
 
 [node name="ExplodeSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("6_bh30a")

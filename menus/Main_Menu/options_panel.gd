@@ -17,3 +17,8 @@ func _on_sound_fx_check_button_toggled(toggled_on):
 	else:
 		Global.mute_sfx()
 		print("muted sound effects")
+
+
+
+func _on_music_check_button_toggled(toggled_on):
+	Global.set_allow_music(toggled_on);

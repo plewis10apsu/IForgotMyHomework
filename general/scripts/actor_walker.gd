@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const WALK_SPEED = 20.0 #pixels per second
+var walk_speed = 20.0 #pixels per second
 @export var turns_at_ledges = true
 @export var is_facing_right : bool = true
 var actorData : ActorData
@@ -15,6 +15,8 @@ var needs_to_blink_white = false
 func _ready():
 	actorData = ActorData.new(100, TEAM.ENEMY, WEAPON.NONE, 1)
 	position_x_last_frame = 0
+	if !is_facing_right:
+		$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x) * (-1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -38,7 +40,7 @@ func _physics_process(delta):
 		if(hasnt_moved or needs_ledge_turn):
 			flip()
 		#Move
-		velocity.x = WALK_SPEED * (1 if is_facing_right else (-1))
+		velocity.x = walk_speed * (1 if is_facing_right else (-1))
 		position_x_last_frame = position.x
 	else:
 		position_x_last_frame = 0 #Zeroing this out is a hacky way to avoid detecting x stillness while airborn
