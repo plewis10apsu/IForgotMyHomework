@@ -255,9 +255,6 @@ position = Vector2(80, 384)
 [node name="ActorGarry11" parent="." instance=ExtResource("10_80ndf")]
 position = Vector2(104, 384)
 
-[node name="CloudPlatform2" parent="." instance=ExtResource("16_ssdr7")]
-position = Vector2(-57, 908)
-
 [node name="Power_up2" parent="." instance=ExtResource("12_j74h4")]
 position = Vector2(-228, 238)
 
@@ -406,6 +403,9 @@ is_facing_right = false
 
 [node name="Player" parent="." instance=ExtResource("1_ym3xc")]
 position = Vector2(-416, 1014)
+
+[node name="CloudPlatform2" parent="." instance=ExtResource("16_ssdr7")]
+position = Vector2(-57, 908)
 
 [node name="moon_big_triangle" type="StaticBody2D" parent="."]
 position = Vector2(-212, -472)

@@ -41,7 +41,7 @@ position = Vector2(0, -2)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/LedgeSensor"]
-position = Vector2(14, 28)
+position = Vector2(13, 23)
 shape = SubResource("RectangleShape2D_huwgo")
 
 [node name="BulletEmitter" parent="AnimatedSprite2D" instance=ExtResource("4_8wp02")]

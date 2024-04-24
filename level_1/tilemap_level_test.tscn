@@ -126,9 +126,6 @@ z_index = -50
 color = Color(0.172549, 0.772549, 0.964706, 1)
 polygon = PackedVector2Array(-1786, -1547, 2925, -1508, 2822, 1362, -1912, 1288)
 
-[node name="CloudPlatform" parent="." instance=ExtResource("6_q565u")]
-position = Vector2(460, -184)
-
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="PauseLayer" instance=ExtResource("7_m818y")]
@@ -332,6 +329,9 @@ layer_0/tile_data = PackedInt32Array(-851983, 131072, 6, -786447, 131072, 6, -52
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PhPlayer/Area2D"]
 polygon = PackedVector2Array(-36, -32, 36, -32, 36, 32, -36, 32)
+
+[node name="CloudPlatform" parent="." instance=ExtResource("6_q565u")]
+position = Vector2(460, -184)
 
 [connection signal="area_entered" from="PhPlayer/Area2D" to="PhPlayer" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="PhPlayer/Area2D" to="PhPlayer" method="_on_area_2d_area_exited"]
