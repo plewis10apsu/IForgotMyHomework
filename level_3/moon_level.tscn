@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d4bwr6c3m4qte"]
+[gd_scene load_steps=20 format=3 uid="uid://d4bwr6c3m4qte"]
 
 [ext_resource type="Script" path="res://level_3/moon_level.gd" id="1_o230s"]
 [ext_resource type="Texture2D" uid="uid://d0k0gn47mkhpm" path="res://general/sprites/level_1_flag_frame_1.png" id="1_xvv7j"]
@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://bwvsa0t1s1ych" path="res://general/scenes/power_up_1.tscn" id="12_j74h4"]
 [ext_resource type="PackedScene" uid="uid://dy7drdin15j75" path="res://general/scenes/coin.tscn" id="13_gu2cy"]
 [ext_resource type="PackedScene" uid="uid://ckx68ee60wlx5" path="res://general/scenes/heart_powerup.tscn" id="14_k4t6f"]
-[ext_resource type="PackedScene" uid="uid://ctd1vldeuv3vd" path="res://general/scenes/cloud_platform.tscn" id="15_7dc2d"]
+[ext_resource type="PackedScene" uid="uid://7vll064k7mbh" path="res://general/scenes/moon_platform.tscn" id="16_ssdr7"]
+[ext_resource type="PackedScene" uid="uid://4osk76a4o7l1" path="res://general/scenes/actor_dave.tscn" id="17_4dt8y"]
+[ext_resource type="PackedScene" uid="uid://b3fqar41wnkf6" path="res://general/scenes/secret_volume.tscn" id="18_7txo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vx55k"]
 size = Vector2(336, 191)
@@ -36,6 +38,14 @@ offset_left = -3424.0
 offset_top = -2088.0
 offset_right = 3928.0
 offset_bottom = 1868.0
+color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+
+[node name="BlackRect" type="ColorRect" parent="."]
+z_index = -100
+offset_left = -3996.0
+offset_top = -3596.0
+offset_right = 3356.0
+offset_bottom = 360.0
 color = Color(0, 0, 0, 1)
 
 [node name="Level1FlagFrame1" type="Sprite2D" parent="."]
@@ -46,9 +56,6 @@ texture = ExtResource("1_xvv7j")
 [node name="LilHouseSprite" type="Sprite2D" parent="."]
 position = Vector2(1047, 140)
 texture = ExtResource("5_hu0d4")
-
-[node name="Player" parent="." instance=ExtResource("1_ym3xc")]
-position = Vector2(-416, 1014)
 
 [node name="TransitionsLayer" type="CanvasLayer" parent="."]
 
@@ -73,7 +80,7 @@ script = ExtResource("2_x463h")
 [node name="Polygon2D" type="Polygon2D" parent="moon_terrain/CollisionPolygon2D"]
 texture_repeat = 2
 texture = ExtResource("2_uny6s")
-polygon = PackedVector2Array(2029, 1849, -808, 1838, -768, 934, -399, 623, 152, 622, 184, 870, 461, 887, 447, 918, 450, 948, 464, 974, 488, 974, 472, 1006, 464, 1046, 488, 1054, 480, 1070, 464, 1070, 457, 1084, 442, 1087, 422, 1084, 381, 1093, 330, 1114, 304, 1166, 288, 1206, 264, 1214, 200, 1206, 168, 1238, 153, 1216, 125, 1217, 100, 1226, 78, 1244, 59, 1269, 40, 1310, 40, 1350, 60, 1414, 82, 1467, 115, 1461, 144, 1462, 176, 1466, 213, 1472, 261, 1481, 264, 1502, 284, 1500, 307, 1501, 321, 1509, 334, 1519, 339, 1535, 335, 1551, 300, 1552, 263, 1547, 237, 1536, 192, 1540, 123, 1530, 46, 1515, 0, 1494, -32, 1438, -72, 1382, -88, 1294, -40, 1182, -496, 1182, -456, 1350, -408, 1446, -336, 1494, -232, 1526, -163, 1526, -56, 1582, 88, 1606, 184, 1606, 321, 1602, 398, 1583, 381, 1545, 406, 1537, 432, 1534, 469, 1535, 509, 1540, 493, 1499, 480, 1414, 472, 1390, 479, 1353, 474, 1331, 487, 1307, 506, 1292, 528, 1286, 608, 1286, 624, 1294, 705, 1290, 755, 1286, 795, 1270, 800, 1229, 796, 1196, 748, 1173, 685, 1187, 623, 1191, 574, 1185, 533, 1190, 496, 1182, 464, 1182, 431, 1177, 413, 1153, 424, 1142, 472, 1134, 536, 1134, 536, 1110, 528, 1110, 520, 1094, 529, 1090, 542, 1090, 566, 1086, 578, 1062, 580, 1031, 560, 1022, 528, 1022, 520, 1014, 623, 1006, 640, 999, 640, 974, 627, 956, 606, 950, 528, 950, 520, 934, 573, 921, 580, 889, 567, 862, 536, 854, 216, 846, 472, 742, 776, 726, 1031, 785, 1040, 718, 1107, 705, 1226, 674, 1297, 674, 2185, 664)
+polygon = PackedVector2Array(2029, 1849, -808, 1838, -768, 934, -730, 558, -466, 502, -442, 718, -106, 718, -90, 750, -10, 750, 62, 742, 102, 750, 144, 768, 170, 819, 184, 870, 461, 887, 447, 918, 450, 948, 464, 974, 488, 974, 472, 1006, 464, 1046, 488, 1054, 480, 1070, 464, 1070, 457, 1084, 442, 1087, 422, 1084, 381, 1093, 330, 1114, 304, 1166, 288, 1206, 264, 1214, 200, 1206, 168, 1238, 153, 1216, 125, 1217, 100, 1226, 78, 1244, 59, 1269, 40, 1310, 40, 1350, 42, 1405, 60, 1451, 86, 1471, 122, 1466, 154, 1464, 198, 1462, 238, 1462, 270, 1462, 252, 1487, 247, 1495, 250, 1504, 264, 1507, 282, 1501, 307, 1501, 321, 1509, 334, 1519, 339, 1535, 335, 1551, 318, 1554, 293, 1555, 263, 1552, 233, 1546, 192, 1540, 123, 1530, 46, 1515, 0, 1494, -32, 1438, -72, 1382, -88, 1294, -40, 1182, -496, 1182, -456, 1350, -408, 1446, -336, 1494, -232, 1526, -163, 1526, -56, 1582, 88, 1606, 184, 1606, 321, 1602, 398, 1583, 381, 1545, 406, 1537, 432, 1534, 469, 1535, 488, 1530, 493, 1499, 493, 1457, 480, 1414, 472, 1390, 479, 1353, 474, 1331, 487, 1307, 506, 1292, 528, 1286, 608, 1286, 624, 1294, 705, 1290, 755, 1286, 795, 1270, 800, 1229, 796, 1196, 748, 1173, 685, 1187, 623, 1191, 574, 1185, 533, 1190, 496, 1182, 464, 1182, 431, 1177, 413, 1153, 424, 1142, 472, 1134, 530, 1134, 538, 1131, 540, 1121, 536, 1113, 528, 1107, 520, 1094, 529, 1090, 542, 1090, 566, 1086, 578, 1062, 580, 1031, 560, 1022, 528, 1022, 520, 1014, 623, 1006, 640, 999, 640, 974, 627, 956, 606, 950, 528, 950, 520, 934, 573, 921, 580, 889, 567, 862, 536, 854, 216, 846, 472, 742, 776, 726, 1024.37, 783.467, 1026, 766, 1031, 741, 1040, 719, 1107, 705, 1226, 674, 1297, 674, 2185, 664)
 
 [node name="SpikeSprite" type="Sprite2D" parent="."]
 position = Vector2(200, 744)
@@ -87,17 +94,14 @@ texture = ExtResource("9_d6blt")
 position = Vector2(232, 744)
 texture = ExtResource("9_d6blt")
 
-[node name="moon_big_triangle" type="StaticBody2D" parent="."]
-position = Vector2(-212, -472)
+[node name="Heart" parent="." instance=ExtResource("14_k4t6f")]
+position = Vector2(320, 784)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="moon_big_triangle"]
-position = Vector2(2, -14)
-polygon = PackedVector2Array(386, 1174, 394, 1222, 626, 1222, 626, 1230, 394, 1230, 418, 1294, 186, 1334)
+[node name="Heart4" parent="." instance=ExtResource("14_k4t6f")]
+position = Vector2(336, 784)
 
-[node name="Polygon2D" type="Polygon2D" parent="moon_big_triangle/CollisionPolygon2D"]
-texture_repeat = 2
-texture = ExtResource("2_uny6s")
-polygon = PackedVector2Array(186, 1334, 418, 1294, 530, 1318, 530, 1230, 626, 1230, 626, 1174, 450, 1174, 450, 1198.03, 450, 1238, 402, 1238, 398.903, 1222.39, 386, 1174)
+[node name="Heart5" parent="." instance=ExtResource("14_k4t6f")]
+position = Vector2(352, 784)
 
 [node name="level_3_flag" parent="." instance=ExtResource("6_mndu5")]
 position = Vector2(979, 166)
@@ -134,22 +138,13 @@ position = Vector2(512, 744)
 position = Vector2(432, 744)
 
 [node name="Coin" parent="." instance=ExtResource("13_gu2cy")]
-position = Vector2(-104, 1096)
+position = Vector2(-104, 1104)
 
 [node name="Coin2" parent="." instance=ExtResource("13_gu2cy")]
-position = Vector2(-80, 1096)
+position = Vector2(-80, 1104)
 
 [node name="Coin3" parent="." instance=ExtResource("13_gu2cy")]
-position = Vector2(-56, 1096)
-
-[node name="Heart" parent="." instance=ExtResource("14_k4t6f")]
-position = Vector2(336, 784)
-
-[node name="Heart4" parent="." instance=ExtResource("14_k4t6f")]
-position = Vector2(352, 784)
-
-[node name="Heart5" parent="." instance=ExtResource("14_k4t6f")]
-position = Vector2(368, 784)
+position = Vector2(-56, 1104)
 
 [node name="Coin4" parent="." instance=ExtResource("13_gu2cy")]
 position = Vector2(23, 795)
@@ -161,7 +156,7 @@ position = Vector2(62, 764)
 position = Vector2(102, 732)
 
 [node name="Heart2" parent="." instance=ExtResource("14_k4t6f")]
-position = Vector2(311, 636)
+position = Vector2(311, 635)
 
 [node name="Coin7" parent="." instance=ExtResource("13_gu2cy")]
 position = Vector2(402, 509)
@@ -212,29 +207,29 @@ position = Vector2(512, 792)
 [node name="Coin18" parent="." instance=ExtResource("13_gu2cy")]
 position = Vector2(432, 792)
 
+[node name="Coin31" parent="." instance=ExtResource("13_gu2cy")]
+position = Vector2(432, 760)
+
 [node name="Coin19" parent="." instance=ExtResource("13_gu2cy")]
 position = Vector2(432, 776)
 
-[node name="Coin13" parent="Coin19" instance=ExtResource("13_gu2cy")]
-position = Vector2(0, -16)
-
-[node name="Coin14" parent="Coin19" instance=ExtResource("13_gu2cy")]
-position = Vector2(80, -16)
-
-[node name="Coin15" parent="Coin19" instance=ExtResource("13_gu2cy")]
-position = Vector2(64, -16)
-
-[node name="Coin16" parent="Coin19" instance=ExtResource("13_gu2cy")]
-position = Vector2(48, -16)
-
-[node name="Coin17" parent="Coin19" instance=ExtResource("13_gu2cy")]
-position = Vector2(32, -16)
-
-[node name="Coin18" parent="Coin19" instance=ExtResource("13_gu2cy")]
-position = Vector2(16, -16)
-
 [node name="Coin20" parent="." instance=ExtResource("13_gu2cy")]
 position = Vector2(448, 776)
+
+[node name="Coin32" parent="." instance=ExtResource("13_gu2cy")]
+position = Vector2(512, 760)
+
+[node name="Coin33" parent="." instance=ExtResource("13_gu2cy")]
+position = Vector2(496, 760)
+
+[node name="Coin34" parent="." instance=ExtResource("13_gu2cy")]
+position = Vector2(480, 760)
+
+[node name="Coin35" parent="." instance=ExtResource("13_gu2cy")]
+position = Vector2(464, 760)
+
+[node name="Coin36" parent="." instance=ExtResource("13_gu2cy")]
+position = Vector2(448, 760)
 
 [node name="Coin21" parent="." instance=ExtResource("13_gu2cy")]
 position = Vector2(464, 776)
@@ -251,9 +246,6 @@ position = Vector2(512, 776)
 [node name="Power_up" parent="." instance=ExtResource("12_j74h4")]
 position = Vector2(234, 384)
 
-[node name="CloudPlatform" parent="." instance=ExtResource("15_7dc2d")]
-position = Vector2(-57, 918)
-
 [node name="ActorGarry9" parent="." instance=ExtResource("10_80ndf")]
 position = Vector2(56, 384)
 
@@ -262,3 +254,175 @@ position = Vector2(80, 384)
 
 [node name="ActorGarry11" parent="." instance=ExtResource("10_80ndf")]
 position = Vector2(104, 384)
+
+[node name="CloudPlatform2" parent="." instance=ExtResource("16_ssdr7")]
+position = Vector2(-57, 908)
+
+[node name="Power_up2" parent="." instance=ExtResource("12_j74h4")]
+position = Vector2(-228, 238)
+
+[node name="ActorGarry12" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-640, 224)
+
+[node name="ActorGarry13" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-576, 224)
+
+[node name="ActorGarry14" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-512, 224)
+
+[node name="ActorGarry15" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-448, 224)
+
+[node name="ActorGarry16" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-384, 224)
+
+[node name="ActorGarry17" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-320, 224)
+
+[node name="ActorDave" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-624, 192)
+
+[node name="ActorDave2" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-592, 184)
+is_facing_right = false
+
+[node name="ActorDave3" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-560, 192)
+
+[node name="ActorDave4" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-528, 184)
+is_facing_right = false
+
+[node name="ActorDave5" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-496, 192)
+
+[node name="ActorDave6" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-464, 184)
+is_facing_right = false
+
+[node name="ActorDave7" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-432, 192)
+
+[node name="ActorDave8" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-400, 184)
+is_facing_right = false
+
+[node name="ActorDave9" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-368, 192)
+
+[node name="ActorDave10" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-336, 184)
+is_facing_right = false
+
+[node name="ActorGarry18" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-608, 216)
+is_facing_right = false
+
+[node name="ActorGarry19" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-544, 216)
+is_facing_right = false
+
+[node name="ActorGarry20" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-480, 216)
+is_facing_right = false
+
+[node name="ActorGarry21" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-416, 216)
+is_facing_right = false
+
+[node name="ActorGarry22" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-352, 216)
+is_facing_right = false
+
+[node name="ActorGarry23" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-632, 168)
+
+[node name="ActorGarry24" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-600, 160)
+is_facing_right = false
+
+[node name="ActorGarry25" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-568, 168)
+
+[node name="ActorGarry26" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-536, 160)
+is_facing_right = false
+
+[node name="ActorGarry27" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-504, 168)
+
+[node name="ActorGarry28" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-472, 160)
+is_facing_right = false
+
+[node name="ActorGarry29" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-440, 168)
+
+[node name="ActorGarry30" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-408, 160)
+is_facing_right = false
+
+[node name="ActorGarry31" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-376, 168)
+
+[node name="ActorGarry32" parent="." instance=ExtResource("10_80ndf")]
+position = Vector2(-344, 160)
+is_facing_right = false
+
+[node name="ActorDave11" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-616, 136)
+
+[node name="ActorDave12" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-584, 128)
+is_facing_right = false
+
+[node name="ActorDave13" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-552, 136)
+
+[node name="ActorDave14" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-520, 128)
+is_facing_right = false
+
+[node name="ActorDave15" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-488, 136)
+
+[node name="ActorDave16" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-456, 128)
+is_facing_right = false
+
+[node name="ActorDave17" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-424, 136)
+
+[node name="ActorDave18" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-392, 128)
+is_facing_right = false
+
+[node name="ActorDave19" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-360, 136)
+
+[node name="ActorDave20" parent="." instance=ExtResource("17_4dt8y")]
+position = Vector2(-328, 128)
+is_facing_right = false
+
+[node name="Player" parent="." instance=ExtResource("1_ym3xc")]
+position = Vector2(-416, 1014)
+
+[node name="moon_big_triangle" type="StaticBody2D" parent="."]
+position = Vector2(-212, -472)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="moon_big_triangle"]
+position = Vector2(2, -14)
+polygon = PackedVector2Array(386, 1174, 394, 1222, 626, 1222, 626, 1230, 394, 1230, 418, 1294, 381, 1325, 342, 1343, 285, 1349, 225, 1347, 186, 1334)
+
+[node name="Polygon2D" type="Polygon2D" parent="moon_big_triangle/CollisionPolygon2D"]
+texture_repeat = 2
+texture = ExtResource("2_uny6s")
+polygon = PackedVector2Array(186, 1334, 224, 1346, 284, 1349, 343, 1343, 381, 1324, 418, 1294, 530, 1318, 530, 1230, 626, 1230, 626, 1174, 450, 1174, 450, 1198.03, 450, 1238, 402, 1238, 398.903, 1222.39, 386, 1174)
+
+[node name="SecretVolume" parent="." instance=ExtResource("18_7txo2")]
+position = Vector2(287, 723)
+scale = Vector2(0.477623, 0.662027)
+
+[node name="SecretVolume2" parent="." instance=ExtResource("18_7txo2")]
+position = Vector2(-101, 228)
+scale = Vector2(0.401953, 1.84371)

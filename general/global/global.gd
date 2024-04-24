@@ -41,6 +41,8 @@ func _ready():
 	sfx_player_dictionary["heart_up"].volume_db = -8
 	prep_sfx_player("pick_up_coin", 16, "res://general/sfx/pick_up_coin.wav")
 	sfx_player_dictionary["pick_up_coin"].volume_db = -12
+	prep_sfx_player("secret", 1, "res://general/sfx/cc0_jim_and_495004__evretro__alert-video-game-sound.wav")
+	sfx_player_dictionary["secret"].volume_db = -2
 
 func prep_sfx_player(sfx_name_IN, max_polyphony_IN, asset_IN):
 	sfx_player_dictionary[sfx_name_IN] = AudioStreamPlayer.new()
