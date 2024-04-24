@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://uakbs2x1ur6k"]
+
+[ext_resource type="Script" path="res://general/scripts/death_pop.gd" id="1_0u4n8"]
+[ext_resource type="Texture2D" uid="uid://d1kdlmo34ye8u" path="res://general/sprites/bubble pop frame_1.png" id="2_jeg0c"]
+[ext_resource type="Texture2D" uid="uid://belu3tfdu76g8" path="res://general/sprites/bubble pop frame_2.png" id="3_mp1py"]
+[ext_resource type="Texture2D" uid="uid://wn8u0xpoml3s" path="res://general/sprites/bubble pop frame_3.png" id="4_d1urn"]
+[ext_resource type="Texture2D" uid="uid://lms3k0l60sjp" path="res://general/sprites/bubble pop frame_4.png" id="5_6ulun"]
+[ext_resource type="Texture2D" uid="uid://b01nob06pvqgt" path="res://general/sprites/bubble pop frame_5.png" id="6_0hltc"]
+[ext_resource type="Texture2D" uid="uid://bmc2t7pjv535y" path="res://general/sprites/bubble pop frame_6.png" id="7_cq7oc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4fwje"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jeg0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mp1py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d1urn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6ulun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0hltc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cq7oc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DeathPop" type="Node2D"]
+script = ExtResource("1_0u4n8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4fwje")
+autoplay = "default"
+speed_scale = 2.0

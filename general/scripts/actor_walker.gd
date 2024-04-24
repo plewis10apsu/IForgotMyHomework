@@ -9,11 +9,12 @@ var is_in_floor_backup : bool = false
 var ledge_sensor_overlapping_bodies
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var needs_to_blink_white = false
+var death_pop_scene = preload("res://general/scenes/death_pop.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	actorData = ActorData.new(100, TEAM.ENEMY, WEAPON.NONE, 1)
+	actorData = ActorData.new(50, TEAM.ENEMY, WEAPON.NONE, 1)
 	position_x_last_frame = 0
 	if !is_facing_right:
 		$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x) * (-1)
@@ -23,6 +24,10 @@ func _process(_delta):
 	if actorData.hp <= 0:
 		Global.score += 50
 		#DIE
+		var new_pop = death_pop_scene.instantiate()
+		Global.bullet_parent.add_child(new_pop)
+		new_pop.global_position = $AnimatedSprite2D.global_position
+		new_pop.global_position.y += 4
 		queue_free()
 	if needs_to_blink_white:
 		needs_to_blink_white = false

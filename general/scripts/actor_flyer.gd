@@ -5,10 +5,11 @@ const WALK_SPEED = 20.0 #pixels per second
 var actorData : ActorData
 var position_x_last_frame : float
 var needs_to_blink_white = false
+var death_pop_scene = preload("res://general/scenes/death_pop.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	actorData = ActorData.new(50, TEAM.ENEMY, WEAPON.NONE, 1)
+	actorData = ActorData.new(25, TEAM.ENEMY, WEAPON.NONE, 1)
 	position_x_last_frame = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,6 +17,10 @@ func _process(delta):
 	if actorData.hp <= 0:
 		Global.score += 35
 		#DIE
+		var new_pop = death_pop_scene.instantiate()
+		Global.bullet_parent.add_child(new_pop)
+		new_pop.global_position = $AnimatedSprite2D.global_position
+		new_pop.global_position.y += 2
 		queue_free()
 	if needs_to_blink_white:
 		needs_to_blink_white = false
