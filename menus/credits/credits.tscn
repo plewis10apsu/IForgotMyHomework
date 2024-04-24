@@ -20,10 +20,38 @@ P. Lewis
 J. Lehtola
 
 
-With assets by
-Kenney (www.kenney.nl/)
+Programming, game systems, level 3
+J. Brady
 
 
+User interface, programming, level 2
+P. Lewis
+
+
+Artwork, programming, sound recording, level 1
+J. Lehtola
+
+
+With artwork and sounds by
+Kenney (www.kenney.nl)
+
+Music by
+Panda Beats
+
+With artwork by
+katunick (cleanpng.com)
+captainvector (123rf.com)
+astrellon3 (reddit.com)
+
+Pause menu animation by
+kobeDevStuff (github.com)
+
+
+Software used
+Godot
+Aseprite
+Audacity
+jsfxr
 
 
 
@@ -33,8 +61,8 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="credits_text"]
-position = Vector2(960.5, 535)
-scale = Vector2(97.05, 54.5)
+position = Vector2(960.5, 1259)
+scale = Vector2(97.05, 126.9)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1979.0

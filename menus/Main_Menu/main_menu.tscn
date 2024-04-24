@@ -522,7 +522,7 @@ theme_override_constants/separation = 720
 layout_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="HighScore/MarginContainer2/HBoxContainer/VBoxContainer"]
-position = Vector2(-1789, 65.9956)
+position = Vector2(-1796, 56.9956)
 anchor_mode = 0
 script = ExtResource("6_qaj33")
 
@@ -891,15 +891,21 @@ horizontal_alignment = 1
 
 [node name="Credits text" type="Label" parent="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_v2n1h")
-theme_override_font_sizes/font_size = 47
+theme_override_font_sizes/font_size = 36
 text = "A game developed by
 J. Brady
 P. Lewis
 J. Lehtola
 
 With assets by
-Kenney (www.kenney.nl)"
+Kenney (www.kenney.nl)
+
+Music by
+Panda Beats"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
