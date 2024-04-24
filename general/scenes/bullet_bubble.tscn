@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcwn3u01qj1yy"]
+[gd_scene load_steps=15 format=3 uid="uid://bcwn3u01qj1yy"]
 
 [ext_resource type="Script" path="res://general/scripts/bullet_bubble.gd" id="1_rxy58"]
 [ext_resource type="Texture2D" uid="uid://ctwggc6jcnr2b" path="res://general/sprites/bubble sprite 10px.png" id="2_shykq"]
+[ext_resource type="Texture2D" uid="uid://cl5j0mjyck85r" path="res://general/sprites/bubble sprite 12px.png" id="3_hapod"]
 [ext_resource type="Texture2D" uid="uid://l6vqqjpydkbh" path="res://general/sprites/bubble sprite 16px.png" id="3_kt21y"]
 [ext_resource type="Texture2D" uid="uid://cili8khm3vofi" path="res://general/sprites/bubble sprite 20px.png" id="4_xqo1q"]
 [ext_resource type="Texture2D" uid="uid://5sixno0sann3" path="res://general/sprites/bubble sprite 32px.png" id="5_58mad"]
@@ -20,6 +21,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_shykq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hapod")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_kt21y")
