@@ -13,3 +13,6 @@ texture = ExtResource("2_iasja")
 
 [node name="CollisionShape2D" parent="." index="1"]
 scale = Vector2(3.64, 3.64)
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(0.500001, -152)

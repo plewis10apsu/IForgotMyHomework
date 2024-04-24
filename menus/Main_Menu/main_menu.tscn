@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://kh2ahah87mcy" path="res://general/sprites/check_button_3.png" id="30_53a2g"]
 [ext_resource type="Texture2D" uid="uid://cu84ifsdt0qg7" path="res://menus/textures/tile_0017.png" id="30_uvhdj"]
 [ext_resource type="PackedScene" uid="uid://bb1ytyvtxlve0" path="res://general/scenes/transitions.tscn" id="31_07hsw"]
-[ext_resource type="PackedScene" uid="uid://bx36w0ilwfe4j" path="res://level_0/tilemap_level_test.tscn" id="33_7m6rf"]
+[ext_resource type="PackedScene" uid="uid://bx36w0ilwfe4j" path="res://level_1/tilemap_level_test.tscn" id="33_7m6rf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t3m8v"]
 
@@ -1058,5 +1058,6 @@ scene_to_load = ExtResource("33_7m6rf")
 [connection signal="pressed" from="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/BackButton" to="HighScore/MarginContainer2/HBoxContainer/VBoxContainer/Camera2D" method="_on_back_button_pressed"]
 [connection signal="pressed" from="HelpPanel/HelpMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="CreditsPanel/CreditsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="toggled" from="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicCheckButton" to="OptionsPanel/OptionsMenu/Panel" method="_on_music_check_button_toggled"]
 [connection signal="toggled" from="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/VBoxContainer/SoundFXCheckButton" to="OptionsPanel/OptionsMenu/Panel" method="_on_sound_fx_check_button_toggled"]
 [connection signal="pressed" from="OptionsPanel/OptionsMenu/Panel/MarginContainer/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_close_button_pressed"]

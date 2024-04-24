@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cn3cv0edg6xmw"
+path="res://.godot/imported/noattrib_PandaBeats_Rocks and Apples.wav-4008d6c971bb58e8b844e473080620a5.sample"
+
+[deps]
+
+source_file="res://general/music/noattrib_PandaBeats_Rocks and Apples.wav"
+dest_files=["res://.godot/imported/noattrib_PandaBeats_Rocks and Apples.wav-4008d6c971bb58e8b844e473080620a5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

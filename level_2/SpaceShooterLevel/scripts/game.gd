@@ -23,6 +23,7 @@ var scroll_speed = 100
 var level_timer : Timer
 
 func _ready():
+	Global.play_music_by_name_plus_volume("voyage", -6)
 	Global.current_level = get_tree().current_scene
 	Global.current_level_path = "res://level_2/SpaceShooterLevel/scenes/game.tscn"
 	Global.clear_bullets()
@@ -52,7 +53,7 @@ func save_game():
 	save_file.store_32(high_score)
 
 func _process(delta):
-	if Input.is_key_pressed(KEY_END):
+	if Input.is_key_pressed(KEY_END) and Global.cheats_enabled:
 		level_timer.wait_time = 0.01
 		level_timer.start()
 	#NOTE(Jim): ^ Just adding a skip key for debug purposes.
@@ -76,6 +77,11 @@ func _on_player_laser_shot(laser_scene, location):
 
 func _on_enemy_spawn_timer_timeout():
 	var e = enemy_scenes.pick_random().instantiate() #Create a new instance of an enemy
+	# Hacky code warning!
+	if e.name == "MedEnemy":
+		e.particle_amount = 64
+	if e.name == "Enemy":
+		e.particle_amount = 32
 	e.global_position =  Vector2(randf_range(40,1880),-50) #Random pointing float x value range, y
 	e.killed.connect(_on_enemy_killed)
 	e.hit.connect(_on_enemy_hit)
@@ -83,6 +89,7 @@ func _on_enemy_spawn_timer_timeout():
 
 func _on_large_enemy_spawn_timer_timeout():
 	var largeE = large_enemy_scenes.pick_random().instantiate() #Create a new instance of an enemy
+	largeE.particle_amount = 128
 	largeE.global_position =  Vector2(randf_range(40,1880),-270) #Random pointing float x value range, y
 	largeE.killed.connect(_on_enemy_killed)
 	largeE.hit.connect(_on_enemy_hit)

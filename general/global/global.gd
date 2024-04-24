@@ -1,6 +1,7 @@
 extends Node
 
 const MAX_SCORE_DIGITS = 6
+var cheats_enabled : bool = true
 var player #Player will put itself here when it spawns.
 var current_level #Level will put itself here when it spawns.
 var current_level_path = "" #Current scene path
@@ -14,32 +15,40 @@ var music_player = AudioStreamPlayer.new()
 var current_music_name # In case we ever care what's playing.
 var music_dictionary = {
 	# Paths for all music files
-	"pixelparty" : "res://general/music/noattrib_PandaBeats_PixelParty.wav"
+	"rocks_and_apples" : "res://general/music/noattrib_PandaBeats_Rocks and Apples.wav",
+	"voyage" : "res://general/music/noattrib_PandaBeats_Voyage.wav",
+	"gameboy_girl" : "res://general/music/noattrib_PandaBeats_Gameboy Girl.wav"
 }
 var sfx_player_dictionary : Dictionary #Keys will be defined in _ready()
 var sfx_player_name_list = []
 var sfx_muted : bool = false
+var music_is_muted : bool = false
+var level_1_secret_timer : float = 3.0
 
 func _ready():
 	add_child(music_player)
 	add_child(bullet_parent)
 	prep_sfx_player("pop", 16, "res://general/sfx/cc0_698818__funky_audio__dsgnsynth_bubble-pops-synth-singular_funky-audio_fass.mp3")
 	prep_sfx_player("bop_ouch", 1, "res://general/sfx/cc0_340288__kevinduffy1234_and_404747__owlstorm.mp3")
+	prep_sfx_player("death_pop", 8, "res://general/sfx/cc0_703851__ragnar59__bloop-f3.wav")
+	sfx_player_dictionary["death_pop"].volume_db = -6
 	prep_sfx_player("pop_1", 16, "res://general/sfx/bubble_pop_1.wav")
 	prep_sfx_player("pop_2", 16, "res://general/sfx/bubble_pop_2.wav")
 	prep_sfx_player("pop_3", 16, "res://general/sfx/bubble_pop_3.wav")
 	prep_sfx_player("pop_4", 16, "res://general/sfx/bubble_pop_4.wav")
 	prep_sfx_player("pop_5", 16, "res://general/sfx/bubble_pop_5.wav")
 	prep_sfx_player("heart_up", 3, "res://general/sfx/heart_up.wav")
+	sfx_player_dictionary["heart_up"].volume_db = -8
 	prep_sfx_player("pick_up_coin", 16, "res://general/sfx/pick_up_coin.wav")
+	sfx_player_dictionary["pick_up_coin"].volume_db = -12
+	prep_sfx_player("secret", 1, "res://general/sfx/cc0_jim_and_495004__evretro__alert-video-game-sound.wav")
+	sfx_player_dictionary["secret"].volume_db = -2
 
 func prep_sfx_player(sfx_name_IN, max_polyphony_IN, asset_IN):
 	sfx_player_dictionary[sfx_name_IN] = AudioStreamPlayer.new()
 	sfx_player_dictionary[sfx_name_IN].stream = load(asset_IN)
 	sfx_player_dictionary[sfx_name_IN].max_polyphony = max_polyphony_IN
 	sfx_player_name_list += [sfx_name_IN]
-	print("Registered sfx player name: " + str(sfx_player_name_list[sfx_player_name_list.size() - 1]))
-	print(sfx_player_dictionary[sfx_name_IN].stream_paused)
 	add_child(sfx_player_dictionary[sfx_name_IN])
 
 func pause_all_sound():
@@ -67,6 +76,9 @@ func unmute_sfx():
 	for key in sfx_player_name_list:
 		sfx_player_dictionary[key].volume_db = 0.0
 	sfx_muted = false
+	
+func set_allow_music(toggled_on):
+	music_is_muted = not toggled_on
 
 func point_at_player_from(from_node_IN):
 	#Creates normalized V2 pointing from argument's position to the player.
@@ -74,7 +86,7 @@ func point_at_player_from(from_node_IN):
 	return Vector2(player.global_position - from_node_IN.global_position).normalized()
 
 func clear_bullets():
-	# Deletes all children of the bullet parent
+	#Deletes all children of the bullet parent
 	for b in bullet_parent.get_children():
 		b.queue_free()
 
@@ -127,10 +139,19 @@ func submit_score_and_reset():
 	score = 0
 
 func play_music_by_name(music_name):
-	# By making this a stream instead of a path, we can load the music during level loading.
-	var new_stream = load(Global.music_dictionary[music_name])
-	music_player.stream = new_stream
-	music_player.play()
+	if !music_is_muted:
+		# By making this a stream instead of a path, we can load the music during level loading.
+		var new_stream = load(Global.music_dictionary[music_name])
+		music_player.volume_db = 0
+		music_player.stream = new_stream
+		music_player.play()
+
+func play_music_by_name_plus_volume(music_name, new_volume):
+	play_music_by_name(music_name)
+	music_player.volume_db = new_volume
+
+func stop_music():
+	music_player.stop()
 	
 func play_sfx_by_name(sfx_name):
 	#if not sfx_player_dictionary[sfx_name].playing:

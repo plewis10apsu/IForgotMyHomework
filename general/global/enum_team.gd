@@ -1,3 +1,3 @@
 class_name TEAM
 
-enum {PLAYER, ENEMY, POWER_UP}
+enum {PLAYER, ENEMY, POWER_UP, ENVIRONMENT}
