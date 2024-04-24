@@ -177,7 +177,7 @@ position = Vector2(1395, -198)
 position = Vector2(1432, -288)
 
 [node name="Heart2" parent="." instance=ExtResource("11_dtymi")]
-position = Vector2(1696, -344)
+position = Vector2(1664, -304)
 
 [node name="level_1_flag" parent="." instance=ExtResource("13_1g0n3")]
 position = Vector2(1761, -364)

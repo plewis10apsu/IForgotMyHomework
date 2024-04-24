@@ -50,15 +50,18 @@ func _process(delta):
 		PLATFORMING_POWERUP.NONE:
 			actorData.weapon_type = WEAPON.BUBBLE
 			is_sparkling = false
+			actorData.hazard_level = 0
 		PLATFORMING_POWERUP.RAINBOW:
 			actorData.weapon_type = WEAPON.BUBBLE_RAINBOW
 			is_sparkling = false
 			if actorData.hp < HP_MAX:
 				if rng.randi_range(0,100) < 1:
 					actorData.hp += 1
+			actorData.hazard_level = 0
 		PLATFORMING_POWERUP.SPARKLE_RUNNING:
 			actorData.weapon_type = WEAPON.BUBBLE
 			is_sparkling = true
+			actorData.hazard_level = 999
 				
 	#Hurt blinking (NOTE:(Jim) Feel free to ask me about the math for "its_blink_off_time"!)
 	var its_blink_off_time = bool(invincible_timer_ms%(2*HURT_BLINK_RATE_MS) > HURT_BLINK_RATE_MS)
@@ -260,3 +263,6 @@ func _on_area_2d_area_entered(area):
 		if other.power_up_type == "coin":
 			Global.score += 25
 			other.destroy()
+			
+func hit_something():
+	pass

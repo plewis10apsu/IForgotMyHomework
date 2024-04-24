@@ -45,8 +45,6 @@ func prep_sfx_player(sfx_name_IN, max_polyphony_IN, asset_IN):
 	sfx_player_dictionary[sfx_name_IN].stream = load(asset_IN)
 	sfx_player_dictionary[sfx_name_IN].max_polyphony = max_polyphony_IN
 	sfx_player_name_list += [sfx_name_IN]
-	print("Registered sfx player name: " + str(sfx_player_name_list[sfx_player_name_list.size() - 1]))
-	print(sfx_player_dictionary[sfx_name_IN].stream_paused)
 	add_child(sfx_player_dictionary[sfx_name_IN])
 
 func pause_all_sound():

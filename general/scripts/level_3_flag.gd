@@ -2,6 +2,7 @@ extends Node2D
 
 var actorData : ActorData
 var label : Label
+var level_is_ending : bool = false
 var cheat_ended : bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -19,11 +20,13 @@ func _process(delta):
 		label.text = "Final score:\n" + Global.get_current_score_as_string()
 
 func _on_area_2d_area_entered(area):
-	print(area.get_parent())
-	if area.get_parent() == Global.player:
-		end_level()
+	if !level_is_ending:
+		print(area.get_parent())
+		if area.get_parent() == Global.player:
+			end_level()
 
 func end_level():
+	level_is_ending = true
 	#NOTE(Jim): Wrapped this in a function for the cheat button.
 	#Global.player.state = PLAYERSTATE.DEAD
 	var timer = Timer.new()
