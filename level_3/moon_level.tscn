@@ -32,21 +32,24 @@ position = Vector2(1160, 72)
 position = Vector2(158, 85.5)
 shape = SubResource("RectangleShape2D_vx55k")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -100
-offset_left = -3424.0
-offset_top = -2088.0
-offset_right = 3928.0
-offset_bottom = 1868.0
-color = Color(0.0941176, 0.0941176, 0.0941176, 1)
-
 [node name="BlackRect" type="ColorRect" parent="."]
-z_index = -100
-offset_left = -3996.0
-offset_top = -3596.0
-offset_right = 3356.0
-offset_bottom = 360.0
+offset_left = -3120.0
+offset_top = -2208.0
+offset_right = 4232.0
+offset_bottom = 1748.0
 color = Color(0, 0, 0, 1)
+
+[node name="MoonBackground" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0.219608)
+texture_repeat = 2
+texture = ExtResource("2_uny6s")
+texture_scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-1827, -215, 3142, -788, 3338, 2111, -2129, 1658)
+
+[node name="MoonSkyOverlay" type="Polygon2D" parent="."]
+position = Vector2(-370, 96)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-2168, -1328, 4048, -1344, 3992, 264, -2192, 264)
 
 [node name="Level1FlagFrame1" type="Sprite2D" parent="."]
 position = Vector2(-471, 992)
