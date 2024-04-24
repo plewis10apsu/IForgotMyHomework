@@ -21,6 +21,8 @@ func _ready():
 	Global.player = self
 
 func _process(delta):
+	if hp <= 0:
+			die()
 	if Input.is_action_pressed("shoot"):
 		if !shoot_cd:
 			shoot_cd = true
@@ -49,8 +51,6 @@ func hurt():
 		Global.play_sfx_by_name("bop_ouch")
 		hp -= 1
 		invincible_timer_ms = HURT_BLINK_DURATION_MS
-		if hp <= 0:
-			die()
 
 func die():
 	Global.score = Global.score_at_level_start
