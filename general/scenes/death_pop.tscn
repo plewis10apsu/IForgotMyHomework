@@ -38,6 +38,7 @@ animations = [{
 script = ExtResource("1_0u4n8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 0.785398
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4fwje")
 autoplay = "default"
