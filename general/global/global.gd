@@ -43,6 +43,7 @@ func _ready():
 	sfx_player_dictionary["pick_up_coin"].volume_db = -12
 	prep_sfx_player("secret", 1, "res://general/sfx/cc0_jim_and_495004__evretro__alert-video-game-sound.wav")
 	sfx_player_dictionary["secret"].volume_db = -2
+	read_score()
 
 func prep_sfx_player(sfx_name_IN, max_polyphony_IN, asset_IN):
 	sfx_player_dictionary[sfx_name_IN] = AudioStreamPlayer.new()
@@ -67,14 +68,14 @@ func unpause_all_sound():
 
 func mute_sfx():
 	# Set all sfx player volume to -60
-	for key in sfx_player_name_list:
-		sfx_player_dictionary[key].volume_db = -60.0
+	#for key in sfx_player_name_list:
+	#	sfx_player_dictionary[key].volume_db = -60.0
 	sfx_muted = true
 
 func unmute_sfx():
 	# Set all sfx player volume to 0
-	for key in sfx_player_name_list:
-		sfx_player_dictionary[key].volume_db = 0.0
+	#for key in sfx_player_name_list:
+	#	sfx_player_dictionary[key].volume_db = 0.0
 	sfx_muted = false
 	
 func set_allow_music(toggled_on):
@@ -141,6 +142,21 @@ func submit_score_and_reset():
 		#Again, if rank==0, we have the new best score!
 		high_scores[i] = score
 	score = 0
+	write_score()
+
+func write_score():
+	var save_file = FileAccess.open("user://save.data", FileAccess.WRITE)
+	save_file.store_var(high_scores)
+
+func read_score():
+	var save_file = FileAccess.open("user://save.data", FileAccess.READ)
+	var data
+	if save_file != null:
+		data = save_file.get_var()
+		if data != null:
+			high_scores = data
+	else:
+		write_score()
 
 func play_music_by_name(music_name):
 	if !music_is_muted:
@@ -159,4 +175,5 @@ func stop_music():
 	
 func play_sfx_by_name(sfx_name):
 	#if not sfx_player_dictionary[sfx_name].playing:
-	sfx_player_dictionary[sfx_name].play()
+	if not sfx_muted:
+		sfx_player_dictionary[sfx_name].play()

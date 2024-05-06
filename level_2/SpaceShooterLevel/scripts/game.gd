@@ -27,12 +27,6 @@ func _ready():
 	Global.current_level = get_tree().current_scene
 	Global.current_level_path = "res://level_2/SpaceShooterLevel/scenes/game.tscn"
 	Global.clear_bullets()
-	var save_file = FileAccess.open("user://save.data", FileAccess.READ)
-	if save_file != null:
-		high_score = save_file.get_32()
-	else:
-		high_score = 0
-		save_game()
 	score = Global.score
 	player = get_tree().get_first_node_in_group("player")
 	assert(player!= null)
@@ -47,10 +41,6 @@ func _ready():
 	level_timer.wait_time = 60
 	level_timer.start()
 	Global.level_timer = level_timer
-	
-func save_game():
-	var save_file = FileAccess.open("user://save.data", FileAccess.WRITE)
-	save_file.store_32(high_score)
 
 func _process(delta):
 	if Input.is_key_pressed(KEY_END) and Global.cheats_enabled:
@@ -111,5 +101,4 @@ func _on_enemy_hit():
 func _on_player_killed():
 	if !Global.sfx_muted:
 		explode_sound.play()
-	save_game()
 	Global.reload_current_scene()
