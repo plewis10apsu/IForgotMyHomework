@@ -4,7 +4,7 @@ extends Panel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MarginContainer/VBoxContainer/VBoxContainer/SoundFXCheckButton.button_pressed = !Global.sfx_muted
-
+	$MarginContainer/VBoxContainer/VBoxContainer/MusicCheckButton.button_pressed = !Global.music_is_muted
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -17,8 +17,6 @@ func _on_sound_fx_check_button_toggled(toggled_on):
 	else:
 		Global.mute_sfx()
 		print("muted sound effects")
-
-
 
 func _on_music_check_button_toggled(toggled_on):
 	Global.set_allow_music(toggled_on);
