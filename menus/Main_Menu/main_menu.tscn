@@ -305,8 +305,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_mey35")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_xkyem")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_kjdve")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bxh7w")
-text = "Level 2
-"
+text = "Level 2"
 
 [node name="LevelButton3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -327,8 +326,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_dtpes")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vymi0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ggfw")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cvdwe")
-text = "Level 3
-"
+text = "Level 3"
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

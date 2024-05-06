@@ -79,6 +79,10 @@ func unmute_sfx():
 	
 func set_allow_music(toggled_on):
 	music_is_muted = not toggled_on
+	if music_is_muted:
+		music_player.volume_db = -60
+	else:
+		music_player.volume_db = 0
 
 func point_at_player_from(from_node_IN):
 	#Creates normalized V2 pointing from argument's position to the player.
