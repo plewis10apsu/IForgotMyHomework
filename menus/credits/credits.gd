@@ -11,7 +11,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	credits_text.position.y -= 100 * delta
+	if Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("jump"):
+		Global.change_level("res://menus/Main_Menu/main_menu.tscn")
 	
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	Global.change_level("res://menus/Main_Menu/main_menu.tscn")
+
