@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dy7drdin15j75" path="res://general/scenes/coin.tscn" id="5_qt871"]
 [ext_resource type="PackedScene" uid="uid://ctd1vldeuv3vd" path="res://general/scenes/cloud_platform.tscn" id="6_q565u"]
 [ext_resource type="PackedScene" uid="uid://cusmuny1el101" path="res://menus/Pause_Menu/pause_menu.tscn" id="7_m818y"]
-[ext_resource type="PackedScene" uid="uid://bwvsa0t1s1ych" path="res://general/scenes/power_up_1.tscn" id="8_xbh4q"]
+[ext_resource type="PackedScene" path="res://general/scenes/power_up_1.tscn" id="8_xbh4q"]
 [ext_resource type="PackedScene" uid="uid://4osk76a4o7l1" path="res://general/scenes/actor_dave.tscn" id="9_bs8d8"]
 [ext_resource type="PackedScene" uid="uid://byeaat0hjsy5o" path="res://general/scenes/actor_louie.tscn" id="10_03gpd"]
 [ext_resource type="PackedScene" uid="uid://ckx68ee60wlx5" path="res://general/scenes/heart_powerup.tscn" id="11_dtymi"]

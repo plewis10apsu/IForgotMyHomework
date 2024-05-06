@@ -84,10 +84,6 @@ position = Vector2(960, 970)
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
-[node name="PauseLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="PauseLayer" instance=ExtResource("12_qltov")]
-
 [node name="TransitionsLayer" type="CanvasLayer" parent="."]
 
 [node name="Transitions" parent="TransitionsLayer" instance=ExtResource("14_ftqq6")]
@@ -97,6 +93,10 @@ offset_right = 780.0
 offset_bottom = 380.0
 scale = Vector2(5, 5)
 scene_to_load = ExtResource("13_jit6v")
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource("12_qltov")]
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="LargeEnemySpawnTimer" to="." method="_on_large_enemy_spawn_timer_timeout"]
