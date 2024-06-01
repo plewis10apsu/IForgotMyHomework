@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxsdx21bpqdk"]
+[gd_scene load_steps=17 format=3 uid="uid://dxsdx21bpqdk"]
 
 [ext_resource type="Script" path="res://level_2/SpaceShooterLevel/scripts/game.gd" id="1_00qm6"]
 [ext_resource type="PackedScene" uid="uid://dvt2liyu3nvqe" path="res://level_2/SpaceShooterLevel/scenes/player.tscn" id="2_4hrb5"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cusmuny1el101" path="res://menus/Pause_Menu/pause_menu.tscn" id="12_qltov"]
 [ext_resource type="PackedScene" uid="uid://d4bwr6c3m4qte" path="res://level_3/moon_level.tscn" id="13_jit6v"]
 [ext_resource type="PackedScene" uid="uid://bb1ytyvtxlve0" path="res://general/scenes/transitions.tscn" id="14_ftqq6"]
+[ext_resource type="PackedScene" uid="uid://c5lwwfcyrr1w8" path="res://level_2/SpaceShooterLevel/scenes/particles.tscn" id="15_1qihs"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2f4o5"]
 particle_flag_disable_z = true
@@ -97,6 +98,9 @@ scene_to_load = ExtResource("13_jit6v")
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="PauseLayer" instance=ExtResource("12_qltov")]
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("15_1qihs")]
+position = Vector2(-641, 1467)
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="LargeEnemySpawnTimer" to="." method="_on_large_enemy_spawn_timer_timeout"]

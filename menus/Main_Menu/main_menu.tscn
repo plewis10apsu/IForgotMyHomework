@@ -596,7 +596,7 @@ theme_override_constants/shadow_outline_size = 6
 theme_override_constants/line_spacing = -31
 theme_override_fonts/font = ExtResource("3_v2n1h")
 theme_override_font_sizes/font_size = 95
-text = "Game 
+text = "Game
 Controls"
 horizontal_alignment = 1
 
